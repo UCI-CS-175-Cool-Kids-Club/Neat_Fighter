@@ -10,3 +10,5 @@ We will be using a computer vision object recognition algorithm to detect the en
 
 ## Evaluation Plan:
 We will make the agent fight past iterations of itself taking time into account and confirm that it is improving. Not sure if we are going to use a nuero dynamic programming based algorithm or not. Our moonshot will be if the agent can beat our team.
+
+Our schuduled appointment is on Wednesday, May 3rd at 3:00pm

@@ -9,7 +9,7 @@ title:  Team
 ***UCI Net ID***: chult
 
 ## Jonnathan Petote
-***UCI Net ID***: jpetot
+***UCI Net ID***: jpetote
 
 ## Kevin Wang
 ***UCI Net ID***: wangka1

@@ -5,12 +5,11 @@ title:  Team
 
 # {{ page.title }}
 
+## Linh Chu
+***UCI Net ID***: chult
 
-## USER 1
-***UCI Net ID***: ucinetid
+## Jonnathan Petote
+***UCI Net ID***: jpetot
 
-## USER 2
-***UCI Net ID***: ucinetid
-
-## USER 3
-***UCI Net ID***: ucinetid
+## Kevin Wang
+***UCI Net ID***: wangka1

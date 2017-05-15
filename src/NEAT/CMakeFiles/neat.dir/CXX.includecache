@@ -1,0 +1,234 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/linhchu/Dropbox/Computer Science Classes/CS 175/Cool-Minecraft-Fighting-Bot/src/NEAT/experiments.cpp
+experiments.h
+/home/linhchu/Dropbox/Computer Science Classes/CS 175/Cool-Minecraft-Fighting-Bot/src/NEAT/experiments.h
+cstring
+-
+
+/home/linhchu/Dropbox/Computer Science Classes/CS 175/Cool-Minecraft-Fighting-Bot/src/NEAT/experiments.h
+iostream
+-
+iomanip
+-
+fstream
+-
+sstream
+-
+list
+-
+vector
+-
+algorithm
+-
+cmath
+-
+string
+-
+neat.h
+/home/linhchu/Dropbox/Computer Science Classes/CS 175/Cool-Minecraft-Fighting-Bot/src/NEAT/neat.h
+network.h
+/home/linhchu/Dropbox/Computer Science Classes/CS 175/Cool-Minecraft-Fighting-Bot/src/NEAT/network.h
+population.h
+/home/linhchu/Dropbox/Computer Science Classes/CS 175/Cool-Minecraft-Fighting-Bot/src/NEAT/population.h
+organism.h
+/home/linhchu/Dropbox/Computer Science Classes/CS 175/Cool-Minecraft-Fighting-Bot/src/NEAT/organism.h
+genome.h
+/home/linhchu/Dropbox/Computer Science Classes/CS 175/Cool-Minecraft-Fighting-Bot/src/NEAT/genome.h
+species.h
+/home/linhchu/Dropbox/Computer Science Classes/CS 175/Cool-Minecraft-Fighting-Bot/src/NEAT/species.h
+
+/home/linhchu/Dropbox/Computer Science Classes/CS 175/Cool-Minecraft-Fighting-Bot/src/NEAT/gene.cpp
+gene.h
+/home/linhchu/Dropbox/Computer Science Classes/CS 175/Cool-Minecraft-Fighting-Bot/src/NEAT/gene.h
+iostream
+-
+sstream
+-
+
+/home/linhchu/Dropbox/Computer Science Classes/CS 175/Cool-Minecraft-Fighting-Bot/src/NEAT/gene.h
+neat.h
+/home/linhchu/Dropbox/Computer Science Classes/CS 175/Cool-Minecraft-Fighting-Bot/src/NEAT/neat.h
+trait.h
+/home/linhchu/Dropbox/Computer Science Classes/CS 175/Cool-Minecraft-Fighting-Bot/src/NEAT/trait.h
+link.h
+/home/linhchu/Dropbox/Computer Science Classes/CS 175/Cool-Minecraft-Fighting-Bot/src/NEAT/link.h
+network.h
+/home/linhchu/Dropbox/Computer Science Classes/CS 175/Cool-Minecraft-Fighting-Bot/src/NEAT/network.h
+
+/home/linhchu/Dropbox/Computer Science Classes/CS 175/Cool-Minecraft-Fighting-Bot/src/NEAT/genome.cpp
+genome.h
+/home/linhchu/Dropbox/Computer Science Classes/CS 175/Cool-Minecraft-Fighting-Bot/src/NEAT/genome.h
+iostream
+-
+cmath
+-
+sstream
+-
+
+/home/linhchu/Dropbox/Computer Science Classes/CS 175/Cool-Minecraft-Fighting-Bot/src/NEAT/genome.h
+vector
+-
+gene.h
+/home/linhchu/Dropbox/Computer Science Classes/CS 175/Cool-Minecraft-Fighting-Bot/src/NEAT/gene.h
+innovation.h
+/home/linhchu/Dropbox/Computer Science Classes/CS 175/Cool-Minecraft-Fighting-Bot/src/NEAT/innovation.h
+
+/home/linhchu/Dropbox/Computer Science Classes/CS 175/Cool-Minecraft-Fighting-Bot/src/NEAT/innovation.cpp
+innovation.h
+/home/linhchu/Dropbox/Computer Science Classes/CS 175/Cool-Minecraft-Fighting-Bot/src/NEAT/innovation.h
+
+/home/linhchu/Dropbox/Computer Science Classes/CS 175/Cool-Minecraft-Fighting-Bot/src/NEAT/innovation.h
+
+/home/linhchu/Dropbox/Computer Science Classes/CS 175/Cool-Minecraft-Fighting-Bot/src/NEAT/link.cpp
+link.h
+/home/linhchu/Dropbox/Computer Science Classes/CS 175/Cool-Minecraft-Fighting-Bot/src/NEAT/link.h
+
+/home/linhchu/Dropbox/Computer Science Classes/CS 175/Cool-Minecraft-Fighting-Bot/src/NEAT/link.h
+neat.h
+/home/linhchu/Dropbox/Computer Science Classes/CS 175/Cool-Minecraft-Fighting-Bot/src/NEAT/neat.h
+trait.h
+/home/linhchu/Dropbox/Computer Science Classes/CS 175/Cool-Minecraft-Fighting-Bot/src/NEAT/trait.h
+nnode.h
+/home/linhchu/Dropbox/Computer Science Classes/CS 175/Cool-Minecraft-Fighting-Bot/src/NEAT/nnode.h
+
+/home/linhchu/Dropbox/Computer Science Classes/CS 175/Cool-Minecraft-Fighting-Bot/src/NEAT/neat.cpp
+neat.h
+/home/linhchu/Dropbox/Computer Science Classes/CS 175/Cool-Minecraft-Fighting-Bot/src/NEAT/neat.h
+fstream
+-
+cmath
+-
+cstring
+-
+
+/home/linhchu/Dropbox/Computer Science Classes/CS 175/Cool-Minecraft-Fighting-Bot/src/NEAT/neat.h
+cstdlib
+-
+cstring
+-
+
+/home/linhchu/Dropbox/Computer Science Classes/CS 175/Cool-Minecraft-Fighting-Bot/src/NEAT/neatmain.cpp
+iostream
+-
+vector
+-
+neat.h
+/home/linhchu/Dropbox/Computer Science Classes/CS 175/Cool-Minecraft-Fighting-Bot/src/NEAT/neat.h
+population.h
+/home/linhchu/Dropbox/Computer Science Classes/CS 175/Cool-Minecraft-Fighting-Bot/src/NEAT/population.h
+experiments.h
+/home/linhchu/Dropbox/Computer Science Classes/CS 175/Cool-Minecraft-Fighting-Bot/src/NEAT/experiments.h
+
+/home/linhchu/Dropbox/Computer Science Classes/CS 175/Cool-Minecraft-Fighting-Bot/src/NEAT/network.cpp
+network.h
+/home/linhchu/Dropbox/Computer Science Classes/CS 175/Cool-Minecraft-Fighting-Bot/src/NEAT/network.h
+iostream
+-
+sstream
+-
+
+/home/linhchu/Dropbox/Computer Science Classes/CS 175/Cool-Minecraft-Fighting-Bot/src/NEAT/network.h
+algorithm
+-
+vector
+-
+neat.h
+/home/linhchu/Dropbox/Computer Science Classes/CS 175/Cool-Minecraft-Fighting-Bot/src/NEAT/neat.h
+nnode.h
+/home/linhchu/Dropbox/Computer Science Classes/CS 175/Cool-Minecraft-Fighting-Bot/src/NEAT/nnode.h
+
+/home/linhchu/Dropbox/Computer Science Classes/CS 175/Cool-Minecraft-Fighting-Bot/src/NEAT/nnode.cpp
+nnode.h
+/home/linhchu/Dropbox/Computer Science Classes/CS 175/Cool-Minecraft-Fighting-Bot/src/NEAT/nnode.h
+iostream
+-
+sstream
+-
+
+/home/linhchu/Dropbox/Computer Science Classes/CS 175/Cool-Minecraft-Fighting-Bot/src/NEAT/nnode.h
+algorithm
+-
+vector
+-
+neat.h
+/home/linhchu/Dropbox/Computer Science Classes/CS 175/Cool-Minecraft-Fighting-Bot/src/NEAT/neat.h
+trait.h
+/home/linhchu/Dropbox/Computer Science Classes/CS 175/Cool-Minecraft-Fighting-Bot/src/NEAT/trait.h
+link.h
+/home/linhchu/Dropbox/Computer Science Classes/CS 175/Cool-Minecraft-Fighting-Bot/src/NEAT/link.h
+
+/home/linhchu/Dropbox/Computer Science Classes/CS 175/Cool-Minecraft-Fighting-Bot/src/NEAT/organism.cpp
+organism.h
+/home/linhchu/Dropbox/Computer Science Classes/CS 175/Cool-Minecraft-Fighting-Bot/src/NEAT/organism.h
+
+/home/linhchu/Dropbox/Computer Science Classes/CS 175/Cool-Minecraft-Fighting-Bot/src/NEAT/organism.h
+genome.h
+/home/linhchu/Dropbox/Computer Science Classes/CS 175/Cool-Minecraft-Fighting-Bot/src/NEAT/genome.h
+species.h
+/home/linhchu/Dropbox/Computer Science Classes/CS 175/Cool-Minecraft-Fighting-Bot/src/NEAT/species.h
+
+/home/linhchu/Dropbox/Computer Science Classes/CS 175/Cool-Minecraft-Fighting-Bot/src/NEAT/population.cpp
+population.h
+/home/linhchu/Dropbox/Computer Science Classes/CS 175/Cool-Minecraft-Fighting-Bot/src/NEAT/population.h
+organism.h
+/home/linhchu/Dropbox/Computer Science Classes/CS 175/Cool-Minecraft-Fighting-Bot/src/NEAT/organism.h
+iostream
+-
+sstream
+-
+fstream
+-
+
+/home/linhchu/Dropbox/Computer Science Classes/CS 175/Cool-Minecraft-Fighting-Bot/src/NEAT/population.h
+cmath
+-
+vector
+-
+innovation.h
+/home/linhchu/Dropbox/Computer Science Classes/CS 175/Cool-Minecraft-Fighting-Bot/src/NEAT/innovation.h
+genome.h
+/home/linhchu/Dropbox/Computer Science Classes/CS 175/Cool-Minecraft-Fighting-Bot/src/NEAT/genome.h
+species.h
+/home/linhchu/Dropbox/Computer Science Classes/CS 175/Cool-Minecraft-Fighting-Bot/src/NEAT/species.h
+organism.h
+/home/linhchu/Dropbox/Computer Science Classes/CS 175/Cool-Minecraft-Fighting-Bot/src/NEAT/organism.h
+
+/home/linhchu/Dropbox/Computer Science Classes/CS 175/Cool-Minecraft-Fighting-Bot/src/NEAT/species.cpp
+species.h
+/home/linhchu/Dropbox/Computer Science Classes/CS 175/Cool-Minecraft-Fighting-Bot/src/NEAT/species.h
+organism.h
+/home/linhchu/Dropbox/Computer Science Classes/CS 175/Cool-Minecraft-Fighting-Bot/src/NEAT/organism.h
+cmath
+-
+iostream
+-
+
+/home/linhchu/Dropbox/Computer Science Classes/CS 175/Cool-Minecraft-Fighting-Bot/src/NEAT/species.h
+neat.h
+/home/linhchu/Dropbox/Computer Science Classes/CS 175/Cool-Minecraft-Fighting-Bot/src/NEAT/neat.h
+organism.h
+/home/linhchu/Dropbox/Computer Science Classes/CS 175/Cool-Minecraft-Fighting-Bot/src/NEAT/organism.h
+population.h
+/home/linhchu/Dropbox/Computer Science Classes/CS 175/Cool-Minecraft-Fighting-Bot/src/NEAT/population.h
+
+/home/linhchu/Dropbox/Computer Science Classes/CS 175/Cool-Minecraft-Fighting-Bot/src/NEAT/trait.cpp
+trait.h
+/home/linhchu/Dropbox/Computer Science Classes/CS 175/Cool-Minecraft-Fighting-Bot/src/NEAT/trait.h
+iostream
+-
+sstream
+-
+
+/home/linhchu/Dropbox/Computer Science Classes/CS 175/Cool-Minecraft-Fighting-Bot/src/NEAT/trait.h
+fstream
+-
+neat.h
+/home/linhchu/Dropbox/Computer Science Classes/CS 175/Cool-Minecraft-Fighting-Bot/src/NEAT/neat.h
+

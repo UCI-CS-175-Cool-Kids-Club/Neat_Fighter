@@ -1,0 +1,2 @@
+class FitnessBase:
+    def eval

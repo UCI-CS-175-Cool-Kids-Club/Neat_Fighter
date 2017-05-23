@@ -7,7 +7,7 @@ import random
 
 def LoadMission():
     agent_host = MalmoPython.AgentHost()
-    mission_file = "../missions/default_flat_1.xml"
+    mission_file = "../missions/arena.xml"
     with open(mission_file, 'r') as f:
         mission_xml = f.read()
         my_mission = MalmoPython.MissionSpec(mission_xml, True)
@@ -28,13 +28,6 @@ def LoadMission():
 
 # main loop:
     while world_state.is_mission_running:
-        try:
-            agent_host.sendCommand("move " + str(0.5*(random.random()*2-0.5)) )
-            agent_host.sendCommand("pitch " + str(0.2*(random.random()*2-1)) )
-            agent_host.sendCommand( "turn " + str(0.5*(random.random()*2-1)) )
-        except RuntimeError as e:
-            print("Failed to send command:",e)
-            pass
         time.sleep(0.5)
         world_state = agent_host.getWorldState()
         for error in world_state.errors:

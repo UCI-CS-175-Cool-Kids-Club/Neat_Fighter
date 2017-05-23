@@ -16,185 +16,36 @@
             <AllowSpawning>false</AllowSpawning>
     </ServerInitialConditions>
     <ServerHandlers>
-      <FlatWorldGenerator generatorString="3;1*minecraft:grass;1"/>
+      <FlatWorldGenerator generatorString="3;1*minecraft:grass;1" forceReset="1"/>
       <DrawingDecorator>
-          <DrawBlock type="diamond_block" x="0" y="1" z="0"/>
-          <DrawBlock type="diamond_block" x="1" y="1" z="0"/>
-          <DrawBlock type="diamond_block" x="2" y="1" z="0"/>
-          <DrawBlock type="diamond_block" x="3" y="1" z="0"/>
-          <DrawBlock type="diamond_block" x="4" y="1" z="0"/>
-          <DrawBlock type="diamond_block" x="5" y="1" z="0"/>
-          <DrawBlock type="diamond_block" x="6" y="1" z="0"/>
-          <DrawBlock type="diamond_block" x="7" y="1" z="0"/>
-          <DrawBlock type="diamond_block" x="8" y="1" z="0"/>
-          <DrawBlock type="diamond_block" x="9" y="1" z="0"/>
-          <DrawBlock type="diamond_block" x="10" y="1" z="0"/>
-          <DrawBlock type="diamond_block" x="11" y="1" z="0"/>
-          <DrawBlock type="diamond_block" x="12" y="1" z="0"/>
-          <DrawBlock type="diamond_block" x="13" y="1" z="0"/>
-          <DrawBlock type="diamond_block" x="14" y="1" z="0"/>
-          <DrawBlock type="diamond_block" x="15" y="1" z="0"/>
-          <DrawBlock type="diamond_block" x="16" y="1" z="0"/>
-          <DrawBlock type="diamond_block" x="17" y="1" z="0"/>
-          <DrawBlock type="diamond_block" x="18" y="1" z="0"/>
-          <DrawBlock type="diamond_block" x="19" y="1" z="0"/>
-
-          <DrawBlock type="diamond_block" x="0" y="1" z="0"/>
-          <DrawBlock type="diamond_block" x="0" y="1" z="1"/>
-          <DrawBlock type="diamond_block" x="0" y="1" z="2"/>
-          <DrawBlock type="diamond_block" x="0" y="1" z="3"/>
-          <DrawBlock type="diamond_block" x="0" y="1" z="4"/>
-          <DrawBlock type="diamond_block" x="0" y="1" z="5"/>
-          <DrawBlock type="diamond_block" x="0" y="1" z="6"/>
-          <DrawBlock type="diamond_block" x="0" y="1" z="7"/>
-          <DrawBlock type="diamond_block" x="0" y="1" z="8"/>
-          <DrawBlock type="diamond_block" x="0" y="1" z="9"/>
-          <DrawBlock type="diamond_block" x="0" y="1" z="10"/>
-          <DrawBlock type="diamond_block" x="0" y="1" z="11"/>
-          <DrawBlock type="diamond_block" x="0" y="1" z="12"/>
-          <DrawBlock type="diamond_block" x="0" y="1" z="13"/>
-          <DrawBlock type="diamond_block" x="0" y="1" z="14"/>
-          <DrawBlock type="diamond_block" x="0" y="1" z="15"/>
-          <DrawBlock type="diamond_block" x="0" y="1" z="16"/>
-          <DrawBlock type="diamond_block" x="0" y="1" z="17"/>
-          <DrawBlock type="diamond_block" x="0" y="1" z="18"/>
-          <DrawBlock type="diamond_block" x="0" y="1" z="19"/>
-
-          <DrawBlock type="diamond_block" x="19" y="1" z="0"/>
-          <DrawBlock type="diamond_block" x="19" y="1" z="1"/>
-          <DrawBlock type="diamond_block" x="19" y="1" z="2"/>
-          <DrawBlock type="diamond_block" x="19" y="1" z="3"/>
-          <DrawBlock type="diamond_block" x="19" y="1" z="4"/>
-          <DrawBlock type="diamond_block" x="19" y="1" z="5"/>
-          <DrawBlock type="diamond_block" x="19" y="1" z="6"/>
-          <DrawBlock type="diamond_block" x="19" y="1" z="7"/>
-          <DrawBlock type="diamond_block" x="19" y="1" z="8"/>
-          <DrawBlock type="diamond_block" x="19" y="1" z="9"/>
-          <DrawBlock type="diamond_block" x="19" y="1" z="10"/>
-          <DrawBlock type="diamond_block" x="19" y="1" z="11"/>
-          <DrawBlock type="diamond_block" x="19" y="1" z="12"/>
-          <DrawBlock type="diamond_block" x="19" y="1" z="13"/>
-          <DrawBlock type="diamond_block" x="19" y="1" z="14"/>
-          <DrawBlock type="diamond_block" x="19" y="1" z="15"/>
-          <DrawBlock type="diamond_block" x="19" y="1" z="16"/>
-          <DrawBlock type="diamond_block" x="19" y="1" z="17"/>
-          <DrawBlock type="diamond_block" x="19" y="1" z="18"/>
-          <DrawBlock type="diamond_block" x="19" y="1" z="19"/>
-
-          <DrawBlock type="diamond_block" x="0" y="1" z="19"/>
-          <DrawBlock type="diamond_block" x="1" y="1" z="19"/>
-          <DrawBlock type="diamond_block" x="2" y="1" z="19"/>
-          <DrawBlock type="diamond_block" x="3" y="1" z="19"/>
-          <DrawBlock type="diamond_block" x="4" y="1" z="19"/>
-          <DrawBlock type="diamond_block" x="5" y="1" z="19"/>
-          <DrawBlock type="diamond_block" x="6" y="1" z="19"/>
-          <DrawBlock type="diamond_block" x="7" y="1" z="19"/>
-          <DrawBlock type="diamond_block" x="8" y="1" z="19"/>
-          <DrawBlock type="diamond_block" x="9" y="1" z="19"/>
-          <DrawBlock type="diamond_block" x="10" y="1" z="19"/>
-          <DrawBlock type="diamond_block" x="11" y="1" z="19"/>
-          <DrawBlock type="diamond_block" x="12" y="1" z="19"/>
-          <DrawBlock type="diamond_block" x="13" y="1" z="19"/>
-          <DrawBlock type="diamond_block" x="14" y="1" z="19"/>
-          <DrawBlock type="diamond_block" x="15" y="1" z="19"/>
-          <DrawBlock type="diamond_block" x="16" y="1" z="19"/>
-          <DrawBlock type="diamond_block" x="17" y="1" z="19"/>
-          <DrawBlock type="diamond_block" x="18" y="1" z="19"/>
-          <DrawBlock type="diamond_block" x="19" y="1" z="19"/>
-
-          <DrawBlock type="diamond_block" x="0" y="2" z="0"/>
-          <DrawBlock type="diamond_block" x="1" y="2" z="0"/>
-          <DrawBlock type="diamond_block" x="2" y="2" z="0"/>
-          <DrawBlock type="diamond_block" x="3" y="2" z="0"/>
-          <DrawBlock type="diamond_block" x="4" y="2" z="0"/>
-          <DrawBlock type="diamond_block" x="5" y="2" z="0"/>
-          <DrawBlock type="diamond_block" x="6" y="2" z="0"/>
-          <DrawBlock type="diamond_block" x="7" y="2" z="0"/>
-          <DrawBlock type="diamond_block" x="8" y="2" z="0"/>
-          <DrawBlock type="diamond_block" x="9" y="2" z="0"/>
-          <DrawBlock type="diamond_block" x="10" y="2" z="0"/>
-          <DrawBlock type="diamond_block" x="11" y="2" z="0"/>
-          <DrawBlock type="diamond_block" x="12" y="2" z="0"/>
-          <DrawBlock type="diamond_block" x="13" y="2" z="0"/>
-          <DrawBlock type="diamond_block" x="14" y="2" z="0"/>
-          <DrawBlock type="diamond_block" x="15" y="2" z="0"/>
-          <DrawBlock type="diamond_block" x="16" y="2" z="0"/>
-          <DrawBlock type="diamond_block" x="17" y="2" z="0"/>
-          <DrawBlock type="diamond_block" x="18" y="2" z="0"/>
-          <DrawBlock type="diamond_block" x="19" y="2" z="0"/>
-
-          <DrawBlock type="diamond_block" x="0" y="2" z="0"/>
-          <DrawBlock type="diamond_block" x="0" y="2" z="1"/>
-          <DrawBlock type="diamond_block" x="0" y="2" z="2"/>
-          <DrawBlock type="diamond_block" x="0" y="2" z="3"/>
-          <DrawBlock type="diamond_block" x="0" y="2" z="4"/>
-          <DrawBlock type="diamond_block" x="0" y="2" z="5"/>
-          <DrawBlock type="diamond_block" x="0" y="2" z="6"/>
-          <DrawBlock type="diamond_block" x="0" y="2" z="7"/>
-          <DrawBlock type="diamond_block" x="0" y="2" z="8"/>
-          <DrawBlock type="diamond_block" x="0" y="2" z="9"/>
-          <DrawBlock type="diamond_block" x="0" y="2" z="10"/>
-          <DrawBlock type="diamond_block" x="0" y="2" z="11"/>
-          <DrawBlock type="diamond_block" x="0" y="2" z="12"/>
-          <DrawBlock type="diamond_block" x="0" y="2" z="13"/>
-          <DrawBlock type="diamond_block" x="0" y="2" z="14"/>
-          <DrawBlock type="diamond_block" x="0" y="2" z="15"/>
-          <DrawBlock type="diamond_block" x="0" y="2" z="16"/>
-          <DrawBlock type="diamond_block" x="0" y="2" z="17"/>
-          <DrawBlock type="diamond_block" x="0" y="2" z="18"/>
-          <DrawBlock type="diamond_block" x="0" y="2" z="19"/>
-
-          <DrawBlock type="diamond_block" x="19" y="2" z="0"/>
-          <DrawBlock type="diamond_block" x="19" y="2" z="1"/>
-          <DrawBlock type="diamond_block" x="19" y="2" z="2"/>
-          <DrawBlock type="diamond_block" x="19" y="2" z="3"/>
-          <DrawBlock type="diamond_block" x="19" y="2" z="4"/>
-          <DrawBlock type="diamond_block" x="19" y="2" z="5"/>
-          <DrawBlock type="diamond_block" x="19" y="2" z="6"/>
-          <DrawBlock type="diamond_block" x="19" y="2" z="7"/>
-          <DrawBlock type="diamond_block" x="19" y="2" z="8"/>
-          <DrawBlock type="diamond_block" x="19" y="2" z="9"/>
-          <DrawBlock type="diamond_block" x="19" y="2" z="10"/>
-          <DrawBlock type="diamond_block" x="19" y="2" z="11"/>
-          <DrawBlock type="diamond_block" x="19" y="2" z="12"/>
-          <DrawBlock type="diamond_block" x="19" y="2" z="13"/>
-          <DrawBlock type="diamond_block" x="19" y="2" z="14"/>
-          <DrawBlock type="diamond_block" x="19" y="2" z="15"/>
-          <DrawBlock type="diamond_block" x="19" y="2" z="16"/>
-          <DrawBlock type="diamond_block" x="19" y="2" z="17"/>
-          <DrawBlock type="diamond_block" x="19" y="2" z="18"/>
-          <DrawBlock type="diamond_block" x="19" y="2" z="19"/>
-
-          <DrawBlock type="diamond_block" x="0" y="2" z="19"/>
-          <DrawBlock type="diamond_block" x="1" y="2" z="19"/>
-          <DrawBlock type="diamond_block" x="2" y="2" z="19"/>
-          <DrawBlock type="diamond_block" x="3" y="2" z="19"/>
-          <DrawBlock type="diamond_block" x="4" y="2" z="19"/>
-          <DrawBlock type="diamond_block" x="5" y="2" z="19"/>
-          <DrawBlock type="diamond_block" x="6" y="2" z="19"/>
-          <DrawBlock type="diamond_block" x="7" y="2" z="19"/>
-          <DrawBlock type="diamond_block" x="8" y="2" z="19"/>
-          <DrawBlock type="diamond_block" x="9" y="2" z="19"/>
-          <DrawBlock type="diamond_block" x="10" y="2" z="19"/>
-          <DrawBlock type="diamond_block" x="11" y="2" z="19"/>
-          <DrawBlock type="diamond_block" x="12" y="2" z="19"/>
-          <DrawBlock type="diamond_block" x="13" y="2" z="19"/>
-          <DrawBlock type="diamond_block" x="14" y="2" z="19"/>
-          <DrawBlock type="diamond_block" x="15" y="2" z="19"/>
-          <DrawBlock type="diamond_block" x="16" y="2" z="19"/>
-          <DrawBlock type="diamond_block" x="17" y="2" z="19"/>
-          <DrawBlock type="diamond_block" x="18" y="2" z="19"/>
-          <DrawBlock type="diamond_block" x="19" y="2" z="19"/>
-      </DrawingDecorator>  
+			<DrawLine type="diamond_block" y1="1" y2="1" x1="0" x2="21" z1="0" z2="0" />
+			<DrawLine type="diamond_block" y1="1" y2="1" x1="0" x2="0" z1="0" z2="21" />
+			<DrawLine type="diamond_block" y1="1" y2="1" x1="21" x2="21" z1="0" z2="21" />
+			<DrawLine type="diamond_block" y1="1" y2="1" x1="0" x2="21" z1="21" z2="21" />
+	  </DrawingDecorator>  
       <ServerQuitFromTimeUp description="" timeLimitMs="60000"/>
       <ServerQuitWhenAnyAgentFinishes/>
     </ServerHandlers>
   </ServerSection>
 
   <AgentSection mode="Survival">
-    <Name>Fighter</Name>
+    <Name>Fighter1</Name>
     <AgentStart>
       <Placement pitch="0" x="10" y="1" yaw="180" z="10"/>
+    </AgentStart>
+    <AgentHandlers>
+      <ContinuousMovementCommands turnSpeedDegs="360"/>
+      <VideoProducer want_depth="false">
+        <Width>1024</Width>
+        <Height>786</Height>
+      </VideoProducer>
+    </AgentHandlers>
+  </AgentSection>
+
+  <AgentSection mode="Survival">
+    <Name>Fighter2</Name>
+    <AgentStart>
+      <Placement pitch="0" x="5" y="1" yaw="180" z="10"/>
     </AgentStart>
     <AgentHandlers>
       <ContinuousMovementCommands turnSpeedDegs="360"/>

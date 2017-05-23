@@ -12,6 +12,6 @@ class Fighter:
         self.neural = neural
         self.agent = agent_file
 
-    def run():
+    def run(self):
         print "Running agent"
         return random.randint(1,20)

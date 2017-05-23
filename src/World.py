@@ -31,11 +31,12 @@ class World:
             self._StartMission(agents)
             neural_net = neat.nn.FeedForwardNetwork.create(genome, config)
             agents_fighter = [Fighter(agents[i], neural_net) for i in range(2)]
-            genome.fitness = _RunFighterParallel(agents_fighter)
+            genome.fitness = self._RunFighterParallel(*agents_fighter)
             for i in agents:
                 del i
+            del agents_fighter
 
-    def _RunFighterParallel(fighter1, fighter2):
+    def _RunFighterParallel(self, fighter1, fighter2):
         return max(fighter1.run(), fighter2.run())
 
     def _StartMission(self, agent_hosts):

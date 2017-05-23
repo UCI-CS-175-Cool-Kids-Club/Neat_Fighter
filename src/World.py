@@ -40,9 +40,9 @@ class World:
         print("calling move for both agents until done")
         while all([fighter.isRunning() for fighter in fighters]):
             sys.stdout.write(".")
-            time.sleep(0.1)
+            time.sleep(0.01)
             for fighter in fighters:
-                fighter.move()
+                fighter.run()
                 for error in fighter.agent.getWorldState().errors:
                     print "Error:",error.text
         #return max(fighter1.run(), fighter2.run())

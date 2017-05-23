@@ -2,7 +2,6 @@ import MalmoPython
 import random
 import time
 import World
-import AgentFitness.FitnessBase
 
 '''
 Fighter will holds all the definition of what our agents can do
@@ -11,4 +10,8 @@ Fighter will holds all the definition of what our agents can do
 class Fighter:
     def __init__(self, agent_file, neural):
         self.neural = neural
-        self.malmo_agent = agent_file
+        self.agent = agent_file
+
+    def run() -> int:
+        print "Running agent"
+        return random.randint(1,20)

@@ -9,6 +9,7 @@ import uuid
 import sys
 import time
 import random
+import AgentFitness.FitnessBase
 
 sys.path.insert(0, '../neat-python')
 import neat
@@ -27,9 +28,14 @@ class World:
             print genome_id
             agents = [MalmoPython.AgentHost() for x in range(2)]
             self._StartMission(agents)
+            neural_net = neat.nn.FeedForwardNetwork.create(genome, config)
+            agents_fighter = [Fighter(agents[i], neural_net) for i in range(2)]
+            genome.fitness = _RunFighterParallel(agents_fighter)
             for i in agents:
                 del i
-            genome.fitness = random.randint(1,20)
+
+    def _RunFighterParallel(fighter1, fighter2):
+        return max(fighter1.run(), fighter2.run())
 
     def _StartMission(self, agent_hosts):
         expId = str(uuid.uuid4())

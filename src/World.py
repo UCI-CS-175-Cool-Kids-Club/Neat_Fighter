@@ -31,13 +31,22 @@ class World:
             self._StartMission(agents)
             neural_net = neat.nn.FeedForwardNetwork.create(genome, config)
             agents_fighter = [Fighter(agents[i], neural_net) for i in range(2)]
-            genome.fitness = self._RunFighterParallel(*agents_fighter)
+            genome.fitness = self._RunFighterParallel(agents_fighter)
             for i in agents:
                 del i
             del agents_fighter
 
-    def _RunFighterParallel(self, fighter1, fighter2):
-        return max(fighter1.run(), fighter2.run())
+    def _RunFighterParallel(self, fighters):
+        print("calling move for both agents until done")
+        while all([fighter.isRunning() for fighter in fighters]):
+            sys.stdout.write(".")
+            time.sleep(0.1)
+            for fighter in fighters:
+                fighter.move()
+                for error in fighter.agent.getWorldState().errors:
+                    print "Error:",error.text
+        #return max(fighter1.run(), fighter2.run())
+        return 0 #this should be the fitness or something
 
     def _StartMission(self, agent_hosts):
         expId = str(uuid.uuid4())
@@ -55,14 +64,14 @@ class World:
                     else:
                         time.sleep(5)
 
-        hasBegun = False
+        hasBegun = 0
         hadErrors = False
-        while not hasBegun and not hadErrors:
+        while hasBegun < len(agent_hosts) and not hadErrors:
             time.sleep(0.1)
             for ah in agent_hosts:
                 world_state = ah.getWorldState()
                 if world_state.has_mission_begun:
-                    hasBegun = True
+                    hasBegun+= 1
                 if len(world_state.errors):
                     hadErrors = True
                     print "Errors from agent " + agentName(agent_hosts.index(ah))

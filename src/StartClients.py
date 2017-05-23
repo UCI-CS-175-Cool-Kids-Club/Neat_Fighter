@@ -49,7 +49,7 @@ def GetMissionXML():
 			<DrawLine type="diamond_block" y1="4" y2="4" x1="21" x2="21" z1="0" z2="21" />
 			<DrawLine type="diamond_block" y1="4" y2="4" x1="0" x2="21" z1="21" z2="21" />
 	  </DrawingDecorator>  
-      <ServerQuitFromTimeUp description="" timeLimitMs="60000"/>
+      <ServerQuitFromTimeUp description="" timeLimitMs="10000"/>
       <ServerQuitWhenAnyAgentFinishes/>
     </ServerHandlers>
   </ServerSection>
@@ -61,10 +61,7 @@ def GetMissionXML():
     </AgentStart>
     <AgentHandlers>
       <ContinuousMovementCommands turnSpeedDegs="360"/>
-      <VideoProducer want_depth="false">
-        <Width>1024</Width>
-        <Height>786</Height>
-      </VideoProducer>
+      
     </AgentHandlers>
   </AgentSection>
 
@@ -75,10 +72,7 @@ def GetMissionXML():
     </AgentStart>
     <AgentHandlers>
       <ContinuousMovementCommands turnSpeedDegs="360"/>
-      <VideoProducer want_depth="false">
-        <Width>1024</Width>
-        <Height>786</Height>
-      </VideoProducer>
+      
     </AgentHandlers>
   </AgentSection>
 

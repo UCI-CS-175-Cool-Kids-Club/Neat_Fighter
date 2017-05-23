@@ -9,7 +9,8 @@ import uuid
 import sys
 import time
 import random
-import AgentFitness.FitnessBase
+import Fitness
+from Fighter import Fighter
 
 sys.path.insert(0, '../neat-python')
 import neat

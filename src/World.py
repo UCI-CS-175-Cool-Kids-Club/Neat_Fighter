@@ -4,6 +4,62 @@ Wrapper class for interpreting our world and transforming Malmo's output of the 
 for our algorithm interpretation.
 '''
 
+import MalmoPython
+import uuid
+import sys
+import time
+import random
+
+sys.path.insert(0, '../neat-python')
+import neat
+
 class World:
-    def __init__(self):
+    def __init__(self, client_pool, mission):
+        self.client_pool = client_pool
+        self.mission = mission
         print
+
+    def train(self, population):
+        return population.run(self._EvaluateGenome)
+
+    def _EvaluateGenome(self, genomes, config):
+        for genome_id, genome in genomes:
+            print genome_id
+            agents = [MalmoPython.AgentHost() for x in range(2)]
+            self._StartMission(agents)
+            for i in agents:
+                del i
+            genome.fitness = random.randint(1,20)
+
+    def _StartMission(self, agent_hosts):
+        expId = str(uuid.uuid4())
+        for i in range(len(agent_hosts)):
+            max_retries = 3
+            for retry in range(max_retries):
+                try:
+                    agent_hosts[i].startMission( self.mission, self.client_pool, MalmoPython.MissionRecordSpec(), i, expId )
+                    break
+                except RuntimeError as e:
+                    if retry == max_retries - 1:
+                        print "Error starting mission",e
+                        print "Is the game running?"
+                        exit(1)
+                    else:
+                        time.sleep(5)
+
+        hasBegun = False
+        hadErrors = False
+        while not hasBegun and not hadErrors:
+            time.sleep(0.1)
+            for ah in agent_hosts:
+                world_state = ah.getWorldState()
+                if world_state.has_mission_begun:
+                    hasBegun = True
+                if len(world_state.errors):
+                    hadErrors = True
+                    print "Errors from agent " + agentName(agent_hosts.index(ah))
+                    for error in world_state.errors:
+                        print "Error:",error.text
+        if hadErrors:
+            print "ABORTING ERROR DETECTED"
+            exit(1)

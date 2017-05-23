@@ -1,25 +1,12 @@
 #!/usr/bin/python
 
 import MalmoPython
-import numpy
-import time
 import random
-import uuid
+from World import World
+import os
 import sys
-
-def StartMission(agent_host, my_mission, my_client_pool, my_mission_record, role, expId):
-    max_retries = 3
-    for retry in range(max_retries):
-        try:
-            agent_host.startMission( my_mission, my_client_pool, my_mission_record, role, expId )
-            break
-        except RuntimeError as e:
-            if retry == max_retries - 1:
-                print "Error starting mission",e
-                print "Is the game running?"
-                exit(1)
-            else:
-                time.sleep(5)
+sys.path.insert(0, '../neat-python')
+import neat
 
 def GetMissionXML():
     mission_xml = '''<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
@@ -111,43 +98,21 @@ def SetupClientPools():
     return client_pool
 
 def InitalizeAgents():
-    agent_hosts = [MalmoPython.AgentHost() for x in range(2)]
     my_mission = GetMission()
     client_pool = SetupClientPools()
-    experimentID = str(uuid.uuid4())
-    for i in range(len(agent_hosts)):
-        StartMission(agent_hosts[i], my_mission, client_pool, MalmoPython.MissionRecordSpec(), i, experimentID)
-    
-    hasBegun = False
-    hadErrors = False
-    while not hasBegun and not hadErrors:
-        time.sleep(0.1)
-        for ah in agent_hosts:
-            world_state = ah.getWorldState()
-            if world_state.has_mission_begun:
-                hasBegun = True
-            if len(world_state.errors):
-                hadErrors = True
-                print "Errors from agent " + agentName(agent_hosts.index(ah))
-                for error in world_state.errors:
-                    print "Error:",error.text
-    if hadErrors:
-        print "ABORTING ERROR DETECTED"
-        exit(1)
+    return client_pool, my_mission
 
-    return agent_hosts
-
-    #Initalize Neural Nets
-    print "Mission has started"
-    while True:
-        time.sleep(20)
-        break
-        for ah in agent_hosts:
-            world_state = ah.getWorldState()
-            for error in world_state.errors:
-                print "Error:",error.text 
-    print()
-    print("Mission ended")
+def InitalizeNEAT():
+    local_dir = os.path.dirname(__file__)
+    config_path = os.path.join(local_dir, 'config-feedforward')
+    config = neat.Config(neat.DefaultGenome, neat.DefaultReproduction, neat.DefaultSpeciesSet, neat.DefaultStagnation, config_path) 
+    pop = neat.Population(config)
+    stats = neat.StatisticsReporter()
+    pop.add_reporter(stats)
+    pop.add_reporter(neat.StdOutReporter(True))
+    return pop
 
 if __name__ == "__main__":
-    agents = InitalizeAgents()
+    world = World(*InitalizeAgents())
+    population = InitalizeNEAT()
+    winner = world.train(population)

@@ -14,7 +14,7 @@ def evaluate_population(genomes, create_func, force_func):
         fitness = 0
 
         for runs in range(runs_per_net):
-            sim = fighter()
+            sim = Fighter()
             fitness += run_simulation(sim, net, force_func)
 
         # The genome's fitness is its average performance across all runs.

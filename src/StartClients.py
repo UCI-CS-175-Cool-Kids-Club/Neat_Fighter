@@ -57,22 +57,36 @@ def GetMissionXML():
   <AgentSection mode="Survival">
     <Name>Fighter1</Name>
     <AgentStart>
-      <Placement pitch="0" x="''' + str(random.randint(1,20)) + '''" y="1" yaw="''' + str(random.randint(0,360)) + '''" z="''' + str(random.randint(1,20)) + ''' "/>
+      <Placement pitch="0" x="''' + str(random.randint(2,9)) + '''" y="1" yaw="''' + str(random.choice([0,90,180,360])) + '''" z="''' + str(random.randint(2,9)) + ''' "/>
     </AgentStart>
     <AgentHandlers>
       <ContinuousMovementCommands turnSpeedDegs="360"/>
-      
+      <ObservationFromNearbyEntities>
+        <Range name="entities" xrange="8" yrange="0" zrange="8"/>
+      </ObservationFromNearbyEntities>
+      <ObservationFromGrid>
+        <Grid name="floorswag">
+            <min x="-1" y="0" z="0"/>
+            <max x="1" y="0" z="4"/> </Grid>
+      </ObservationFromGrid>
     </AgentHandlers>
   </AgentSection>
 
   <AgentSection mode="Survival">
     <Name>Fighter2</Name>
     <AgentStart>
-      <Placement pitch="0" x="''' + str(random.randint(1,20)) + '''" y="1" yaw="''' + str(random.randint(0,360)) + '''" z="''' + str(random.randint(1,20)) + ''' "/>
+      <Placement pitch="0" x="''' + str(random.randint(2,9)) + '''" y="1" yaw="''' + str(random.choice([0,90,180,360])) + '''" z="''' + str(random.randint(2,9)) + ''' "/>
     </AgentStart>
     <AgentHandlers>
       <ContinuousMovementCommands turnSpeedDegs="360"/>
-      
+      <ObservationFromNearbyEntities>
+        <Range name="entities" xrange="8" yrange="0" zrange="8"/>
+      </ObservationFromNearbyEntities>
+      <ObservationFromGrid>
+        <Grid name="floorswag">
+            <min x="-1" y="0" z="0"/>
+            <max x="1" y="0" z="4"/> </Grid>
+      </ObservationFromGrid>
     </AgentHandlers>
   </AgentSection>
 

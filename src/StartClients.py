@@ -29,25 +29,25 @@ def GetMissionXML():
     <ServerHandlers>
       <FlatWorldGenerator generatorString="3;1*minecraft:grass;1" forceReset="1"/>
       <DrawingDecorator>
-			<DrawLine type="diamond_block" y1="1" y2="1" x1="0" x2="21" z1="0" z2="0" />
-			<DrawLine type="diamond_block" y1="1" y2="1" x1="0" x2="0" z1="0" z2="21" />
-			<DrawLine type="diamond_block" y1="1" y2="1" x1="21" x2="21" z1="0" z2="21" />
-			<DrawLine type="diamond_block" y1="1" y2="1" x1="0" x2="21" z1="21" z2="21" />
+			<DrawLine type="diamond_block" y1="1" y2="1" x1="0" x2="11" z1="0" z2="0" />
+			<DrawLine type="diamond_block" y1="1" y2="1" x1="0" x2="0" z1="0" z2="11" />
+			<DrawLine type="diamond_block" y1="1" y2="1" x1="11" x2="11" z1="0" z2="11" />
+			<DrawLine type="diamond_block" y1="1" y2="1" x1="0" x2="11" z1="11" z2="11" />
 
-			<DrawLine type="diamond_block" y1="2" y2="2" x1="0" x2="21" z1="0" z2="0" />
-			<DrawLine type="diamond_block" y1="2" y2="2" x1="0" x2="0" z1="0" z2="21" />
-			<DrawLine type="diamond_block" y1="2" y2="2" x1="21" x2="21" z1="0" z2="21" />
-			<DrawLine type="diamond_block" y1="2" y2="2" x1="0" x2="21" z1="21" z2="21" />
+			<DrawLine type="diamond_block" y1="2" y2="2" x1="0" x2="11" z1="0" z2="0" />
+			<DrawLine type="diamond_block" y1="2" y2="2" x1="0" x2="0" z1="0" z2="11" />
+			<DrawLine type="diamond_block" y1="2" y2="2" x1="11" x2="11" z1="0" z2="11" />
+			<DrawLine type="diamond_block" y1="2" y2="2" x1="0" x2="11" z1="11" z2="11" />
 
-			<DrawLine type="diamond_block" y1="3" y2="3" x1="0" x2="21" z1="0" z2="0" />
-			<DrawLine type="diamond_block" y1="3" y2="3" x1="0" x2="0" z1="0" z2="21" />
-			<DrawLine type="diamond_block" y1="3" y2="3" x1="21" x2="21" z1="0" z2="21" />
-			<DrawLine type="diamond_block" y1="3" y2="3" x1="0" x2="21" z1="21" z2="21" />
+			<DrawLine type="diamond_block" y1="3" y2="3" x1="0" x2="11" z1="0" z2="0" />
+			<DrawLine type="diamond_block" y1="3" y2="3" x1="0" x2="0" z1="0" z2="11" />
+			<DrawLine type="diamond_block" y1="3" y2="3" x1="11" x2="11" z1="0" z2="11" />
+			<DrawLine type="diamond_block" y1="3" y2="3" x1="0" x2="11" z1="11" z2="11" />
 
-			<DrawLine type="diamond_block" y1="4" y2="4" x1="0" x2="21" z1="0" z2="0" />
-			<DrawLine type="diamond_block" y1="4" y2="4" x1="0" x2="0" z1="0" z2="21" />
-			<DrawLine type="diamond_block" y1="4" y2="4" x1="21" x2="21" z1="0" z2="21" />
-			<DrawLine type="diamond_block" y1="4" y2="4" x1="0" x2="21" z1="21" z2="21" />
+			<DrawLine type="diamond_block" y1="4" y2="4" x1="0" x2="11" z1="0" z2="0" />
+			<DrawLine type="diamond_block" y1="4" y2="4" x1="0" x2="0" z1="0" z2="11" />
+			<DrawLine type="diamond_block" y1="4" y2="4" x1="11" x2="11" z1="0" z2="11" />
+			<DrawLine type="diamond_block" y1="4" y2="4" x1="0" x2="11" z1="11" z2="11" />
 	  </DrawingDecorator>  
       <ServerQuitFromTimeUp description="" timeLimitMs="10000"/>
       <ServerQuitWhenAnyAgentFinishes/>

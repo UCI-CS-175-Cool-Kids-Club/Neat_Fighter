@@ -31,22 +31,19 @@ class World:
             self._StartMission(agents)
             neural_net = neat.nn.FeedForwardNetwork.create(genome, config)
             agents_fighter = [Fighter(agents[i], neural_net) for i in range(2)]
-            genome.fitness = self._RunFighterParallel(agents_fighter)
+            genome.fitness = self._RunFighterParallel(agents_fighter[0])
             for i in agents:
                 del i
             del agents_fighter
 
-    def _RunFighterParallel(self, fighters):
+    def _RunFighterParallel(self, fighter):
         print("calling move for both agents until done")
-        while all([fighter.isRunning() for fighter in fighters]):
-            sys.stdout.write(".")
-            time.sleep(0.01)
-            for fighter in fighters:
-                fighter.run()
-                for error in fighter.agent.getWorldState().errors:
-                    print "Error:",error.text
-        #return max(fighter1.run(), fighter2.run())
-        return 0 #this should be the fitness or something
+        while fighter.isRunning():
+            time.sleep(2)
+            fighter.run()
+            for error in fighter.agent.getWorldState().errors:
+                print "Error:",error.text
+        return 0
 
     def _StartMission(self, agent_hosts):
         expId = str(uuid.uuid4())

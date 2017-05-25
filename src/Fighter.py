@@ -12,7 +12,7 @@ def angle(a1,a2,b1,b2):
 
 def angle_between_agents(a1,a2,yaw1,b1,b2):
     angl = angle(a1,a2,b1,b2)
-    relative_angle = angl - yaw1 + math.pi
+    relative_angle = angl - yaw1 
     return relative_angle if relative_angle >= 0 else relative_angle + 2 * math.pi
 
 ACTION_TIME = 0.2
@@ -36,7 +36,7 @@ class Fighter:
         '''for i in range(len(output)):
             actions[i](output[i])
             '''
-        self._turn_left(0.15)
+        self._turn_left(0.05)
 
     def _move_w(self, time):
         self.agent.sendCommand("move 1")

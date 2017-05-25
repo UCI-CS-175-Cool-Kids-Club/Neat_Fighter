@@ -39,7 +39,7 @@ class World:
     def _RunFighterParallel(self, fighter):
         print("calling move for both agents until done")
         while fighter.isRunning():
-            time.sleep(2)
+            time.sleep(0.5)
             fighter.run()
             for error in fighter.agent.getWorldState().errors:
                 print "Error:",error.text

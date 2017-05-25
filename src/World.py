@@ -39,9 +39,9 @@ class World:
     def _RunFighterParallel(self, fighter):
         print("calling move for both agents until done")
         while fighter.isRunning():
-            time.sleep(0.5)
             fighter.run()
-            for error in fighter.agent.getWorldState().errors:
+            time.sleep(0.5)
+            for error in fighter.agent.peekWorldState().errors:
                 print "Error:",error.text
         return 0
 
@@ -66,7 +66,7 @@ class World:
         while hasBegun < len(agent_hosts) and not hadErrors:
             time.sleep(0.1)
             for ah in agent_hosts:
-                world_state = ah.getWorldState()
+                world_state = ah.peekWorldState()
                 if world_state.has_mission_begun:
                     hasBegun+= 1
                 if len(world_state.errors):

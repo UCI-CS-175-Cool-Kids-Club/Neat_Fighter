@@ -10,6 +10,7 @@ import sys
 import time
 import random
 import json
+import pickle
 from Fighter import Fighter
 
 sys.path.insert(0, '../neat-python')
@@ -21,7 +22,13 @@ class World:
         self.mission = mission
 
     def train(self, population):
-        return population.run(self._EvaluateGenome)
+        i = 0
+        while True:
+            i += 1
+            rt = population.run(self._EvaluateGenome, 5)
+            with open('gen-{}'.format(5 * i), 'wb') as f:
+                pickle.dump(rt, f)
+        return
 
     def _EvaluateGenome(self, genomes, config):
         for genome_id, genome in genomes:

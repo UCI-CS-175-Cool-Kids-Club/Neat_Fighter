@@ -39,6 +39,7 @@ class Fighter:
                 return
             time.sleep(0.01)
         output = self.neural.activate(self._get_agent_state_input())
+
         self.agent.sendCommand("move {}".format(output[0]))
         self.agent.sendCommand("strafe {}".format(output[1]))
         self.agent.sendCommand("turn {}".format(output[2]))
@@ -51,7 +52,7 @@ class Fighter:
         entities = data.get(u'entities')
         if data.get(u'PlayersKilled') == 1:
             self.mission_ended = True
-            
+
         agent_x, agent_y, agent_yaw = entities[0][u'x'], entities[0][u'y'], math.radians(entities[0][u'yaw'] % 360)
         if len(entities) > 1:
             other_entities = entities[1:]

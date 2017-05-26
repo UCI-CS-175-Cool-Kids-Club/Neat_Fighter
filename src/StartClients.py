@@ -138,7 +138,7 @@ def InitalizeNEAT():
 if __name__ == "__main__":
     world = World(*InitalizeAgents())
     population = InitalizeNEAT()
-    winner = world.train(population)
+    world.train(population)
 
 
 

@@ -37,9 +37,12 @@ class World:
             del agents_fighter
 
     def _RunFighterParallel(self, fighter):
-        pass
-    #    result = fighter.run()
-    #   return EvaluateFitness(result)
+        while fighter.isRunning():
+            time.sleep(0.5)
+            result = fighter.run()
+            for error in fighter.agent.peekWorldState().errors:
+                print "Error:",error.text
+        return fighter.GetFitness()
 
     def _StartMission(self, agent_hosts):
         expId = str(uuid.uuid4())

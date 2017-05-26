@@ -27,26 +27,20 @@ class Fighter:
     def __init__(self, agent_file, neural):
         self.neural = neural
         self.agent = agent_file
+        self.fighter_result = AgentResult()
 
     def isRunning(self):
         return self.agent.peekWorldState().is_mission_running
 
     def run(self):
-        #self.result = AgentResult()
-        while fighter.isRunning():
-            time.sleep(0.5)
-            while self.agent.peekWorldState().number_of_observations_since_last_state == 0:
-                time.sleep(0.01)
-            output = self.neural.activate(self._get_agent_state_input())
-            print "Output neural: ", output
-            self.agent.sendCommand("move {}".format(output[0]))
-            self.agent.sendCommand("strafe {}".format(output[1]))
-            self.agent.sendCommand("turn {}".format(output[2]))
-            self.agent.sendCommand("attack {}".format(0 if output[3] <= 0 else 1))
-            for error in fighter.agent.peekWorldState().errors:
-                print "Error:",error.text
-
-        #return result
+        while self.agent.peekWorldState().number_of_observations_since_last_state == 0:
+            time.sleep(0.01)
+        output = self.neural.activate(self._get_agent_state_input())
+        print "Output neural: ", output
+        self.agent.sendCommand("move {}".format(output[0]))
+        self.agent.sendCommand("strafe {}".format(output[1]))
+        self.agent.sendCommand("turn {}".format(output[2]))
+        self.agent.sendCommand("attack {}".format(0 if output[3] <= 0 else 1))
 
     def _get_agent_state_input(self):
         to_return = []
@@ -66,37 +60,9 @@ class Fighter:
         print to_return
         return to_return
 
-
-
-    # def _move_w(self, time):
-    #     self.agent.sendCommand("move 1")
-    #     Timer(time, lambda: self.agent.sendCommand("move 0") and t).start()
-
-    # def _move_s(self, time):
-    #     self.agent.sendCommand("move -1")
-    #     Timer(time, lambda: self.agent.sendCommand("move 0") and t).start()
-
-    # def _move_a(self, time):
-    #     self.agent.sendCommand("strafe -1")
-    #     Timer(time, lambda: self.agent.sendCommand("strafe 0") and t).start()
-
-    # def _move_d(self, time):
-    #     self.agent.sendCommand("strafe 1")
-    #     Timer(time, lambda: self.agent.sendCommand("strafe 0") and t).start()
-
-    # def _attack(self, time):
-    #     if (time >= 1):
-    #         self.agent.sendCommand("attack 1")
-    #         self.agent.sendCommand("attack 0")
-
-    # def _turn_left(self, time):
-    #     self.agent.sendCommand("turn -1")
-    #     Timer(time, lambda: self.agent.sendCommand("turn 0") and t).start()
-
-    # def _turn_right(self, time):
-    #     self.agent.sendCommand("turn 1")
-    #     Timer(time, lambda: self.agent.sendCommand("turn 0") and t).start()
-
     def _perform_actions(self, actions):
         pass
+
+    def GetFitness(self):
+        return self.fighter_result.GetFitness()
 

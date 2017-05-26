@@ -1,23 +1,21 @@
-import time
+from time import time
+from numpy import trapz
 
 class AgentResult:
 	def __init__(self):
-		self.time = int(round(time.time() * 1000))
-		distances = []
-		'''
-		import time
-		millis = int(round(time.time() * 1000))
-		print millis
-		'''
-
-	def AppendDistance(closest_ent_dist):
-		distances.append = closest_ent_dist
-
-	def getStatus(Fighter, state):
-		dist_area = self.time * distances[-1]
+		self.last_time = time()
+		self.distance_area = 0.0
 
 
-		pass
+	def AppendDistance(distance):
+		cur_time = time()
+		time_dif = self.last_time - cur_time
+		self.distance_area += time_dif * distance
+		self.last_time = cur_time()
+
+	def GetFitness(self):
+		return 0
+
 
 
 

@@ -15,10 +15,117 @@ from Fighter import Fighter
 sys.path.insert(0, '../neat-python')
 import neat
 
+def GetMissionXML():
+    mission_xml = '''<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<Mission xmlns="http://ProjectMalmo.microsoft.com" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <About>
+    <Summary>Fighting 1v1</Summary>
+  </About>
+
+  <ServerSection>
+    <ServerInitialConditions>
+            <Time>
+                <StartTime>6000</StartTime>
+                <AllowPassageOfTime>true</AllowPassageOfTime>
+            </Time>
+            <Weather>clear</Weather>
+            <AllowSpawning>false</AllowSpawning>
+    </ServerInitialConditions>
+    <ServerHandlers>
+      <FlatWorldGenerator generatorString="3;1*minecraft:grass;1" forceReset="1"/>
+      <DrawingDecorator>
+            <DrawLine type="diamond_block" y1="1" y2="1" x1="0" x2="11" z1="0" z2="0" />
+            <DrawLine type="diamond_block" y1="1" y2="1" x1="0" x2="0" z1="0" z2="11" />
+            <DrawLine type="diamond_block" y1="1" y2="1" x1="11" x2="11" z1="0" z2="11" />
+            <DrawLine type="diamond_block" y1="1" y2="1" x1="0" x2="11" z1="11" z2="11" />
+
+            <DrawLine type="diamond_block" y1="2" y2="2" x1="0" x2="11" z1="0" z2="0" />
+            <DrawLine type="diamond_block" y1="2" y2="2" x1="0" x2="0" z1="0" z2="11" />
+            <DrawLine type="diamond_block" y1="2" y2="2" x1="11" x2="11" z1="0" z2="11" />
+            <DrawLine type="diamond_block" y1="2" y2="2" x1="0" x2="11" z1="11" z2="11" />
+
+            <DrawLine type="diamond_block" y1="3" y2="3" x1="0" x2="11" z1="0" z2="0" />
+            <DrawLine type="diamond_block" y1="3" y2="3" x1="0" x2="0" z1="0" z2="11" />
+            <DrawLine type="diamond_block" y1="3" y2="3" x1="11" x2="11" z1="0" z2="11" />
+            <DrawLine type="diamond_block" y1="3" y2="3" x1="0" x2="11" z1="11" z2="11" />
+
+            <DrawLine type="diamond_block" y1="4" y2="4" x1="0" x2="11" z1="0" z2="0" />
+            <DrawLine type="diamond_block" y1="4" y2="4" x1="0" x2="0" z1="0" z2="11" />
+            <DrawLine type="diamond_block" y1="4" y2="4" x1="11" x2="11" z1="0" z2="11" />
+            <DrawLine type="diamond_block" y1="4" y2="4" x1="0" x2="11" z1="11" z2="11" />
+      </DrawingDecorator>  
+      <ServerQuitFromTimeUp description="" timeLimitMs="10000"/>
+      <ServerQuitWhenAnyAgentFinishes/>
+    </ServerHandlers>
+  </ServerSection>
+
+  <AgentSection mode="Adventure">
+    <Name>Fighter1</Name>
+    <AgentStart>
+        <Placement pitch="0" x="2" y="1" yaw="''' + str(random.randint(0,360)) + '''" z="2"/>
+        <Inventory>
+            <InventoryItem slot="0" type="wooden_sword" quantity="1" />
+        </Inventory>
+    
+    </AgentStart>
+    <AgentHandlers>
+    <ObservationFromFullStats/>
+    <ContinuousMovementCommands turnSpeedDegs="360"/> 
+      <ObservationFromNearbyEntities>
+        <Range name="entities" xrange="10" yrange="1" zrange="10"/>
+      </ObservationFromNearbyEntities>
+      <ObservationFromGrid>
+        <Grid name="floor">
+            <min x="-1" y="0" z="-1"/>
+            <max x="1" y="0" z="1"/> </Grid>
+      </ObservationFromGrid>
+    </AgentHandlers>
+  </AgentSection>
+
+  <AgentSection mode="Adventure">
+    <Name>Fighter2</Name>
+    <AgentStart>
+
+        <Inventory>
+            <InventoryItem slot="36" type="diamond_helmet" quantity="1" />
+            <InventoryItem slot="37" type="diamond_chestplate" quantity="1" />
+            <InventoryItem slot="38" type="diamond_leggings" quantity="1" />
+            <InventoryItem slot="39" type="diamond_boots" quantity="1" />
+        </Inventory>
+
+        <Placement pitch="0" x="9" y="1" yaw="''' + str(random.randint(0,360)) + '''" z="9"/>
+    </AgentStart>
+    <AgentHandlers>
+    <ObservationFromFullStats/>
+    <ContinuousMovementCommands turnSpeedDegs="360"/> 
+      <ObservationFromNearbyEntities>
+        <Range name="entities" xrange="10" yrange="1" zrange="10"/>
+      </ObservationFromNearbyEntities>
+      <ObservationFromGrid>
+        <Grid name="floor">
+            <min x="-1" y="0" z="-1"/>
+            <max x="1" y="0" z="1"/> </Grid>
+      </ObservationFromGrid>
+    </AgentHandlers>
+  </AgentSection>
+
+</Mission> '''
+    return mission_xml
+
+
+def GetMission():
+    mission_xml = GetMissionXML()
+    my_mission = MalmoPython.MissionSpec(mission_xml, True)
+    return my_mission
+
 class World:
-    def __init__(self, client_pool, mission):
+    def __init__(self, client_pool): 
+
+        #mission):
         self.client_pool = client_pool
-        self.mission = mission
+        #self.mission = mission
         #print
 
     def train(self, population):
@@ -26,7 +133,7 @@ class World:
 
     def _EvaluateGenome(self, genomes, config):
         for genome_id, genome in genomes:
-            #print genome_id
+            print "genome_id: ", genome_id
             agents = [MalmoPython.AgentHost() for x in range(2)]
             self._StartMission(agents)
             neural_net = neat.nn.FeedForwardNetwork.create(genome, config)
@@ -59,6 +166,7 @@ class World:
         return fitness
 
     def _StartMission(self, agent_hosts):
+        self.mission = GetMission()
         expId = str(uuid.uuid4())
         for i in range(len(agent_hosts)):
             max_retries = 9

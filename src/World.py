@@ -61,7 +61,7 @@ class World:
     def _StartMission(self, agent_hosts):
         expId = str(uuid.uuid4())
         for i in range(len(agent_hosts)):
-            max_retries = 3
+            max_retries = 9
             for retry in range(max_retries):
                 try:
                     agent_hosts[i].startMission( self.mission, self.client_pool, MalmoPython.MissionRecordSpec(), i, expId )

@@ -61,7 +61,10 @@ class Fighter:
             self.fighter_result.AppendDistance(closest_ent_dist)
             to_return.extend([angle_between_agents(agent_x, agent_y, agent_yaw, closest_ent_x, closest_ent_y), closest_ent_dist])
         else:
-            to_return.extend([-1, -1])
+            to_return.extend([0, 0])
+
+        to_return[0] = to_return[0]/math.pi - 1
+        to_return[1] = to_return[1]/7 - 1
         return to_return
 
     def _perform_actions(self, actions):

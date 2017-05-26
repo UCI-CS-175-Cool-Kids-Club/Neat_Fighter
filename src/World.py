@@ -19,14 +19,12 @@ class World:
     def __init__(self, client_pool, mission):
         self.client_pool = client_pool
         self.mission = mission
-        #print
 
     def train(self, population):
         return population.run(self._EvaluateGenome)
 
     def _EvaluateGenome(self, genomes, config):
         for genome_id, genome in genomes:
-            #print genome_id
             agents = [MalmoPython.AgentHost() for x in range(2)]
             self._StartMission(agents)
             neural_net = neat.nn.FeedForwardNetwork.create(genome, config)
@@ -38,7 +36,7 @@ class World:
 
     def _RunFighterParallel(self, fighter1, fighter2):
         while fighter1.isRunning():
-            #time.sleep(0.5)
+            time.sleep(0.2)
             result = fighter1.run()
             for error in fighter1.agent.peekWorldState().errors:
                 print "Error:",error.text
@@ -61,7 +59,7 @@ class World:
     def _StartMission(self, agent_hosts):
         expId = str(uuid.uuid4())
         for i in range(len(agent_hosts)):
-            max_retries = 3
+            max_retries = 10
             for retry in range(max_retries):
                 try:
                     agent_hosts[i].startMission( self.mission, self.client_pool, MalmoPython.MissionRecordSpec(), i, expId )

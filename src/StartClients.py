@@ -49,7 +49,7 @@ def GetMissionXML():
 			<DrawLine type="diamond_block" y1="4" y2="4" x1="11" x2="11" z1="0" z2="11" />
 			<DrawLine type="diamond_block" y1="4" y2="4" x1="0" x2="11" z1="11" z2="11" />
 	  </DrawingDecorator>  
-      <ServerQuitFromTimeUp description="" timeLimitMs="100000"/>
+      <ServerQuitFromTimeUp description="" timeLimitMs="10000"/>
       <ServerQuitWhenAnyAgentFinishes/>
     </ServerHandlers>
   </ServerSection>
@@ -64,6 +64,7 @@ def GetMissionXML():
     
     </AgentStart>
     <AgentHandlers>
+    <ObservationFromFullStats/>
 	<ContinuousMovementCommands turnSpeedDegs="360"/> 
       <ObservationFromNearbyEntities>
         <Range name="entities" xrange="10" yrange="1" zrange="10"/>
@@ -82,6 +83,7 @@ def GetMissionXML():
       <Placement pitch="0" x="''' + str(random.randint(2,9)) + '''" y="1" yaw="''' + str(random.choice([0,90,180,360])) + '''" z="''' + str(random.randint(2,9)) + ''' "/>
     </AgentStart>
     <AgentHandlers>
+    <ObservationFromFullStats/>
 	<ContinuousMovementCommands turnSpeedDegs="360"/> 
       <ObservationFromNearbyEntities>
         <Range name="entities" xrange="10" yrange="1" zrange="10"/>

@@ -9,7 +9,7 @@ import uuid
 import sys
 import time
 import random
-#import Fitness
+import json
 from Fighter import Fighter
 
 sys.path.insert(0, '../neat-python')
@@ -31,18 +31,31 @@ class World:
             self._StartMission(agents)
             neural_net = neat.nn.FeedForwardNetwork.create(genome, config)
             agents_fighter = [Fighter(agents[i], neural_net) for i in range(2)]
-            genome.fitness = self._RunFighterParallel(agents_fighter[0])
+            genome.fitness = self._RunFighterParallel(*agents_fighter)
             for i in agents:
                 del i
             del agents_fighter
 
-    def _RunFighterParallel(self, fighter):
-        while fighter.isRunning():
-            time.sleep(0.5)
-            result = fighter.run()
-            for error in fighter.agent.peekWorldState().errors:
+    def _RunFighterParallel(self, fighter1, fighter2):
+        while fighter1.isRunning():
+            #time.sleep(0.5)
+            result = fighter1.run()
+            for error in fighter1.agent.peekWorldState().errors:
                 print "Error:",error.text
-        return fighter.GetFitness()
+            
+
+        while fighter2.agent.peekWorldState().number_of_observations_since_last_state == 0:
+            pass
+
+        agent2_world = fighter2.agent.getWorldState()
+        agent2_data = json.loads(agent2_world.observations[-1].text)
+        damage = agent2_data.get(u'DamageTaken')
+        mission_time = agent2_data.get(u'TotalTime')
+        fighter1.fighter_result.SetInflictedDamage(damage)
+        fighter1.fighter_result.SetMissionTime(mission_time)
+        fitness = fighter1.fighter_result.GetFitness()
+        print "Fitness: ", fitness
+        return fitness
 
     def _StartMission(self, agent_hosts):
         expId = str(uuid.uuid4())
@@ -70,7 +83,7 @@ class World:
                     hasBegun+= 1
                 if len(world_state.errors):
                     hadErrors = True
-                    print "Errors from agent " + agentName(agent_hosts.index(ah))
+                    print "Errors from agent"
                     for error in world_state.errors:
                         print "Error:",error.text
         if hadErrors:

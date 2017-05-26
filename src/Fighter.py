@@ -12,7 +12,7 @@ def angle(a1,a2,b1,b2):
     return rt if rt >= 0 else rt + 2*math.pi
 
 def angle_between_agents(a1,a2,yaw1,b1,b2):
-    print a1, a2, b1, b2, yaw1
+    #print a1, a2, b1, b2, yaw1
     angl = angle(a1,a2,b1,b2)
     relative_angle = angl - yaw1 
     return (2 * math.pi) - ((relative_angle + math.pi)%(2*math.pi))
@@ -34,9 +34,10 @@ class Fighter:
 
     def run(self):
         while self.agent.peekWorldState().number_of_observations_since_last_state == 0:
+            if not self.isRunning():
+                return
             time.sleep(0.01)
         output = self.neural.activate(self._get_agent_state_input())
-        print "Output neural: ", output
         self.agent.sendCommand("move {}".format(output[0]))
         self.agent.sendCommand("strafe {}".format(output[1]))
         self.agent.sendCommand("turn {}".format(output[2]))
@@ -53,16 +54,12 @@ class Fighter:
             other_entities = [(ent, math.hypot(entities[0][u'x'] - ent[u'x'], entities[0][u'z'] - ent[u'z'])) for ent in other_entities]
             other_entities = sorted(other_entities, key=lambda x: x[1])[0]
             closest_ent_x, closest_ent_y, closest_ent_dist = other_entities[0][u'x'], other_entities[0][u'y'], other_entities[1]
-            #self.result.AppendDistance(closest_ent_dist)
+            self.fighter_result.AppendDistance(closest_ent_dist)
             to_return.extend([angle_between_agents(agent_x, agent_y, agent_yaw, closest_ent_x, closest_ent_y), closest_ent_dist])
         else:
             to_return.extend([-1, -1])
-        print to_return
         return to_return
 
     def _perform_actions(self, actions):
         pass
-
-    def GetFitness(self):
-        return self.fighter_result.GetFitness()
 

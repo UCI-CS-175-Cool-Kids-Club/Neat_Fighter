@@ -5,6 +5,7 @@ import World
 import json
 from threading import Timer
 import math
+#from AgentResult import AgentResult
 
 def angle(a1,a2,b1,b2):
     rt = math.atan2(b1-a1, b2-a2)
@@ -31,38 +32,41 @@ class Fighter:
         return self.agent.peekWorldState().is_mission_running
 
     def run(self):
-        while self.agent.peekWorldState().number_of_observations_since_last_state == 0:
-            time.sleep(0.01)
-        output = self.neural.activate(self._get_agent_state_input())
-        print "Output neural: ", output
+        #self.result = AgentResult()
+        while fighter.isRunning():
+            time.sleep(0.5)
+            while self.agent.peekWorldState().number_of_observations_since_last_state == 0:
+                time.sleep(0.01)
+            output = self.neural.activate(self._get_agent_state_input())
+            print "Output neural: ", output
+            self.agent.sendCommand("move {}".format(output[0]))
+            self.agent.sendCommand("strafe {}".format(output[1]))
+            self.agent.sendCommand("turn {}".format(output[2]))
+            self.agent.sendCommand("attack {}".format(0 if output[3] <= 0 else 1))
+            for error in fighter.agent.peekWorldState().errors:
+                print "Error:",error.text
 
-        #actions = [self._move_a, self._move_d, self._move_s, self._move_w, self._attack, self._turn_right, self._turn_left]
-        #for i in range(len(output)):
-        #    actions[i](output[i])
-        #self._turn_right(0.1)
-        self.agent.sendCommand("move {}".format(output[0]))
-        self.agent.sendCommand("strafe {}".format(output[1]))
-        self.agent.sendCommand("turn {}".format(output[2]))
-        self.agent.sendCommand("attack {}".format(0 if output[3] <= 0 else 1))
+        #return result
+
     def _get_agent_state_input(self):
         to_return = []
         world_state = self.agent.getWorldState()
-
         data = json.loads(world_state.observations[-1].text)
-        #to_return.extend([ int(i == u'diamond_block') for i in data.get(u'floor')])
         entities = data.get(u'entities')
         agent_x, agent_y, agent_yaw = entities[0][u'x'], entities[0][u'y'], math.radians(entities[0][u'yaw'] % 360)
-        #to_return.append(agent_yaw)
         if len(entities) > 1:
             other_entities = entities[1:]
             other_entities = [(ent, math.hypot(entities[0][u'x'] - ent[u'x'], entities[0][u'z'] - ent[u'z'])) for ent in other_entities]
             other_entities = sorted(other_entities, key=lambda x: x[1])[0]
             closest_ent_x, closest_ent_y, closest_ent_dist = other_entities[0][u'x'], other_entities[0][u'y'], other_entities[1]
+            #self.result.AppendDistance(closest_ent_dist)
             to_return.extend([angle_between_agents(agent_x, agent_y, agent_yaw, closest_ent_x, closest_ent_y), closest_ent_dist])
         else:
             to_return.extend([-1, -1])
         print to_return
         return to_return
+
+
 
     # def _move_w(self, time):
     #     self.agent.sendCommand("move 1")

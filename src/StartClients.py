@@ -54,10 +54,10 @@ def GetMissionXML():
     </ServerHandlers>
   </ServerSection>
 
-  <AgentSection mode="Survival">
+  <AgentSection mode="Adventure">
     <Name>Fighter1</Name>
     <AgentStart>
-        <Placement pitch="0" x="''' + str(random.randint(2,9)) + '''" y="1" yaw="''' + str(random.choice([0,90,180,360])) + '''" z="''' + str(random.randint(2,9)) + ''' "/>
+        <Placement pitch="0" x="2" y="1" yaw="''' + str(random.randint(0,360)) + '''" z="2"/>
         <Inventory>
             <InventoryItem slot="0" type="wooden_sword" quantity="1" />
         </Inventory>
@@ -77,10 +77,10 @@ def GetMissionXML():
     </AgentHandlers>
   </AgentSection>
 
-  <AgentSection mode="Survival">
+  <AgentSection mode="Adventure">
     <Name>Fighter2</Name>
     <AgentStart>
-      <Placement pitch="0" x="''' + str(random.randint(2,9)) + '''" y="1" yaw="''' + str(random.choice([0,90,180,360])) + '''" z="''' + str(random.randint(2,9)) + ''' "/>
+        <Placement pitch="0" x="9" y="1" yaw="''' + str(random.randint(0,360)) + '''" z="9"/>
     </AgentStart>
     <AgentHandlers>
     <ObservationFromFullStats/>
@@ -124,6 +124,7 @@ def InitalizeNEAT():
     stats = neat.StatisticsReporter()
     pop.add_reporter(stats)
     pop.add_reporter(neat.StdOutReporter(True))
+    pop.add_reporter(neat.Checkpointer(1,900))
     return pop
 
 if __name__ == "__main__":

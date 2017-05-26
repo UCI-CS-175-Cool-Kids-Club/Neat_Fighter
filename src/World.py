@@ -19,14 +19,14 @@ class World:
     def __init__(self, client_pool, mission):
         self.client_pool = client_pool
         self.mission = mission
-        print
+        #print
 
     def train(self, population):
         return population.run(self._EvaluateGenome)
 
     def _EvaluateGenome(self, genomes, config):
         for genome_id, genome in genomes:
-            print genome_id
+            #print genome_id
             agents = [MalmoPython.AgentHost() for x in range(2)]
             self._StartMission(agents)
             neural_net = neat.nn.FeedForwardNetwork.create(genome, config)
@@ -49,6 +49,7 @@ class World:
 
         agent2_world = fighter2.agent.getWorldState()
         agent2_data = json.loads(agent2_world.observations[-1].text)
+        #print "Agent 2 data: ", agent2_data
         damage = agent2_data.get(u'DamageTaken')
         mission_time = agent2_data.get(u'TotalTime')
         fighter1.fighter_result.SetInflictedDamage(damage)

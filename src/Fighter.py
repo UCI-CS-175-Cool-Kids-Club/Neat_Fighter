@@ -28,9 +28,10 @@ class Fighter:
         self.neural = neural
         self.agent = agent_file
         self.fighter_result = AgentResult()
+        self.mission_ended = False
 
     def isRunning(self):
-        return self.agent.peekWorldState().is_mission_running
+        return not self.mission_ended and self.agent.peekWorldState().is_mission_running
 
     def run(self):
         while self.agent.peekWorldState().number_of_observations_since_last_state == 0:
@@ -48,6 +49,9 @@ class Fighter:
         world_state = self.agent.getWorldState()
         data = json.loads(world_state.observations[-1].text)
         entities = data.get(u'entities')
+        if data.get(u'PlayersKilled') == 1:
+            self.mission_ended = True
+            
         agent_x, agent_y, agent_yaw = entities[0][u'x'], entities[0][u'y'], math.radians(entities[0][u'yaw'] % 360)
         if len(entities) > 1:
             other_entities = entities[1:]

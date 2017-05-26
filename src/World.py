@@ -57,7 +57,7 @@ def GetMissionXML():
             <DrawLine type="diamond_block" y1="4" y2="4" x1="11" x2="11" z1="0" z2="11" />
             <DrawLine type="diamond_block" y1="4" y2="4" x1="0" x2="11" z1="11" z2="11" />
       </DrawingDecorator>  
-      <ServerQuitFromTimeUp description="" timeLimitMs="10000"/>
+      <ServerQuitFromTimeUp description="" timeLimitMs="20000"/>
       <ServerQuitWhenAnyAgentFinishes/>
     </ServerHandlers>
   </ServerSection>
@@ -123,15 +123,7 @@ def GetMission():
 
 class World:
     def __init__(self, client_pool): 
-
-        #mission):
         self.client_pool = client_pool
-<<<<<<< HEAD
-        self.mission = mission
-=======
-        #self.mission = mission
-        #print
->>>>>>> fd041e32d46e3590899046870d86e2de403542ab
 
     def train(self, population):
         i = 0
@@ -144,10 +136,7 @@ class World:
 
     def _EvaluateGenome(self, genomes, config):
         for genome_id, genome in genomes:
-<<<<<<< HEAD
-=======
             print "genome_id: ", genome_id
->>>>>>> fd041e32d46e3590899046870d86e2de403542ab
             agents = [MalmoPython.AgentHost() for x in range(2)]
             self._StartMission(agents)
             neural_net = neat.nn.FeedForwardNetwork.create(genome, config)
@@ -183,11 +172,7 @@ class World:
         self.mission = GetMission()
         expId = str(uuid.uuid4())
         for i in range(len(agent_hosts)):
-<<<<<<< HEAD
             max_retries = 10
-=======
-            max_retries = 9
->>>>>>> fd041e32d46e3590899046870d86e2de403542ab
             for retry in range(max_retries):
                 try:
                     agent_hosts[i].startMission( self.mission, self.client_pool, MalmoPython.MissionRecordSpec(), i, expId )

@@ -1,8 +1,8 @@
 from time import time
 
-INFLICTED_DAMAGE_SCALE = 1000#40
-TIME_SCALE = 2#1
-DISTANCE_SCALE = 1#100
+INFLICTED_DAMAGE_SCALE = 200#40
+TIME_SCALE = 100#1
+DISTANCE_SCALE = 50#100
 
 class AgentResult:
 	def __init__(self):

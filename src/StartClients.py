@@ -41,7 +41,7 @@ if __name__ == "__main__":
     population.add_reporter(stats)
     try:
       winner = world.train(population)
-    except KeyboardInterrupt:
+    except KeyboardInterrupt, neat.population.CompleteExtinctionException:
       winner = population.best_genome
 
 

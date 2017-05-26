@@ -80,6 +80,14 @@ def GetMissionXML():
   <AgentSection mode="Adventure">
     <Name>Fighter2</Name>
     <AgentStart>
+
+        <Inventory>
+            <InventoryItem slot="36" type="diamond_helmet" quantity="1" />
+            <InventoryItem slot="37" type="diamond_chestplate" quantity="1" />
+            <InventoryItem slot="38" type="diamond_leggings" quantity="1" />
+            <InventoryItem slot="39" type="diamond_boots" quantity="1" />
+        </Inventory>
+
         <Placement pitch="0" x="9" y="1" yaw="''' + str(random.randint(0,360)) + '''" z="9"/>
     </AgentStart>
     <AgentHandlers>
@@ -131,3 +139,35 @@ if __name__ == "__main__":
     world = World(*InitalizeAgents())
     population = InitalizeNEAT()
     winner = world.train(population)
+
+
+
+    '''
+        # Save the winner.
+    with open('winner-feedforward', 'wb') as f:
+        pickle.dump(winner, f)
+
+    print(winner)
+
+    visualize.plot_stats(stats, ylog=True, view=True, filename="feedforward-fitness.svg")
+    visualize.plot_species(stats, view=True, filename="feedforward-speciation.svg")
+
+    node_names = {-1: 'x', -2: 'dx', -3: 'theta', -4: 'dtheta', 0: 'control'}
+    visualize.draw_net(config, winner, True, node_names=node_names)
+
+    visualize.draw_net(config, winner, view=True, node_names=node_names,
+                       filename="winner-feedforward.gv")
+    visualize.draw_net(config, winner, view=True, node_names=node_names,
+                       filename="winner-feedforward-enabled.gv", show_disabled=False)
+    visualize.draw_net(config, winner, view=True, node_names=node_names,
+                       filename="winner-feedforward-enabled-pruned.gv", show_disabled=False, prune_unused=True)
+    '''
+
+
+
+
+
+
+
+
+

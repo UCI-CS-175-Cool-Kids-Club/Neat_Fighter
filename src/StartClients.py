@@ -7,6 +7,8 @@ import os
 import sys
 sys.path.insert(0, '../neat-python')
 import neat
+import pickle
+import visualize
 
 
 
@@ -26,16 +28,21 @@ def InitalizeNEAT():
     config_path = os.path.join(local_dir, 'config-fighter')
     config = neat.Config(neat.DefaultGenome, neat.DefaultReproduction, neat.DefaultSpeciesSet, neat.DefaultStagnation, config_path) 
     pop = neat.Population(config)
-    stats = neat.StatisticsReporter()
-    pop.add_reporter(stats)
-    pop.add_reporter(neat.StdOutReporter(True))
-    pop.add_reporter(neat.Checkpointer(1,900))
+    
+    
     return pop
 
 if __name__ == "__main__":
     world = World(InitalizeAgents())
     population = InitalizeNEAT()
-    winner = world.train(population)
+    population.add_reporter(neat.StdOutReporter(True))
+    population.add_reporter(neat.Checkpointer(1,900))
+    stats = neat.StatisticsReporter()
+    population.add_reporter(stats)
+    try:
+      winner = world.train(population)
+    except KeyboardInterrupt:
+      winner = population.best_genome
 
 
     #save the winner stuff starts here

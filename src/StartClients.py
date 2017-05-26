@@ -59,7 +59,7 @@ def GetMissionXML():
     <AgentStart>
         <Placement pitch="0" x="''' + str(random.randint(2,9)) + '''" y="1" yaw="''' + str(random.choice([0,90,180,360])) + '''" z="''' + str(random.randint(2,9)) + ''' "/>
         <Inventory>
-            <InventoryItem slot="0" type="diamond_sword" quantity="1" />
+            <InventoryItem slot="0" type="wooden_sword" quantity="1" />
         </Inventory>
     
     </AgentStart>

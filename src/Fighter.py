@@ -1,11 +1,13 @@
 import MalmoPython
 import random
 import time
-import World
+from runtime_configs import DEBUGGING
 import json
 from threading import Timer
 import math
 from AgentResult import AgentResult
+
+#DEBUGGING = World.DEBUGGING #i think there's a better way to do this with env vars or cmd line args or something but *shrug*
 
 def angle(a1,a2,b1,b2):
     rt = math.atan2(b1-a1, b2-a2)
@@ -38,7 +40,10 @@ class Fighter:
             if not self.isRunning():
                 return
             time.sleep(0.01)
-        output = self.neural.activate(self._get_agent_state_input())
+        agent_state_input = self._get_agent_state_input()
+        output = self.neural.activate(agent_state_input)
+        if DEBUGGING:
+            print("dist {:.2f}; angle {:.2f};   move {}; strafe {}; turn {}; attack {}".format(*(agent_state_input + output)))
         self.agent.sendCommand("move {}".format(output[0]))
         self.agent.sendCommand("strafe {}".format(output[1]))
         self.agent.sendCommand("turn {}".format(output[2]))

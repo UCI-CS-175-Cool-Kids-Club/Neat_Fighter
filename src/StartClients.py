@@ -11,7 +11,6 @@ import pickle
 import visualize
 
 
-
 def SetupClientPools():
     client_pool = MalmoPython.ClientPool()
     for x in xrange(10000, 10000 + 2):
@@ -56,6 +55,7 @@ if __name__ == "__main__":
     except:
       pass
     node_names = {-1: 'x', -2: 'dx', -3: 'theta', -4: 'dtheta', 0: 'control'}
+
     visualize.draw_net(config, winner, True, node_names=node_names)
 
     visualize.draw_net(config, winner, view=True, node_names=node_names,

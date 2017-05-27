@@ -11,6 +11,7 @@ import time
 import random
 import json
 from Fighter import Fighter
+from runtime_configs import DEBUGGING
 
 sys.path.insert(0, '../neat-python')
 import neat
@@ -139,6 +140,9 @@ class World:
             neural_net = neat.nn.FeedForwardNetwork.create(genome, config)
             agents_fighter = [Fighter(agents[i], neural_net) for i in range(2)]
             genome.fitness = self._RunFighterParallel(*agents_fighter)
+            if DEBUGGING:
+                print("printing the genome:")
+                print(genome)
             for i in agents:
                 del i
             del agents_fighter

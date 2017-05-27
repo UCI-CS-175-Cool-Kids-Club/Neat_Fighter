@@ -1,7 +1,7 @@
 from time import time
 from numpy import trapz
 
-INFLICTED_DAMAGE_SCALE = 1000#40
+INFLICTED_DAMAGE_SCALE = 100#40
 TIME_SCALE = 2#1
 DISTANCE_SCALE = 1#100
 
@@ -21,7 +21,7 @@ class AgentResult:
 	def GetFitness(self):
 
 		print "Distance", self.distance_area
-		return 30000 + self.inflicted_damage * INFLICTED_DAMAGE_SCALE - (self.mission_time * TIME_SCALE) - DISTANCE_SCALE * self.distance_area
+		return 1000 + self.inflicted_damage * INFLICTED_DAMAGE_SCALE - (self.mission_time * TIME_SCALE) - DISTANCE_SCALE * self.distance_area
 
 	def SetInflictedDamage(self, damage):
 		self.inflicted_damage = damage

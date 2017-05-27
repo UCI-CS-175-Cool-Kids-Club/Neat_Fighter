@@ -1,4 +1,4 @@
-FILENAME = "overnight_log2.txt"
+FILENAME = "non_stochastic.txt"
 
 generations = []
 with open(FILENAME) as f:

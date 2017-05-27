@@ -27,13 +27,11 @@ def InitalizeNEAT():
     config_path = os.path.join(local_dir, 'config-fighter')
     config = neat.Config(neat.DefaultGenome, neat.DefaultReproduction, neat.DefaultSpeciesSet, neat.DefaultStagnation, config_path) 
     pop = neat.Population(config)
-    
-    
-    return pop
+    return pop, config
 
 if __name__ == "__main__":
     world = World(InitalizeAgents())
-    population = InitalizeNEAT()
+    population, config = InitalizeNEAT()
     population.add_reporter(neat.StdOutReporter(True))
     population.add_reporter(neat.Checkpointer(1,900))
     stats = neat.StatisticsReporter()
@@ -42,20 +40,22 @@ if __name__ == "__main__":
       winner = world.train(population)
     except KeyboardInterrupt, neat.population.CompleteExtinctionException:
       winner = population.best_genome
+      print("winner is")
+      print(winner)
 
 
     #save the winner stuff starts here
     with open('winner-feedforward', 'wb') as f:
         pickle.dump(winner, f)
-
+    print("winner is: ")
     print(winner)
     try:
       visualize.plot_stats(stats, ylog=True, view=True, filename="feedforward-fitness.svg")
       visualize.plot_species(stats, view=True, filename="feedforward-speciation.svg")
     except:
       pass
-    node_names = {-1: 'x', -2: 'dx', -3: 'theta', -4: 'dtheta', 0: 'control'}
-
+    #pole balancing: node_names = {-1: 'x', -2: 'dx', -3: 'theta', -4: 'dtheta', 0: 'control'}
+    node_names = {-1:'angle_to_enemy', -2:'distance_to_enemy', 0:'move', 1:'strafe', 2:'turn', 3:'attack'}
     visualize.draw_net(config, winner, True, node_names=node_names)
 
     visualize.draw_net(config, winner, view=True, node_names=node_names,

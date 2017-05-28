@@ -1,4 +1,4 @@
-FILENAME = "overnight_log4b.txt"
+FILENAME = "non_stochastic.txt"
 #non_stochastic <---- long, learned to hit.
 #overnight_log <-- short (100ish genomes)
 #overnight_log2 <-- good length, 350+ genomes, 21ish generations, actually overnight.

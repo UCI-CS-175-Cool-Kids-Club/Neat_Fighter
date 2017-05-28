@@ -58,7 +58,7 @@ def GetMissionXML():
             <DrawLine type="diamond_block" y1="4" y2="4" x1="11" x2="11" z1="0" z2="11" />
             <DrawLine type="diamond_block" y1="4" y2="4" x1="0" x2="11" z1="11" z2="11" />
       </DrawingDecorator>  
-      <ServerQuitFromTimeUp description="" timeLimitMs="20000"/>
+      <ServerQuitFromTimeUp description="" timeLimitMs="10000"/>
       <ServerQuitWhenAnyAgentFinishes/>
     </ServerHandlers>
   </ServerSection>

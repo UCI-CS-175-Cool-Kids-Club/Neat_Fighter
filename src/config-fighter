@@ -5,7 +5,7 @@
 [NEAT]
 fitness_criterion     = max
 fitness_threshold     = 20000000.0
-pop_size              = 30
+pop_size              = 22
 reset_on_extinction   = 1
 
 [DefaultGenome]
@@ -20,7 +20,7 @@ conn_add_prob           = 0.2
 conn_delete_prob        = 0.2
 node_add_prob           = 0.2
 node_delete_prob        = 0.2
-activation_default      = relu
+activation_default      = tanh
 activation_options      = tanh relu
 activation_mutate_rate  = 0.2
 aggregation_default     = sum

@@ -7,6 +7,10 @@ from threading import Timer
 import math
 from AgentResult import AgentResult
 
+'''
+Fighter will holds all the definition of what our agents can do
+'''
+
 #DEBUGGING = World.DEBUGGING #i think there's a better way to do this with env vars or cmd line args or something but *shrug*
 
 def angle(a1,a2,b1,b2):
@@ -26,12 +30,6 @@ def scale_distance(distance):
 def scale_angle(theta):
     return (theta/math.pi) - 1
 
-
-ACTION_TIME = 0.2
-
-'''
-Fighter will holds all the definition of what our agents can do
-'''
 
 class Fighter:
     def __init__(self, agent_file, neural):
@@ -54,6 +52,8 @@ class Fighter:
         output = self.neural.activate(scaled_state_input)
         if DEBUGGING:
             print("angle {:.2f}; dist {:.2f};   move {:.3f}; strafe {:.3f}; turn {:.3f}; attack {:.3f}".format(*(agent_state_input + output)))
+        if self.mission_ended or not self.agent.peekWorldState().is_mission_running:
+            return
         self.agent.sendCommand("move {}".format(output[0]))
         self.agent.sendCommand("strafe {}".format(output[1]))
         self.agent.sendCommand("turn {}".format(output[2]))
@@ -66,19 +66,17 @@ class Fighter:
         entities = data.get(u'entities')
         if data.get(u'PlayersKilled') == 1:
             self.mission_ended = True
-            
-        agent_x, agent_y, agent_yaw = entities[0][u'x'], entities[0][u'z'], math.radians((entities[0][u'yaw'] - 90) % 360)
+        agent_x, agent_z, agent_yaw = entities[0][u'x'], entities[0][u'z'], math.radians((entities[0][u'yaw'] - 90) % 360)
         if len(entities) > 1:
             other_entities = entities[1:]
             other_entities = [(ent, math.hypot(entities[0][u'x'] - ent[u'x'], entities[0][u'z'] - ent[u'z'])) for ent in other_entities]
             other_entities = sorted(other_entities, key=lambda x: x[1])[0]
-            closest_ent_x, closest_ent_y, closest_ent_dist = other_entities[0][u'x'], other_entities[0][u'z'], other_entities[1]
+            closest_ent_x, closest_ent_z, closest_ent_dist = other_entities[0][u'x'], other_entities[0][u'z'], other_entities[1]
             self.fighter_result.AppendDistance(closest_ent_dist)
-            to_return.extend([angle_between_agents(agent_x, agent_y, agent_yaw, closest_ent_x, closest_ent_y), closest_ent_dist])
+            to_return.extend([angle_between_agents(agent_x, agent_z, agent_yaw, closest_ent_x, closest_ent_z), closest_ent_dist])
         else:
-            to_return.extend([-1, -1])
+            to_return.extend([0, 0])
+
+        to_return[0] = to_return[0]/math.pi - 1
+        to_return[1] = to_return[1]/7 - 1
         return to_return
-
-    def _perform_actions(self, actions):
-        pass
-

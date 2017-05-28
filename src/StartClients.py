@@ -43,7 +43,6 @@ if __name__ == "__main__":
       print("winner is")
       print(winner)
 
-
     #save the winner stuff starts here
     with open('winner-feedforward', 'wb') as f:
         pickle.dump(winner, f)

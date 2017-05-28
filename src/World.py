@@ -10,6 +10,7 @@ import sys
 import time
 import random
 import json
+import pickle
 from Fighter import Fighter
 from runtime_configs import DEBUGGING
 
@@ -57,7 +58,7 @@ def GetMissionXML():
             <DrawLine type="diamond_block" y1="4" y2="4" x1="11" x2="11" z1="0" z2="11" />
             <DrawLine type="diamond_block" y1="4" y2="4" x1="0" x2="11" z1="11" z2="11" />
       </DrawingDecorator>  
-      <ServerQuitFromTimeUp description="" timeLimitMs="10000"/>
+      <ServerQuitFromTimeUp description="" timeLimitMs="20000"/>
       <ServerQuitWhenAnyAgentFinishes/>
     </ServerHandlers>
   </ServerSection>
@@ -88,14 +89,8 @@ def GetMissionXML():
   <AgentSection mode="Adventure">
     <Name>Fighter2</Name>
     <AgentStart>
-
         <Inventory>
-            <InventoryItem slot="36" type="diamond_helmet" quantity="1" />
-            <InventoryItem slot="37" type="diamond_chestplate" quantity="1" />
-            <InventoryItem slot="38" type="diamond_leggings" quantity="1" />
-            <InventoryItem slot="39" type="diamond_boots" quantity="1" />
         </Inventory>
-
         <Placement pitch="0" x="9" y="1" yaw="''' + str(random.randint(0,360)) + '''" z="9"/>
     </AgentStart>
     <AgentHandlers>
@@ -123,19 +118,30 @@ def GetMission():
 
 class World:
     def __init__(self, client_pool): 
-
-        #mission):
         self.client_pool = client_pool
-        #self.mission = mission
-        #print
 
     def train(self, population):
-        return population.run(self._EvaluateGenome)
+        i = 0
+        while True:
+            i += 1
+            rt = population.run(self._EvaluateGenome, 5)
+            with open('gen-{}'.format(5 * i), 'wb') as f:
+                pickle.dump(rt, f)
+        return
 
     def _EvaluateGenome(self, genomes, config):
         for genome_id, genome in genomes:
             print "genome_id: ", genome_id
-            agents = [MalmoPython.AgentHost() for x in range(2)]
+            agents = []
+            for i in range(2):
+                for i in range(10):
+                    try:
+                        new_agent = MalmoPython.AgentHost()
+                        break
+                    except:
+                        time.sleep(5)
+                agents.append(new_agent)
+
             self._StartMission(agents)
             neural_net = neat.nn.FeedForwardNetwork.create(genome, config)
             agents_fighter = [Fighter(agents[i], neural_net) for i in range(2)]
@@ -149,7 +155,7 @@ class World:
 
     def _RunFighterParallel(self, fighter1, fighter2):
         while fighter1.isRunning():
-            #time.sleep(0.5)
+            time.sleep(0.2)
             result = fighter1.run()
             for error in fighter1.agent.peekWorldState().errors:
                 print "Error:",error.text
@@ -160,20 +166,19 @@ class World:
 
         agent2_world = fighter2.agent.getWorldState()
         agent2_data = json.loads(agent2_world.observations[-1].text)
-        #print "Agent 2 data: ", agent2_data
         damage = agent2_data.get(u'DamageTaken')
         mission_time = agent2_data.get(u'TotalTime')
         fighter1.fighter_result.SetInflictedDamage(damage)
         fighter1.fighter_result.SetMissionTime(mission_time)
+
         fitness = fighter1.fighter_result.GetFitness()
-        print "Fitness: ", fitness
         return fitness
 
     def _StartMission(self, agent_hosts):
         self.mission = GetMission()
         expId = str(uuid.uuid4())
         for i in range(len(agent_hosts)):
-            max_retries = 9
+            max_retries = 30
             for retry in range(max_retries):
                 try:
                     agent_hosts[i].startMission( self.mission, self.client_pool, MalmoPython.MissionRecordSpec(), i, expId )

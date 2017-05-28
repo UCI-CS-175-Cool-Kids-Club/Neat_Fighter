@@ -28,7 +28,7 @@ def scale_state_inputs(state_inputs):
 def scale_distance(distance):
     return distance/9
 def scale_angle(theta):
-    return (theta/math.pi) - 1
+    return (theta/math.pi) 
 
 
 class Fighter:

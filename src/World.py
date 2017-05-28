@@ -12,6 +12,7 @@ import random
 import json
 import pickle
 from Fighter import Fighter
+from runtime_configs import DEBUGGING
 
 sys.path.insert(0, '../neat-python')
 import neat
@@ -137,19 +138,17 @@ class World:
     def _EvaluateGenome(self, genomes, config):
         for genome_id, genome in genomes:
             print "genome_id: ", genome_id
-            num_iter = 3
-            fitnesses = []
-            for i in range(num_iter):
-                agents = [MalmoPython.AgentHost() for x in range(2)]
-                self._StartMission(agents)
-                neural_net = neat.nn.FeedForwardNetwork.create(genome, config)
-                agents_fighter = [Fighter(agents[i], neural_net) for i in range(2)]
-                fitnesses.append(self._RunFighterParallel(*agents_fighter))
-                del agents
-                del agents_fighter
-                time.sleep(3)
-            print fitnesses
-            genome.fitness = min(fitnesses)
+            agents = [MalmoPython.AgentHost() for x in range(2)]
+            self._StartMission(agents)
+            neural_net = neat.nn.FeedForwardNetwork.create(genome, config)
+            agents_fighter = [Fighter(agents[i], neural_net) for i in range(2)]
+            genome.fitness = self._RunFighterParallel(*agents_fighter)
+            if DEBUGGING:
+                print("printing the genome:")
+                print(genome)
+            for i in agents:
+                del i
+            del agents_fighter
 
     def _RunFighterParallel(self, fighter1, fighter2):
         while fighter1.isRunning():

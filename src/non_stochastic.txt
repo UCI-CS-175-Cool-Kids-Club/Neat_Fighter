@@ -1,0 +1,1162 @@
+ ****** Running generation 0 ****** 
+
+1
+Distance 66.2361593137
+Fitness:  25587.0711994
+2
+Distance 70.5230403491
+Fitness:  25001.3007799
+3
+Distance 70.8297547668
+Fitness:  24957.6458397
+4
+Distance 75.607339832
+Fitness:  24258.0301635
+5
+Distance 70.4139837344
+Fitness:  25016.0708947
+6
+Distance 71.2147700268
+Fitness:  24898.65653
+7
+Distance 69.9652318667
+Fitness:  25079.3663298
+8
+Distance 60.8653497995
+Fitness:  26266.1091938
+9
+Distance 70.671073568
+Fitness:  24980.2993607
+10
+Distance 72.1511191133
+Fitness:  24761.2160107
+11
+Distance 72.6425291644
+Fitness:  24694.4629566
+12
+Distance 70.9849913332
+Fitness:  24932.0310054
+13
+Distance 65.44104922
+Fitness:  25690.269077
+14
+Distance 73.0554219407
+Fitness:  24633.2053251
+15
+Error starting mission Failed to find the server for this mission - you must start the agent that has role 0 first.
+Is the game running?
+dhcp-v063-032:src kevin$ python StartClients.py 
+
+
+ ****** Running generation 0 ****** 
+
+1
+Distance 58.5312292032
+Fitness:  26540.995208
+2
+Distance 63.3927976199
+Fitness:  25949.7532099
+3
+Distance 24.8548443036
+Fitness:  29352.4367146
+4
+Distance 81.9387364518
+Fitness:  23255.2434687
+5
+Distance 57.8632763183
+Fitness:  26621.1412537
+6
+Distance 58.0584906127
+Fitness:  26603.7116678
+7
+Distance 77.1789166952
+Fitness:  24017.9148178
+8
+Distance 58.139517453
+Fitness:  26593.6965103
+9
+Distance 52.5576808136
+Fitness:  27212.1901875
+10
+Distance 58.2969111588
+Fitness:  26575.9701493
+11
+Distance 58.4263352846
+Fitness:  26560.8633452
+12
+Distance 52.5610633439
+Fitness:  27211.7346202
+13
+Distance 76.7033654345
+Fitness:  24091.293731
+14
+Distance 58.2788481958
+Fitness:  26577.775853
+15
+Distance 57.8907162293
+Fitness:  26622.9649745
+16
+Distance 24.5219220117
+Fitness:  29373.0753409
+17
+Distance 55.2580475303
+Fitness:  26921.2481831
+18
+Distance 58.1379131538
+Fitness:  26594.4830541
+19
+Distance 63.5396788714
+Fitness:  25935.5092089
+20
+Distance 58.3149588295
+Fitness:  26573.7655767
+21
+Distance 75.8612868763
+Fitness:  24219.1651535
+22
+Distance 58.9670271575
+Fitness:  26496.8897082
+23
+Distance 58.1310163356
+Fitness:  26594.9849398
+24
+Distance 58.2160191686
+Fitness:  26585.4951122
+25
+Distance 69.3405734165
+Fitness:  25166.3848783
+26
+Distance 58.1223108577
+Fitness:  26596.2969806
+27
+Distance 58.0953422269
+Fitness:  26599.5312115
+28
+Distance 58.132863921
+Fitness:  26595.2701323
+29
+Distance 58.4312927637
+Fitness:  26560.484026
+30
+Distance 24.8803977983
+Fitness:  29355.9658054
+Population's average fitness: 26465.20783 stdev: 1365.34233
+Best fitness: 29373.07534 - size: (5, 3) - species 2 - id 16
+Average adjusted fitness: 0.532
+Mean genetic distance 1.890, standard deviation 0.392
+Population of 30 members in 2 species:
+   ID   age  size  fitness  adj fit  stag
+  ====  ===  ====  =======  =======  ====
+     1    0    18  29356.0    0.504     0
+     2    0    12  29373.1    0.560     0
+Total extinctions: 0
+Generation time: 662.120 sec
+
+ ****** Running generation 1 ****** 
+
+3
+Distance 25.3286626671
+Fitness:  29333.3588475
+16
+Distance 24.2613122481
+Fitness:  29386.388728
+17
+Distance 55.6784116333
+Fitness:  26876.314478
+30
+Distance 24.8965341249
+Fitness:  29355.2625886
+31
+Distance 90.3757155662
+Fitness:  21807.3300359
+32
+Distance 104.627953143
+Fitness:  19027.6914211
+33
+Distance 75.4950669995
+Fitness:  24275.4948587
+34
+Distance 58.094672147
+Fitness:  26600.3090681
+35
+Distance 52.5080643219
+Fitness:  27217.5031812
+36
+Distance 52.5234625552
+Fitness:  27215.8858812
+37
+Distance 52.5541652668
+Fitness:  27212.6597131
+38
+Distance 49.6344573988
+Fitness:  27511.0206387
+39
+Distance 58.2156465931
+Fitness:  26585.5384918
+40
+Distance 35.7929575748
+Fitness:  28693.364188
+41
+Distance 73.7468558379
+Fitness:  24535.901254
+42
+Distance 70.4771327563
+Fitness:  25007.5737585
+43
+Distance 26.9090327905
+Fitness:  29249.2039543
+44
+Distance 24.8391441262
+Fitness:  29356.9169191
+45
+Distance 24.7105508778
+Fitness:  29363.6886753
+46
+Distance 58.5168669719
+Fitness:  26550.1762798
+47
+Distance 53.3576535434
+Fitness:  27127.3608083
+48
+Distance 27.34034042
+Fitness:  29227.1057857
+49
+Distance 26.9585864818
+Fitness:  29247.4346149
+50
+Distance 67.3286599487
+Fitness:  25441.4515495
+51
+Distance 52.8513756923
+Fitness:  27181.1320874
+52
+Distance 77.2419208314
+Fitness:  24007.8856663
+53
+Distance 25.3270023997
+Fitness:  29333.0429494
+54
+Distance 76.9686573557
+Fitness:  24050.6257849
+55
+Distance 58.1911149956
+Fitness:  26588.7941356
+56
+Distance 58.545387074
+Fitness:  26547.2376524
+Population's average fitness: 26797.12180 stdev: 2445.49666
+Best fitness: 29386.38873 - size: (5, 3) - species 1 - id 16
+Average adjusted fitness: 0.750
+Mean genetic distance 1.674, standard deviation 0.459
+Population of 30 members in 2 species:
+   ID   age  size  fitness  adj fit  stag
+  ====  ===  ====  =======  =======  ====
+     1    1    18  29386.4    0.749     0
+     2    1    12  29333.0    0.751     1
+Total extinctions: 0
+Generation time: 619.574 sec (640.847 average)
+
+ ****** Running generation 2 ****** 
+
+16
+Distance 24.9243953587
+Fitness:  29353.574516
+38
+Distance 53.610905064
+Fitness:  27100.3708582
+45
+Distance 25.033670389
+Fitness:  29347.7153469
+53
+Distance 25.8233968927
+Fitness:  29307.9521729
+57
+Distance 52.4183882254
+Fitness:  27227.2125759
+58
+Distance 104.589864672
+Fitness:  19035.4602079
+59
+Distance 52.4071963309
+Fitness:  27227.5857727
+60
+Distance 49.9774299596
+Fitness:  27476.7564946
+61
+Distance 58.0084028351
+Fitness:  26609.3252005
+62
+Distance 51.3644852499
+Fitness:  27336.089655
+63
+Distance 58.1215573653
+Fitness:  26596.7845694
+64
+Distance 25.3714461646
+Fitness:  29331.2897195
+65
+Distance 55.9515315021
+Fitness:  26844.2261226
+66
+Distance 76.3142314349
+Fitness:  24151.0380805
+67
+Distance 58.4175728082
+Fitness:  26561.8871872
+68
+Distance 58.3901773838
+Fitness:  26564.7871851
+69
+Distance 73.1343809361
+Fitness:  24626.0623251
+70
+Distance 24.7702878147
+Fitness:  29361.2328416
+71
+Distance 23.8986036717
+Fitness:  129403.556743
+72
+Distance 24.9589174895
+Fitness:  179351.452438
+73
+Distance 52.4693433541
+Fitness:  27221.668008
+74
+Distance 57.972792676
+Fitness:  26613.8553093
+75
+Distance 75.1762758274
+Fitness:  24323.1275527
+76
+Distance 81.3341969751
+Fitness:  23359.2484024
+77
+Distance 35.5305483084
+Fitness:  28712.5801369
+78
+Distance 88.6281840053
+Fitness:  22120.0449999
+79
+Distance 57.8249385725
+Fitness:  26630.9764791
+80
+Distance 9.19378491152
+Fitness:  229904.074319
+81
+Distance 35.7886387188
+Fitness:  28693.8733387
+82
+Distance 71.7801685178
+Fitness:  24822.1074076
+Population's average fitness: 41840.53053 stdev: 47756.72365
+Best fitness: 229904.07432 - size: (5, 4) - species 1 - id 80
+Average adjusted fitness: 0.096
+Mean genetic distance 1.454, standard deviation 0.495
+Population of 30 members in 2 species:
+   ID   age  size  fitness  adj fit  stag
+  ====  ===  ====  =======  =======  ====
+     1    2    22  229904.1    0.156     0
+     2    2     8  29361.2    0.036     2
+Total extinctions: 0
+Generation time: 617.946 sec (633.214 average)
+
+ ****** Running generation 3 ****** 
+
+64
+Distance 25.1237374826
+Fitness:  29343.2978149
+70
+Distance 24.2621966221
+Fitness:  29386.1458151
+72
+Distance 27.4043253531
+Fitness:  179223.202952
+80
+Distance 25.0908781907
+Fitness:  129345.047832
+83
+Distance 67.7285342765
+Fitness:  25387.8456448
+84
+Distance 33.9786851385
+Fitness:  28819.9489563
+85
+Distance 25.2167814162
+Fitness:  29338.213935
+86
+Distance 25.9729498604
+Fitness:  29299.9058755
+87
+Distance 24.5059539171
+Fitness:  29374.5582226
+88
+Distance 24.3912214125
+Fitness:  29379.668318
+89
+Distance 58.1680250432
+Fitness:  26591.5808626
+90
+Distance 25.1987172495
+Fitness:  29339.824649
+91
+Distance 77.2859629196
+Fitness:  24001.3799356
+92
+Distance 25.3458283507
+Fitness:  29332.4889852
+93
+Distance 58.4938993577
+Fitness:  26553.0637379
+94
+Distance 75.5109845671
+Fitness:  24272.2912097
+95
+Distance 27.4057370983
+Fitness:  129223.625574
+96
+Distance 25.0831717735
+Fitness:  29345.6344938
+97
+Distance 80.7706104309
+Fitness:  23450.7084906
+98
+Distance 8.50483646632
+Fitness:  229912.567757
+99
+Distance 58.6206515051
+Fitness:  26538.8192171
+100
+Distance 75.4453072597
+Fitness:  24282.7056125
+101
+Distance 7.54305423303
+Fitness:  229932.802333
+102
+Distance 58.1432904755
+Fitness:  26593.8577727
+103
+Distance 25.6821479536
+Fitness:  29314.6272765
+104
+Distance 76.9422811436
+Fitness:  24054.0853724
+105
+Distance 24.7831625383
+Fitness:  29360.8948546
+106
+Distance 76.1144189249
+Fitness:  24181.3952317
+107
+Distance 104.669612044
+Fitness:  19019.0723147
+108
+Distance 25.1127313436
+Fitness:  179344.450724
+Population's average fitness: 57451.45706 stdev: 63777.05630
+Best fitness: 229932.80233 - size: (5, 4) - species 1 - id 101
+Average adjusted fitness: 0.138
+Mean genetic distance 1.428, standard deviation 0.353
+Population of 30 members in 2 species:
+   ID   age  size  fitness  adj fit  stag
+  ====  ===  ====  =======  =======  ====
+     1    3    15  229932.8    0.233     0
+     2    3    15  29386.1    0.042     0
+Total extinctions: 0
+Generation time: 612.868 sec (628.127 average)
+
+ ****** Running generation 4 ****** 
+
+128
+Distance 25.3909111551
+Fitness:  29330.1016307
+129
+Distance 25.396230017
+Fitness:  29329.8315009
+130
+Distance 58.4713988531
+Fitness:  26556.2955162
+131
+Distance 58.4353674612
+Fitness:  26560.7078297
+132
+Distance 76.1828383781
+Fitness:  24171.0751367
+133
+Distance 58.5743784563
+Fitness:  26543.8421885
+134
+Distance 77.2924903748
+Fitness:  24000.6709317
+70
+Distance 24.6581980341
+Fitness:  29366.8732697
+87
+Distance 24.5153602523
+Fitness:  29374.0971117
+98
+Distance 9.27972856469
+Fitness:  229899.186638
+101
+Distance 7.81528381067
+Fitness:  229928.921339
+109
+Distance 58.1774534288
+Fitness:  26590.2839125
+110
+Distance 77.0719613387
+Fitness:  24034.3127754
+111
+Distance 75.2781829158
+Fitness:  24307.8951769
+112
+Distance 80.8280953583
+Fitness:  23441.8190008
+113
+Distance 7.95070654266
+Fitness:  229925.486265
+114
+Distance 25.5686281736
+Fitness:  29320.6452533
+115
+Distance 25.6897184757
+Fitness:  29314.9383646
+116
+Distance 75.9761663936
+Fitness:  24202.2221401
+117
+Distance 25.4278898859
+Fitness:  29327.4224159
+118
+Distance 26.13328166
+Fitness:  179290.55159
+119
+Distance 58.3899924862
+Fitness:  26565.2087775
+120
+Distance 74.9185597744
+Fitness:  24361.8094013
+121
+Distance 25.423615721
+Fitness:  179328.739764
+122
+Distance 24.6096036752
+Fitness:  179369.067407
+123
+Distance 25.6067006382
+Fitness:  29319.3968824
+124
+Distance 58.2475824344
+Fitness:  26582.0191406
+125
+Distance 7.46541752748
+Fitness:  229934.567541
+126
+Distance 31.201623301
+Fitness:  128998.658703
+127
+Distance 19.1600305971
+Fitness:  179605.093228
+Population's average fitness: 77629.39136 stdev: 79837.21925
+Best fitness: 229934.56754 - size: (5, 4) - species 1 - id 125
+Average adjusted fitness: 0.262
+Mean genetic distance 1.438, standard deviation 0.421
+Population of 30 members in 2 species:
+   ID   age  size  fitness  adj fit  stag
+  ====  ===  ====  =======  =======  ====
+     1    4    23  229934.6    0.445     0
+     2    4     7  229899.2    0.080     0
+Total extinctions: 0
+Generation time: 601.114 sec (622.725 average)
+
+ ****** Running generation 5 ****** 
+
+135
+Distance 104.359976563
+Fitness:  19084.0952918
+136
+Distance 76.6701261966
+Fitness:  24096.891749
+137
+Distance 75.9376038435
+Fitness:  24208.5803225
+138
+Distance 58.0930094591
+Fitness:  26600.102252
+139
+Distance 58.4272695038
+Fitness:  26561.0541783
+140
+Distance 76.15681058
+Fitness:  24175.2402023
+141
+Distance 38.5451916563
+Fitness:  28489.1682002
+142
+Distance 57.8549197824
+Fitness:  26627.408257
+143
+Distance 58.0709635523
+Fitness:  26602.6631921
+144
+Distance 25.7019632421
+Fitness:  29314.4090855
+145
+Distance 58.0125025564
+Fitness:  26609.5495471
+146
+Distance 25.7615999904
+Fitness:  29311.2399659
+147
+Distance 24.5063048245
+Fitness:  29374.1410239
+148
+Distance 24.3754423916
+Fitness:  179380.437808
+149
+Distance 6.0117348771
+Fitness:  229953.359044
+150
+Distance 58.0184443022
+Fitness:  26609.0601207
+151
+Distance 76.0620899469
+Fitness:  24189.4584729
+152
+Distance 24.3050086708
+Fitness:  179383.966554
+153
+Distance 7.70604955927
+Fitness:  229930.5168
+154
+Distance 75.3603182226
+Fitness:  24295.6224374
+155
+Distance 92.4673409222
+Fitness:  21423.4908628
+156
+Distance 58.0709218461
+Fitness:  26602.7680359
+157
+Distance 40.2430837787
+Fitness:  28354.994208
+158
+Distance 52.8092035324
+Fitness:  27185.2880223
+159
+Distance 58.2132151205
+Fitness:  26586.2215853
+160
+Distance 89.410635496
+Fitness:  21980.7382602
+87
+Distance 24.7076115873
+Fitness:  29364.6339297
+98
+Distance 8.98103219858
+Fitness:  229904.541061
+101
+Distance 7.26456663472
+Fitness:  229937.126072
+125
+Distance 7.39343837812
+Fitness:  229934.937069
+Population's average fitness: 70202.39012 stdev: 80940.33131
+Best fitness: 229953.35904 - size: (5, 4) - species 1 - id 149
+Average adjusted fitness: 0.169
+Mean genetic distance 1.372, standard deviation 0.432
+Population of 30 members in 2 species:
+   ID   age  size  fitness  adj fit  stag
+  ====  ===  ====  =======  =======  ====
+     1    5    25  229953.4    0.306     0
+     2    5     5  29364.6    0.033     1
+Total extinctions: 0
+Generation time: 591.041 sec (617.444 average)
+
+ ****** Running generation 6 ****** 
+
+145
+Distance 58.5958293544
+Fitness:  26541.3287823
+149
+Distance 6.42185532335
+Fitness:  229948.659774
+161
+Distance 81.17194286
+Fitness:  23386.1156923
+162
+Distance 57.9683440128
+Fitness:  26614.7710924
+163
+Distance 53.0424106722
+Fitness:  27161.5026701
+164
+Distance 35.9404700994
+Fitness:  28683.582609
+165
+Distance 52.8243613833
+Fitness:  27184.7868444
+166
+Distance 26.2880849082
+Fitness:  129283.836592
+167
+Distance 76.4095112932
+Fitness:  24136.2865839
+168
+Distance 24.8790274057
+Fitness:  29356.0339953
+169
+Distance 75.7575044669
+Fitness:  24235.600517
+170
+Distance 75.7546940153
+Fitness:  24236.1263346
+171
+Distance 58.2653659657
+Fitness:  26579.8471289
+172
+Distance 75.7458237768
+Fitness:  24236.9701804
+173
+Distance 81.5604450558
+Fitness:  23322.6938023
+174
+Distance 35.59454871
+Fitness:  28708.0281021
+175
+Distance 58.3651633845
+Fitness:  26568.6077031
+176
+Distance 6.67208706256
+Fitness:  229945.883254
+177
+Distance 7.06368579012
+Fitness:  229940.104343
+178
+Distance 26.1268964091
+Fitness:  29291.985284
+179
+Distance 25.0899094023
+Fitness:  29345.0964462
+180
+Distance 35.6647234915
+Fitness:  28702.9274983
+181
+Distance 75.3024640134
+Fitness:  24304.2389135
+182
+Distance 25.1636420852
+Fitness:  29341.491117
+183
+Distance 23.3404342332
+Fitness:  129430.22413
+184
+Distance 64.7702243596
+Fitness:  25779.3180364
+185
+Distance 52.7195838278
+Fitness:  27195.145481
+186
+Distance 69.7368950221
+Fitness:  25111.2654727
+87
+Distance 24.704380272
+Fitness:  29365.0935954
+101
+Distance 7.24818056595
+Fitness:  229937.263878
+Population's average fitness: 60595.82720 stdev: 71167.36837
+Best fitness: 229948.65977 - size: (5, 4) - species 1 - id 149
+Average adjusted fitness: 0.116
+Mean genetic distance 1.377, standard deviation 0.400
+Population of 30 members in 2 species:
+   ID   age  size  fitness  adj fit  stag
+  ====  ===  ====  =======  =======  ====
+     1    6    26  229948.7    0.213     1
+     2    6     4  29365.1    0.019     2
+Total extinctions: 0
+Generation time: 591.077 sec (613.677 average)
+
+ ****** Running generation 7 ****** 
+
+149
+Distance 6.03844620021
+Fitness:  229953.437167
+176
+Distance 6.95430426824
+Fitness:  229941.737652
+178
+Distance 25.701677287
+Fitness:  29314.3237846
+187
+Distance 89.412184069
+Fitness:  21980.46134
+188
+Distance 25.2131417143
+Fitness:  29338.9974849
+189
+Distance 91.9219337795
+Fitness:  21523.3580902
+190
+Distance 74.2281984863
+Fitness:  24464.7745495
+191
+Distance 74.094507423
+Fitness:  24484.7039697
+192
+Distance 76.2166168223
+Fitness:  24166.2273202
+193
+Distance 24.3863864768
+Fitness:  179380.604155
+194
+Distance 7.05119958027
+Fitness:  229940.380584
+195
+Distance 13.813803962
+Fitness:  229795.97882
+196
+Distance 52.8430727934
+Fitness:  27181.8096577
+197
+Distance 58.1887711062
+Fitness:  26589.2669172
+198
+Distance 24.9326450343
+Fitness:  29353.3632116
+199
+Distance 24.775580232
+Fitness:  179360.870624
+200
+Distance 86.0275698243
+Fitness:  22571.6572301
+201
+Distance 25.2271848715
+Fitness:  179338.589143
+202
+Distance 36.3404817927
+Fitness:  28654.1693831
+203
+Distance 35.7392197255
+Fitness:  28694.2081734
+204
+Distance 72.8352017576
+Fitness:  24669.7333849
+205
+Distance 60.8450390207
+Fitness:  26270.0812266
+206
+Distance 34.83317211
+Fitness:  178758.350121
+207
+Distance 33.5316910571
+Fitness:  178847.025695
+208
+Distance 24.5288964796
+Fitness:  29372.7332375
+209
+Distance 72.5814330489
+Fitness:  24706.4355766
+210
+Distance 24.7576542345
+Fitness:  129361.558557
+211
+Distance 52.9842826912
+Fitness:  27167.2657877
+212
+Distance 24.2572277058
+Fitness:  29386.486904
+87
+Distance 25.01658357
+Fitness:  29349.0705465
+Population's average fitness: 82463.92201 stdev: 81394.43889
+Best fitness: 229953.43717 - size: (5, 4) - species 1 - id 149
+Average adjusted fitness: 0.180
+Mean genetic distance 1.519, standard deviation 0.512
+Population of 30 members in 2 species:
+   ID   age  size  fitness  adj fit  stag
+  ====  ===  ====  =======  =======  ====
+     1    7    27  229953.4    0.333     0
+     2    7     3  29349.1    0.028     3
+Total extinctions: 0
+Generation time: 604.285 sec (612.503 average)
+
+ ****** Running generation 8 ****** 
+
+87
+Distance 32.8415566199
+Fitness:  28893.5321588
+149
+Distance 6.07354204449
+Fitness:  229952.612087
+176
+Distance 14.5515228806
+Fitness:  229773.653182
+188
+Distance 24.7983977461
+Fitness:  29360.2394692
+213
+Distance 35.8159572507
+Fitness:  28691.6172062
+214
+Distance 59.2294733142
+Fitness:  26466.3694909
+215
+Distance 83.6728400606
+Fitness:  22970.4558362
+216
+Distance 76.5452217477
+Fitness:  24115.6290276
+217
+Distance 33.5870862923
+Fitness:  28843.9076344
+218
+Distance 53.1239721901
+Fitness:  27152.2435788
+219
+Distance 27.2336061502
+Fitness:  179233.030696
+220
+Distance 58.0283036521
+Fitness:  26606.8159753
+221
+Distance 84.2461308551
+Fitness:  22874.789436
+222
+Distance 8.10410723814
+Fitness:  229924.423446
+223
+Distance 58.8953661922
+Fitness:  26506.3358411
+224
+Distance 25.3139863971
+Fitness:  179334.602093
+225
+Distance 76.6186497907
+Fitness:  24104.7825043
+226
+Distance 65.0058479264
+Fitness:  25749.2397354
+227
+Distance 24.6260748748
+Fitness:  29368.3564363
+228
+Distance 77.3223108127
+Fitness:  23995.9602506
+229
+Distance 24.1290412878
+Fitness:  29392.3893665
+230
+Distance 36.9130186336
+Fitness:  28612.3290554
+231
+Distance 25.7765362752
+Fitness:  29310.7701777
+232
+Distance 58.4839510345
+Fitness:  26554.9274714
+233
+Distance 25.4999844597
+Fitness:  29324.7507926
+234
+Distance 31.2333369679
+Fitness:  29000.0786618
+235
+Distance 35.655056721
+Fitness:  28703.6169302
+236
+Distance 24.1120444424
+Fitness:  179393.009313
+237
+Distance 75.756433899
+Fitness:  24235.5627229
+238
+Distance 6.11984285053
+Fitness:  229951.847523
+Population's average fitness: 69279.92927 stdev: 77624.60153
+Best fitness: 229952.61209 - size: (5, 4) - species 1 - id 149
+Average adjusted fitness: 0.138
+Mean genetic distance 1.500, standard deviation 0.524
+Population of 30 members in 2 species:
+   ID   age  size  fitness  adj fit  stag
+  ====  ===  ====  =======  =======  ====
+     1    8    25  229952.6    0.246     1
+     2    8     5  29360.2    0.029     4
+Total extinctions: 0
+Generation time: 603.567 sec (611.510 average)
+
+ ****** Running generation 9 ****** 
+
+256
+Distance 25.8611599043
+Fitness:  29306.2004084
+257
+Distance 58.1917628322
+Fitness:  26588.8187385
+258
+Distance 77.2654474175
+Fitness:  24005.1506354
+259
+Distance 82.4384379098
+Fitness:  23177.003955
+260
+Distance 68.666309356
+Fitness:  25259.7379594
+261
+Distance 79.4011204077
+Fitness:  23667.062078
+262
+Distance 30.6274187235
+Fitness:  29036.3612223
+263
+Distance 56.6150413556
+Fitness:  26769.4370923
+264
+Distance 52.7273287442
+Fitness:  27194.7288035
+149
+Distance 6.15015060938
+Fitness:  229952.075647
+188
+Distance 30.8480088822
+Fitness:  29021.500348
+87
+Distance 25.1810527764
+Fitness:  29340.7145811
+238
+Distance 6.40030908022
+Fitness:  229949.336044
+239
+Distance 24.9186173762
+Fitness:  29354.0625081
+240
+Distance 58.194893579
+Fitness:  26588.4543613
+241
+Distance 58.3286912969
+Fitness:  26572.9637716
+242
+Distance 74.8743783455
+Fitness:  24368.6274674
+243
+Distance 75.8988591518
+Fitness:  24214.0631794
+244
+Distance 7.77479225815
+Fitness:  229929.952605
+245
+Distance 35.3206529595
+Fitness:  28728.1514745
+246
+Distance 74.286761392
+Fitness:  24456.4770819
+247
+Distance 24.9008632239
+Fitness:  179355.147011
+248
+Distance 25.4769543225
+Fitness:  29325.9247985
+249
+Distance 25.6263795856
+Fitness:  29318.2886693
+250
+Distance 26.064136032
+Fitness:  29295.5608129
+251
+Distance 24.6813056931
+Fitness:  179365.933149
+252
+Distance 64.5516863076
+Fitness:  25807.7797948
+253
+Distance 24.2698417384
+Fitness:  129385.574782
+254
+Distance 25.6863312166
+Fitness:  29315.0123886
+255
+Distance 89.3808259806
+Fitness:  21985.767947
+Population's average fitness: 60687.86231 stdev: 69894.60647
+Best fitness: 229952.07565 - size: (5, 4) - species 1 - id 149
+Average adjusted fitness: 0.124
+Mean genetic distance 1.520, standard deviation 0.535
+Population of 30 members in 2 species:
+   ID   age  size  fitness  adj fit  stag
+  ====  ===  ====  =======  =======  ====
+     1    9    26  229952.1    0.217     2
+     2    9     4  29354.1    0.030     5
+Total extinctions: 0
+Generation time: 601.299 sec (610.489 average)
+
+ ****** Running generation 10 ****** 
+
+265
+Distance 58.3079688674
+Fitness:  26574.9807666
+266
+Distance 58.6204374132
+Fitness:  26538.5443175
+267
+Distance 23.0968198902
+Fitness:  79441.936911
+268
+Distance 26.3276497834
+Fitness:  179282.054857
+269
+Distance 25.0287913921
+Fitness:  179348.759601
+270
+Distance 24.1635698724
+Fitness:  29391.621891
+271
+Distance 30.0599896465
+Fitness:  29069.6970225
+272
+Distance 25.9313531915
+Fitness:  179302.464922
+273
+Distance 66.0400083448
+Fitness:  25611.7172978
+274
+Distance 58.0899426619
+Fitness:  26600.6585615
+275
+Distance 76.0711413946
+Fitness:  24188.4814469
+276
+Distance 9.02260514003
+Fitness:  229907.692596
+149
+Distance 5.77212430224
+Fitness:  229956.882581
+278
+Distance 58.6696966272
+Fitness:  26532.7666977
+279
+Distance 25.8488382189
+Fitness:  29306.9375627
+280
+Distance 58.4739915896
+Fitness:  26556.1923076
+281
+Distance 23.9764057191
+Fitness:  129399.731969
+282
+Distance 24.9806166037
+Fitness:  29350.8687941
+283
+Distance 25.5762836614
+Fitness:  29320.9537141
+284
+Distance 58.6411070148
+Fitness:  26536.1205681
+285
+Distance 26.1018047323
+Fitness:  29293.2957897
+286
+Distance 25.6647656577
+Fitness:  29316.0198037
+287
+Distance 25.7878566906
+Fitness:  29310.0864473
+288

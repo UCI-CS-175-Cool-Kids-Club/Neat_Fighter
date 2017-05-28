@@ -10,7 +10,7 @@ As stated before, the NEAT algorithm is a type of genetic algorithm created by K
 
 The idea of speciation is highly motivated by biological analogues.  Essentially, Stanley, et al. wanted to pursue the biological concept of sexual reproduction and chromosome crossover (where two successful genomes are combined to create a new, hopefully successful genome).  However, this concept proved difficult to implement for neuroevolution, since two equally-successful neural nets may have radically different *structures*, such that chromosome crossover is nonsensical and results in an unsuccessful offspring.  Previous solutions were just to give up on implementing this biologically analogous crossover by only implementing asexual reproduction, or to have the neural net's structure predetermined as a hyperparameter.  But Stanley did not give up.  Ken Stanley is a hardworking, persevering researching, and he (et al.) came up with this idea of speciation - in which genomes in the population are grouped together into species, by a similarity metric.  Only organisms within the same species are selected to mate with each other.
 
-![](genome.png)
+![Structure of an example net](pics/genome.png)
 
 
 ## Approach:
@@ -46,7 +46,7 @@ In future iterations of this project, we will be trying to increase the complexi
 
 Being an evolutionary algorithm, we are up against the whims of nature and RNG to chance us into better organisms.  Unfortunately, this means we must sit through hours of runs of plateaus, where each generation does not seem to be doing much better than the past.  Tweaking the rates of mutation should help us ameliorate this problem, and we will attack that in the following week.
 
-![](status_fitness.png)
+![](pics/status_fitness.png)
 
 ## Video
 https://youtu.be/JIFDQWoOt3M

@@ -137,14 +137,19 @@ class World:
     def _EvaluateGenome(self, genomes, config):
         for genome_id, genome in genomes:
             print "genome_id: ", genome_id
-            agents = [MalmoPython.AgentHost() for x in range(2)]
-            self._StartMission(agents)
-            neural_net = neat.nn.FeedForwardNetwork.create(genome, config)
-            agents_fighter = [Fighter(agents[i], neural_net) for i in range(2)]
-            genome.fitness = self._RunFighterParallel(*agents_fighter)
-            for i in agents:
-                del i
-            del agents_fighter
+            num_iter = 3
+            fitnesses = []
+            for i in range(num_iter):
+                agents = [MalmoPython.AgentHost() for x in range(2)]
+                self._StartMission(agents)
+                neural_net = neat.nn.FeedForwardNetwork.create(genome, config)
+                agents_fighter = [Fighter(agents[i], neural_net) for i in range(2)]
+                fitnesses.append(self._RunFighterParallel(*agents_fighter))
+                del agents
+                del agents_fighter
+                time.sleep(3)
+            print fitnesses
+            genome.fitness = min(fitnesses)
 
     def _RunFighterParallel(self, fighter1, fighter2):
         while fighter1.isRunning():
@@ -159,20 +164,19 @@ class World:
 
         agent2_world = fighter2.agent.getWorldState()
         agent2_data = json.loads(agent2_world.observations[-1].text)
-        #print "Agent 2 data: ", agent2_data
         damage = agent2_data.get(u'DamageTaken')
         mission_time = agent2_data.get(u'TotalTime')
         fighter1.fighter_result.SetInflictedDamage(damage)
         fighter1.fighter_result.SetMissionTime(mission_time)
+
         fitness = fighter1.fighter_result.GetFitness()
-        print "Fitness: ", fitness
         return fitness
 
     def _StartMission(self, agent_hosts):
         self.mission = GetMission()
         expId = str(uuid.uuid4())
         for i in range(len(agent_hosts)):
-            max_retries = 10
+            max_retries = 30
             for retry in range(max_retries):
                 try:
                     agent_hosts[i].startMission( self.mission, self.client_pool, MalmoPython.MissionRecordSpec(), i, expId )

@@ -7,6 +7,10 @@ from threading import Timer
 import math
 from AgentResult import AgentResult
 
+'''
+Fighter will holds all the definition of what our agents can do
+'''
+
 def angle(a1,a2,b1,b2):
     rt = math.atan2(b1-a1, b2-a2)
     return rt if rt >= 0 else rt + 2*math.pi
@@ -16,12 +20,6 @@ def angle_between_agents(a1,a2,yaw1,b1,b2):
     angl = angle(a1,a2,b1,b2)
     relative_angle = angl - yaw1 
     return (2 * math.pi) - ((relative_angle + math.pi)%(2*math.pi))
-
-ACTION_TIME = 0.2
-
-'''
-Fighter will holds all the definition of what our agents can do
-'''
 
 class Fighter:
     def __init__(self, agent_file, neural):
@@ -39,6 +37,9 @@ class Fighter:
                 return
             time.sleep(0.01)
         output = self.neural.activate(self._get_agent_state_input())
+
+        if self.mission_ended or not self.agent.peekWorldState().is_mission_running:
+            return
 
         self.agent.sendCommand("move {}".format(output[0]))
         self.agent.sendCommand("strafe {}".format(output[1]))
@@ -67,7 +68,3 @@ class Fighter:
         to_return[0] = to_return[0]/math.pi - 1
         to_return[1] = to_return[1]/7 - 1
         return to_return
-
-    def _perform_actions(self, actions):
-        pass
-

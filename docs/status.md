@@ -42,4 +42,5 @@ In the final project, we hope to completely implemented an arena in which we wil
 In future iterations of this project, we will be trying to increase the complexity of the environment such as adding TNT, lava, or blocks and items that forces the agent to avoid or utilize to increase its chance of winning the battle.
 
 
-
+## Video
+https://youtu.be/JIFDQWoOt3M

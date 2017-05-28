@@ -138,7 +138,16 @@ class World:
     def _EvaluateGenome(self, genomes, config):
         for genome_id, genome in genomes:
             print "genome_id: ", genome_id
-            agents = [MalmoPython.AgentHost() for x in range(2)]
+            agents = []
+            for i in range(2):
+                for i in range(10):
+                    try:
+                        new_agent = MalmoPython.AgentHost()
+                        break
+                    except:
+                        time.sleep(5)
+                agents.append(new_agent)
+
             self._StartMission(agents)
             neural_net = neat.nn.FeedForwardNetwork.create(genome, config)
             agents_fighter = [Fighter(agents[i], neural_net) for i in range(2)]

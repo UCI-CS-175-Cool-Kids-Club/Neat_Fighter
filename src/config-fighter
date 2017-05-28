@@ -20,7 +20,6 @@ conn_add_prob           = 0.2
 conn_delete_prob        = 0.2
 node_add_prob           = 0.2
 node_delete_prob        = 0.2
-<<<<<<< HEAD
 activation_default      = tanh
 activation_options      = tanh 
 activation_mutate_rate  = 0.2

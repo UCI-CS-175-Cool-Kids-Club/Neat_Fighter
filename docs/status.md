@@ -49,4 +49,4 @@ Being an evolutionary algorithm, we are up against the whims of nature and RNG t
 ![](pics/status_fitness.png)
 
 ## Video
-https://youtu.be/JIFDQWoOt3M
+[Super special awesome video](https://youtu.be/JIFDQWoOt3M)

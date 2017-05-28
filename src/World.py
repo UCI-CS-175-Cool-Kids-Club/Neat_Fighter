@@ -89,14 +89,8 @@ def GetMissionXML():
   <AgentSection mode="Adventure">
     <Name>Fighter2</Name>
     <AgentStart>
-
         <Inventory>
-            <InventoryItem slot="36" type="diamond_helmet" quantity="1" />
-            <InventoryItem slot="37" type="diamond_chestplate" quantity="1" />
-            <InventoryItem slot="38" type="diamond_leggings" quantity="1" />
-            <InventoryItem slot="39" type="diamond_boots" quantity="1" />
         </Inventory>
-
         <Placement pitch="0" x="9" y="1" yaw="''' + str(random.randint(0,360)) + '''" z="9"/>
     </AgentStart>
     <AgentHandlers>

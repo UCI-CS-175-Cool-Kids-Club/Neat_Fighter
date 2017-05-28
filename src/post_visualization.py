@@ -1,10 +1,11 @@
-FILENAME = "tanh_output.txt"
+FILENAME = "overnight_log4b.txt"
 #non_stochastic <---- long, learned to hit.
 #overnight_log <-- short (100ish genomes)
 #overnight_log2 <-- good length, 350+ genomes, 21ish generations, actually overnight.
 #overnight_log3 <-- 4 generations, 150ish genomes.  don't remember what this was.
 #overnight_log4
 #overnight_log4b <--- long, static positions, random orientations, chanced upon getting close, never learned to hit.
+#tanh_output <-- this one ran for long af but sucked
 runs = []
 generations = []
 

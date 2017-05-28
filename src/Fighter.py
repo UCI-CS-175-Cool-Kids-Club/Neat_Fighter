@@ -77,6 +77,6 @@ class Fighter:
         else:
             to_return.extend([0, 0])
 
-        to_return[0] = to_return[0]/math.pi - 1
-        to_return[1] = to_return[1]/7 - 1
+        #to_return[0] = to_return[0]/math.pi - 1
+        #to_return[1] = to_return[1]/7 - 1
         return to_return

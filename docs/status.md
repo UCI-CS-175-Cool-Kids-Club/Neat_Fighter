@@ -42,6 +42,18 @@ Our config-fighter file has all the configuration for the NEAT algorithms parame
 
 ## Evaluation: 
 
+![fitness_of_ea_org_ovr_time](pics/figure_1.png)
+
+![Running_max_fit_ovr_time](pics/figure_2.png)
+
+![Median_fit_of_ea_gen_ovr_time](pics/figure_3.png)
+
+![fitness_of_ea_org_ovr_time](pics/gen0_figure_1.png)
+
+![Running_max_fit_ovr_time](pics/gen0_figure_2.png)
+
+![Median_fit_of_ea_gen_ovr_time](pics/gen0_figure_3.png)
+
 ## Remaining Goals and Challenges:
 We see that our current prototype is limited in it’s scope and seems to be learning to face and approach the opponent but seldom does it attack and kill the opponent. We will be trying larger population sizes and longer runs to train our agent. Also our activation function could be improved where instead of using a relu, we could use a leaky relu which would allow us to obtain negative values.
  

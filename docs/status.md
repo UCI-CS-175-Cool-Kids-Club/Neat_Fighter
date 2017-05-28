@@ -42,6 +42,8 @@ Our config-fighter file has all the configuration for the NEAT algorithms parame
 
 ## Evaluation: 
 
+To evaluate our performance, we run our evolutionary program for 10 hours and see if the final generation has learned to kill the opponent.  So far, we have been unsuccessful at reaching this goal.  In the absence of complete success, we look at our bots' fitness throughout generations and see if there is a positive trend.  So far, we have been lackluster at reaching this goal.
+
 ![fitness_of_ea_org_ovr_time](pics/figure_1.png)
 
 ![Running_max_fit_ovr_time](pics/figure_2.png)
@@ -54,6 +56,8 @@ Our config-fighter file has all the configuration for the NEAT algorithms parame
 
 ![Median_fit_of_ea_gen_ovr_time](pics/gen0_figure_3.png)
 
+<p><img src="pics/status_fitness.png" alt="" style="width: 400px;"/></p>
+
 ## Remaining Goals and Challenges:
 We see that our current prototype is limited in it’s scope and seems to be learning to face and approach the opponent but seldom does it attack and kill the opponent. We will be trying larger population sizes and longer runs to train our agent. Also our activation function could be improved where instead of using a relu, we could use a leaky relu which would allow us to obtain negative values.
  
@@ -63,7 +67,6 @@ In future iterations of this project, we will be trying to increase the complexi
 
 Being an evolutionary algorithm, we are up against the whims of nature and RNG to chance us into better organisms.  Unfortunately, this means we must sit through hours of runs of plateaus, where each generation does not seem to be doing much better than the past.  Tweaking the rates of mutation should help us ameliorate this problem, and we will attack that in the following week.
 
-<p><img src="pics/status_fitness.png" alt="" style="width: 400px;"/></p>
 
 ## Video
 

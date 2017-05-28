@@ -72,4 +72,4 @@ Being an evolutionary algorithm, we are up against the whims of nature and RNG t
 
 ## Video
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/JIFDQWoOt3M" frameborder="0" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://youtu.be/dTqHiJ8plOs" frameborder="0" allowfullscreen></iframe>

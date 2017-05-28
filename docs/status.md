@@ -58,8 +58,10 @@ To evaluate our performance, we run our evolutionary program for 10 hours and se
 
 <p><img src="pics/status_fitness.png" alt="" style="width: 400px;"/></p>
 
+The graphs above illustrates our fitness over different generations and within specific generations. From this data, we can tell that the evolution is not doing well at all. In fact, NEAT does worse as time goes on. This could be attributed to multiple of things. We suspect that it is because our population size is not big enough. Originally, we ran this with a population size of 30 but that might not be enough to encourage good breeding of species between generations. However due to the slow testing speed of this project overall, we do not have a good overall result prepared.
+
 ## Remaining Goals and Challenges:
-We see that our current prototype is limited in it’s scope and seems to be learning to face and approach the opponent but seldom does it attack and kill the opponent. We will be trying larger population sizes and longer runs to train our agent. Also our activation function could be improved where instead of using a relu, we could use a leaky relu which would allow us to obtain negative values.
+We see that our current prototype is limited in it’s scope seldom does it attack and kill the opponent. We will be trying larger population sizes and longer runs to train our agent. Our current activation function could be improved, instead of using a relu, we could use a leaky relu which would allow us to obtain negative values.
  
 In the final project, we hope to completely implemented an arena in which we will be training two agent simultaneously and it will learn to kill the opponent instead of simply locating a static position opponent and running at it. To expand, we hope for the agent to learn how to aim (with a sword and a bow), dodge, and navigate through the environment.
  

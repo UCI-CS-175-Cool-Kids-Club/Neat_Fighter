@@ -20,10 +20,16 @@ We used a NEAT python library (https://github.com/CodeReclaimers/neat-python) to
 ## Environment
 10 x 10 x 4 diamond blocks enclosure 
 
+![Environment](pics/10X10X10.png)
+
 ## Different Approaches
 Without armor 
 
+![without_armor](pics/world_no_armor.png)
+
 With Diamond armor and 10 x 5 x 4 diamond block enclosure, giving the opponent regenerative health.
+
+![Diamond_armor](pics/diamond.png)
 
 Our fighter class can make four continuous moves: move, strafe, turn, and attack. It decides these commands based on the neural net’s output.  There are two inputs to the neural net: the agent's distance to the other agent, and the agent's angle to the other agent.
 

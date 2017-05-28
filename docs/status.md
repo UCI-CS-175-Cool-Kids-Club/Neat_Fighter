@@ -2,6 +2,10 @@
 layout: default
 title:  Status
 ---
+## Video
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ND62gIA778U" frameborder="0" allowfullscreen></iframe>
+
 ## Project Summary:
 The goal of our project is to train an agent to fight in a 1v1 scenario. We would like our bots to evolve to learn to kill the opposing agent.  We are using a Neuroevolution algorithm, which is a form of machine learning that uses genetic algorithms to evolve the structure and edge-weights of neural networks. More specifically, we are using the NeuroEvolution of Augmenting Topologies (NEAT) algorithm which was created by Ken Stanley in 2002 while he was at The University of Texas Austin. We use the distance between both agents and the damage inflicted in our fitness function. We want to decrease the distance between the agents, so it learns to get close to the opponent as well as increase the damage it inflicts onto the opponent.
 
@@ -70,6 +74,3 @@ In future iterations of this project, we will be trying to increase the complexi
 Being an evolutionary algorithm, we are up against the whims of nature and RNG to chance us into better organisms.  Unfortunately, this means we must sit through hours of runs of plateaus, where each generation does not seem to be doing much better than the past.  Tweaking the rates of mutation should help us ameliorate this problem, and we will attack that in the following week.
 
 
-## Video
-
-<iframe width="560" height="315" src="https://www.youtube.com/watch?v=dTqHiJ8plOs&feature=youtu.be" frameborder="0" allowfullscreen></iframe>

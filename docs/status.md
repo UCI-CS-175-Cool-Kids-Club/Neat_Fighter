@@ -93,6 +93,9 @@ class AgentResult:
  
 Our config-fighter file has all the configuration for the NEAT algorithms parameters. We used a population size of 100 with two inputs (relative angle to the enemy and distance) and one hidden input. As of current, we are using relu for our activation function but there are other options available to fine tune the learning process. The neat-python library allows us to specify mutation rate, probabilities of adding or removing an edge or node, aggregation in the neural nets, and much more. 
 
+
+![NEAT_Config](pics/NEAT_Config_Image.png)
+
 ## Evaluation: 
 
 To evaluate our performance, we run our evolutionary program for 10 hours and see if the final generation has learned to kill the opponent.  So far, we have been unsuccessful at reaching this goal.  In the absence of complete success, we look at our bots' fitness throughout generations and see if there is a positive trend.  So far, we have been lackluster at reaching this goal.
@@ -108,6 +111,8 @@ To evaluate our performance, we run our evolutionary program for 10 hours and se
 ![Running_max_fit_ovr_time](pics/gen0_figure_2.png)
 
 ![Median_fit_of_ea_gen_ovr_time](pics/gen0_figure_3.png)
+
+![Progress](pics/18766898_10207011941297448_98452268_o.png)
 
 <p><img src="pics/status_fitness.png" alt="" style="width: 400px;"/></p>
 

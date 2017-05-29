@@ -37,12 +37,61 @@ With Diamond armor and 10 x 5 x 4 diamond block enclosure, giving the opponent r
 
 Our fighter class can make four continuous moves: move, strafe, turn, and attack. It decides these commands based on the neural net’s output.  There are two inputs to the neural net: the agent's distance to the other agent, and the agent's angle to the other agent.
 
+```python
+    def run(self):
+        while self.agent.peekWorldState().number_of_observations_since_last_state == 0:
+            if not self.isRunning():
+                return
+            time.sleep(0.01)
+        agent_state_input = self._get_agent_state_input()
+        scaled_state_input = scale_state_inputs(agent_state_input)
+        output = self.neural.activate(scaled_state_input)
+        if DEBUGGING:
+            print("angle {:.2f}; dist {:.2f};   move {:.3f}; strafe {:.3f}; turn {:.3f}; attack {:.3f}".format(*(agent_state_input + output)))
+        if self.mission_ended or not self.agent.peekWorldState().is_mission_running:
+            return
+        self.agent.sendCommand("move {}".format(output[0]))
+        self.agent.sendCommand("strafe {}".format(output[1]))
+        self.agent.sendCommand("turn {}".format(output[2]))
+        self.agent.sendCommand("attack {}".format(0 if output[3] <= 0 else 1))
+```
+
 These calculated values are then passed to AgentResult which we use as our fitness function. This assigns a fitness to each genome by giving it a scaled reward for inflicting damage and punishes the agent for elapsed time and the distance between the agent and the enemy.
+
+```python
+INFLICTED_DAMAGE_SCALE = 2#40
+TIME_SCALE = 0.01#1
+DISTANCE_SCALE = 0.01#100
+
+class AgentResult:
+	def __init__(self):
+		self.last_time = time()
+		self.distance_area = 0.0
+		self.inflicted_damage = 0
+		self.mission_time = 0
+
+	def AppendDistance(self,distance):
+		cur_time = time()
+		time_dif = cur_time - self.last_time
+		self.distance_area += time_dif * distance
+		self.last_time = cur_time
+
+	def GetFitness(self):
+		# To track progress 
+		print "Distance: ", self.distance_area
+		print "Inflicted Damage: ", self.inflicted_damage
+		return self.inflicted_damage * INFLICTED_DAMAGE_SCALE - (self.mission_time * TIME_SCALE) - DISTANCE_SCALE * self.distance_area
+
+	def SetInflictedDamage(self, damage):
+		self.inflicted_damage = damage
+
+	def SetMissionTime(self, time):
+		self.mission_time = time
+```
  
 ## NEAT Configuration
  
-Our config-fighter file has all the configuration for the NEAT algorithms parameters. We used a population size of 30 with two inputs (relative angle to the enemy and distance) and one hidden input. As of current, we are using relu for our activation function but there are other options available to fine tune the learning process. The neat-python library allows us to specify mutation rate, probabilities of adding or removing an edge or node, aggregation in the neural nets, and much more. 
-
+Our config-fighter file has all the configuration for the NEAT algorithms parameters. We used a population size of 100 with two inputs (relative angle to the enemy and distance) and one hidden input. As of current, we are using relu for our activation function but there are other options available to fine tune the learning process. The neat-python library allows us to specify mutation rate, probabilities of adding or removing an edge or node, aggregation in the neural nets, and much more. 
 
 ## Evaluation: 
 

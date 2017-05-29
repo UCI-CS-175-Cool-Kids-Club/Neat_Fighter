@@ -14,6 +14,7 @@ title:  Home
 
 ## Some useful links :
 [Link to a NEAT paper](http://nn.cs.utexas.edu/downloads/papers/stanley.ec02.pdf)
+
 [Evolution Strategies](https://blog.openai.com/evolution-strategies/)
 
 ## We made a bot that learns to fight

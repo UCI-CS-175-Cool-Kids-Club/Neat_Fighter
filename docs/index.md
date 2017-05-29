@@ -8,7 +8,11 @@ title:  Home
 
 
 ## Github:
-https://github.com/UCI-CS-175-Cool-Kids-Club/Neat_Fighter
+[Link to the Repository](https://github.com/UCI-CS-175-Cool-Kids-Club/Neat_Fighter)
+
 
 ## Evolving Neural Networks through Augmenting Topologies:
-http://nn.cs.utexas.edu/downloads/papers/stanley.ec02.pdf
+[Link to a NEAT paper](http://nn.cs.utexas.edu/downloads/papers/stanley.ec02.pdf)
+
+## We made a bot that learns to fight
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ND62gIA778U" frameborder="0" allowfullscreen></iframe>

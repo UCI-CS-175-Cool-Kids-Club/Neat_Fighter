@@ -100,18 +100,6 @@ Our config-fighter file has all the configuration for the NEAT algorithms parame
 
 To evaluate our performance, we run our evolutionary program for 10 hours and see if the final generation has learned to kill the opponent.  So far, we have been unsuccessful at reaching this goal.  In the absence of complete success, we look at our bots' fitness throughout generations and see if there is a positive trend.  So far, we have been lackluster at reaching this goal.
 
-![fitness_of_ea_org_ovr_time](pics/figure_1.png)
-
-![Running_max_fit_ovr_time](pics/figure_2.png)
-
-![Median_fit_of_ea_gen_ovr_time](pics/figure_3.png)
-
-![fitness_of_ea_org_ovr_time](pics/gen0_figure_1.png)
-
-![Running_max_fit_ovr_time](pics/gen0_figure_2.png)
-
-![Median_fit_of_ea_gen_ovr_time](pics/gen0_figure_3.png)
-
 ![Progress](pics/18766898_10207011941297448_98452268_o.png)
 
 <p><img src="pics/status_fitness.png" alt="" style="width: 400px;"/></p>

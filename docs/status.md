@@ -102,8 +102,6 @@ To evaluate our performance, we run our evolutionary program for 10 hours and se
 
 ![Progress](pics/18766898_10207011941297448_98452268_o.png)
 
-<p><img src="pics/status_fitness.png" alt="" style="width: 400px;"/></p>
-
 The graphs above illustrates our fitness over different generations and within specific generations. From this data, we can tell that the evolution is not doing well at all. In fact, NEAT does worse as time goes on. This could be attributed to multiple of things. We suspect that it is because our population size is not big enough. Originally, we ran this with a population size of 30 but that might not be enough to encourage good breeding of species between generations. However due to the slow testing speed of this project overall, we do not have a good overall result prepared.
 
 ## Remaining Goals and Challenges:

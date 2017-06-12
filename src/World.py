@@ -172,6 +172,7 @@ class World:
         fighter1.fighter_result.SetMissionTime(mission_time)
 
         fitness = fighter1.fighter_result.GetFitness()
+        print "Fitness: ", fitness
         return fitness
 
     def _StartMission(self, agent_hosts):

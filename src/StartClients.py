@@ -9,18 +9,34 @@ sys.path.insert(0, '../neat-python')
 import neat
 import pickle
 import visualize
+from IPy import IP
+from collections import Counter
 
 
 def SetupClientPools():
     client_pool = MalmoPython.ClientPool()
-    for x in xrange(10000, 10000 + 2):
-        client_pool.add(MalmoPython.ClientInfo('127.0.0.1', x))
-    return client_pool
+    num_clients = 0
+    if (len(sys.argv) == 1):
+        for i in range(2):
+            client_pool.add(MalmoPython.ClientInfo('127.0.0.1', 10000+i))
+            num_clients += 1
+    else:
+        clientCounter = Counter(sys.argv[1:])
+        for client in clientCounter:
+            try:
+                IP(str(client))
+                for i in range(clientCounter[client]):
+                    client_pool.add(MalmoPython.ClientInfo(str(client), 10000+i))
+                    num_clients += 1
+            except Exception as e:
+                print "IP: {} is an invalid address".format(sys.argv[i])
 
-def InitalizeAgents():
-    #my_mission = GetMission()
-    client_pool = SetupClientPools()
-    return client_pool#, my_mission
+        if num_clients < 2:
+            class NotEnoughClientsException(Exception):
+                pass
+            raise NotEnoughClientsException("Not enough exception passed as a command line argument")
+    
+    return client_pool, num_clients
 
 def InitalizeNEAT():
     local_dir = os.path.dirname(__file__)
@@ -30,7 +46,7 @@ def InitalizeNEAT():
     return pop, config
 
 if __name__ == "__main__":
-    world = World(InitalizeAgents())
+    world = World(*SetupClientPools())
     population, config = InitalizeNEAT()
     population.add_reporter(neat.StdOutReporter(True))
     population.add_reporter(neat.Checkpointer(1,900))

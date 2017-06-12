@@ -156,28 +156,23 @@ class World:
             for error in fighter2.agent.peekWorldState().errors:
                 print "Fighter 2 Error:",error.text
 
-        while fighter2.agent.peekWorldState().number_of_observations_since_last_state == 0 or \
-            fighter1.agent.peekWorldState().number_of_observations_since_last_state == 0:
-            pass
-
-        agent2_world = fighter2.agent.getWorldState()
-        agent2_data = json.loads(agent2_world.observations[-1].text)
-        agent1_world = fighter1.agent.getWorldState()
-        agent1_data = json.loads(agent1_world.observations[-1].text)
-
-        fighter1_damage = agent2_data.get(u'DamageTaken')
-        fighter1_mission_time = agent1_data.get(u'TotalTime')
+        fighter1_damage = fighter2.data.get(u'DamageTaken')
+        fighter1_mission_time = fighter1.data.get(u'TotalTime')
         fighter1.fighter_result.SetInflictedDamage(fighter1_damage)
         fighter1.fighter_result.SetMissionTime(fighter1_mission_time)
 
-        fighter2_damage = agent1_data.get(u'DamageTaken')
-        fighter2_mission_time = agent2_data.get(u'TotalTime')
+        fighter2_damage = fighter1.data.get(u'DamageTaken')
+        fighter2_mission_time = fighter2.data.get(u'TotalTime')
         fighter2.fighter_result.SetInflictedDamage(fighter2_damage)
         fighter2.fighter_result.SetMissionTime(fighter2_mission_time)
-        print "fighter_1_Fitness: ", fighter1_fitness
-        print "fighter_2_Fitness: ", fighter2_fitness
+
         fighter1_fitness = fighter1.fighter_result.GetFitness()
         fighter2_fitness = fighter2.fighter_result.GetFitness()
+
+        if DEBUGGING:
+            print "fighter_1_Fitness: ", fighter1_fitness
+            print "fighter_2_Fitness: ", fighter2_fitness
+
         return max(fighter1_fitness, fighter2_fitness)
 
     def _StartMission(self, agent_hosts):
@@ -189,8 +184,8 @@ class World:
                     agent_hosts[i].startMission(self.mission, self.client_pool, MalmoPython.MissionRecordSpec(), i, expId )
                     break
                 except RuntimeError as e:
-                    print "Failed to start mission: retrying again in 5 seconds"
-                    time.sleep(5)
+                    print "Failed to start mission: retrying again in 1 seconds"
+                    time.sleep(1)
 
         hasBegun = 0
         hadErrors = False

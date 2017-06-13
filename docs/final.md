@@ -22,18 +22,23 @@ The idea of speciation is highly motivated by biological analogues.  Essentially
 
 ## Approaches
 
-__High Level: Before we go into the nitty gritty just wanted to explain how this is broken down. In Part I we explain how we setup our environment and different approaches we used. Part II we go into how we trained both of our agents and walk through the code. Lets get started.
+__High Level<br>: Before we go into the nitty gritty just wanted to explain how this is broken down. In Part I we explain how we setup our environment and different approaches we used. Part II we go into how we trained both of our agents and walk through the code. Lets get started.
 
-__Part I: Environment setup: We created our world using Project Malmo we tired running our project on different sized worlds with different setups. 
+__Part I: Environment setup<br> We created our world using Project Malmo we tired running our project on different sized worlds with different setups. 
 
-- _10x10x4 Diamond Block Enclosure_: This was our initial approach we thought if we give our agent a big enough arena. Over multiple generations we would clearly see if our agent is learning or not.
+- _10x10x4 Diamond Block Arena, No Armor_: This was our initial approach we thought if we give our agent a big enough arena. Over multiple generations we would clearly see if our agent is learning or not.
 
-- _10x5x4 Diamond Block Enclosure_: This was our second iteration on our environment. We wanted to test out different areas to see how greatly it would affect our agent. Our thought process was the smaller the arena the faster the agent would at first randomly hit the opponent. Which in turn would result in a better agent after the course of multiple generations. 
+![Environment](pics/10x10_No_Armor.png)
 
-- _6x6x4 Diamond Block Enclosure_: Again we tried making our area smaller for the same reasons stated above. 
+- _10x5x4 Diamond Block Enclosure, No Armor_: This was our second iteration on our environment. We wanted to test out different areas to see how greatly it would affect our agent. Our thought process was the smaller the arena the faster the agent would at first randomly hit the opponent. Which in turn would result in a better agent after the course of multiple generations. 
+
+![Environment2](pics/10x10_No_Armor.png)
+
+- _10x5x4 Diamond Block Enclosure, with Armor_: Again we tried making our area smaller for the same reasons stated above. 
 
 Our results after comparing across final generations did not prove our hypothesis. There was no obvious direct correlation between the size of the area and how well our final generation preformed. It should be stated that this was only true at our scale testing. 
 
+![Environment3](pics/6x4_Armor.png)
 
 __Part II: Training:
 Our fighter class can make four continuous moves: move, strafe, turn, and attack. It decides these commands based on the neural net’s output.  There are two inputs to the neural net: the agent's distance to the other agent, and the agent's angle to the other agent.

@@ -22,9 +22,11 @@ The idea of speciation is highly motivated by biological analogues.  Essentially
 
 ## Approaches
 
-# High Level: Before we go into the nitty gritty just wanted to explain how this is broken down. In Part I we explain how we setup our environment and different approaches we used. Part II we go into how we trained both of our agents and walk through the code. Lets get started.
+__High Level__<br> 
+Before we go into the nitty gritty just wanted to explain how this is broken down. In Part I we explain how we setup our environment and different approaches we used. Part II we go into how we trained both of our agents and walk through the code. Lets get started.
 
-# Part I<br> Environment setup We created our world using Project Malmo we tired running our project on different sized worlds with different setups. 
+__Part I__<br> 
+Environment setup We created our world using Project Malmo we tired running our project on different sized worlds with different setups. 
 
 - _10x10x4 Diamond Block Arena, No Armor_: This was our initial approach we thought if we give our agent a big enough arena. Over multiple generations we would clearly see if our agent is learning or not.
 
@@ -40,7 +42,7 @@ Our results after comparing across final generations did not prove our hypothesi
 
 ![Environment3](pics/6x4_Armor.png)
 
-__Part II: Training:
+__Part II Training__<br>
 Our fighter class can make four continuous moves: move, strafe, turn, and attack. It decides these commands based on the neural net’s output.  There are two inputs to the neural net: the agent's distance to the other agent, and the agent's angle to the other agent.
 
 ```python

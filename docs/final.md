@@ -22,9 +22,9 @@ The idea of speciation is highly motivated by biological analogues.  Essentially
 
 ## Approaches
 
-__High Level<br>: Before we go into the nitty gritty just wanted to explain how this is broken down. In Part I we explain how we setup our environment and different approaches we used. Part II we go into how we trained both of our agents and walk through the code. Lets get started.
+# High Level: Before we go into the nitty gritty just wanted to explain how this is broken down. In Part I we explain how we setup our environment and different approaches we used. Part II we go into how we trained both of our agents and walk through the code. Lets get started.
 
-__Part I: Environment setup<br> We created our world using Project Malmo we tired running our project on different sized worlds with different setups. 
+# Part I<br> Environment setup We created our world using Project Malmo we tired running our project on different sized worlds with different setups. 
 
 - _10x10x4 Diamond Block Arena, No Armor_: This was our initial approach we thought if we give our agent a big enough arena. Over multiple generations we would clearly see if our agent is learning or not.
 
@@ -32,7 +32,7 @@ __Part I: Environment setup<br> We created our world using Project Malmo we tire
 
 - _10x5x4 Diamond Block Enclosure, No Armor_: This was our second iteration on our environment. We wanted to test out different areas to see how greatly it would affect our agent. Our thought process was the smaller the arena the faster the agent would at first randomly hit the opponent. Which in turn would result in a better agent after the course of multiple generations. 
 
-![Environment2](pics/10x10_No_Armor.png)
+![Environment2](pics/6x6x4 No Diamond.png)
 
 - _10x5x4 Diamond Block Enclosure, with Armor_: Again we tried making our area smaller for the same reasons stated above. 
 

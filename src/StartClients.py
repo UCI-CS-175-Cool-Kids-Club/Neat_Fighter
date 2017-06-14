@@ -9,7 +9,7 @@ sys.path.insert(0, '../neat-python')
 import neat
 import pickle
 import visualize
-from IPy import IP
+#from IPy import IP
 from collections import Counter
 
 
@@ -24,7 +24,7 @@ def SetupClientPools():
         clientCounter = Counter(sys.argv[1:])
         for client in clientCounter:
             try:
-                IP(str(client))
+                #IP(str(client))
                 for i in range(clientCounter[client]):
                     client_pool.add(MalmoPython.ClientInfo(str(client), 10000+i))
                     num_clients += 1

@@ -154,7 +154,7 @@ class World:
             del agents_fighter
 
     def _RunFighters(self, fighter1, fighter2):
-        while fighter1.isRunning() and fighter2.isRunning():
+        while fighter1.isRunning() or fighter2.isRunning():
             fighter1.run()
             fighter2.run()
             time.sleep(0.2)

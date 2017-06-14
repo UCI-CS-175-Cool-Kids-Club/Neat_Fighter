@@ -13,6 +13,8 @@ import json
 import pickle
 from Fighter import Fighter
 from runtime_configs import DEBUGGING
+from itertools import izip
+from random import shuffle
 
 sys.path.insert(0, '../neat-python')
 import neat
@@ -111,6 +113,9 @@ def GetMissionXML():
 </Mission> '''
     return mission_xml
 
+def pairwise(iterable):
+    a = iter(iterable)
+    return izip(a, a)
 
 def GetMission():
     mission_xml = GetMissionXML()
@@ -132,18 +137,20 @@ class World:
         return
 
     def _EvaluateGenome(self, genomes, config):
-        for genome_id, genome in genomes:
-            print "genome_id: ", genome_id
+        shuffle(genomes)
+        for g1, g2 in pairwise(genomes):
+            genome1_id, genome1 = g1
+            genome2_id, genome2 = g2
+            if (DEBUGGING):
+                print "Running genome {} and genome {}".format(genome1_id, genome2_id)
             agents = [MalmoPython.AgentHost() for i in range(2)]
             self._StartMission(agents)
-            neural_net = neat.nn.FeedForwardNetwork.create(genome, config)
-            agents_fighter = [Fighter(agents[i], neural_net) for i in range(2)]
-            genome.fitness = self._RunFighters(*agents_fighter)
+            agents_fighter = [Fighter(agents[0], neat.nn.FeedForwardNetwork.create(genome1, config)), Fighter(agents[1], neat.nn.FeedForwardNetwork.create(genome2,config))]
+            genome1.fitness, genome2.fitness = self._RunFighters(*agents_fighter)
             if DEBUGGING:
-                print("printing the genome:")
-                print(genome)
-            for i in agents:
-                del i
+                print("printing the genomes")
+                print genome1, genome2
+            del agents
             del agents_fighter
 
     def _RunFighters(self, fighter1, fighter2):
@@ -173,7 +180,7 @@ class World:
             print "fighter_1_Fitness: ", fighter1_fitness
             print "fighter_2_Fitness: ", fighter2_fitness
 
-        return max(fighter1_fitness, fighter2_fitness)
+        return fighter1_fitness, fighter2_fitness
 
     def _StartMission(self, agent_hosts):
         self.mission = GetMission()

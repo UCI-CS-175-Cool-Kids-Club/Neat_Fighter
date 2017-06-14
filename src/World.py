@@ -36,7 +36,7 @@ def GetMissionXML():
             <AllowSpawning>false</AllowSpawning>
     </ServerInitialConditions>
     <ServerHandlers>
-      <FlatWorldGenerator generatorString="3;1*minecraft:grass;1" forceReset="0"/>
+      <FlatWorldGenerator generatorString="3;1*minecraft:grass;1" forceReset="1"/>
       <DrawingDecorator>
             <DrawLine type="diamond_block" y1="1" y2="1" x1="0" x2="11" z1="0" z2="0" />
             <DrawLine type="diamond_block" y1="1" y2="1" x1="0" x2="0" z1="0" z2="11" />

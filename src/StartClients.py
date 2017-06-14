@@ -40,7 +40,7 @@ if __name__ == "__main__":
         if len(sys.argv) == 2:
             population, config = neat.Checkpointer.restore_checkpoint(str(sys.argv[1])), InitalizeNeatConfig()
         else:
-            population, config = InitalizeNEAT()
+            population, config = InitalizeNEATPopulation()
         population.add_reporter(neat.StdOutReporter(True))
         population.add_reporter(neat.Checkpointer(1,900))
         stats = neat.StatisticsReporter()

@@ -51,6 +51,9 @@ class Fighter:
         self.world_state = self.agent.getWorldState()
         self.data = json.loads(self.world_state.observations[-1].text)
 
+        if self.neural == None:
+            return
+
         agent_state_input = self._get_agent_state_input()
         scaled_state_input = scale_state_inputs(agent_state_input)
         output = self.neural.activate(scaled_state_input)

@@ -14,7 +14,6 @@ import pickle
 from Fighter import Fighter
 from runtime_configs import DEBUGGING
 from itertools import izip
-from random import shuffle
 
 sys.path.insert(0, '../neat-python')
 import neat
@@ -126,30 +125,32 @@ class World:
     def __init__(self, client_pool, num_clients): 
         self.client_pool = client_pool
         self.num_clients = num_clients
+        self.best_genome = None
 
     def train(self, population):
         i = 0
         while True:
             i += 1
-            rt = population.run(self._EvaluateGenome, 1)
+            self.best_genome = population.run(self._EvaluateGenome, 1)
             with open('gen-{}-winner'.format(5 * i), 'wb') as f:
-                pickle.dump(rt, f)
-        return
+                pickle.dump(self.best_genome, f)
+        return self.best_genome
 
     def _EvaluateGenome(self, genomes, config):
-        shuffle(genomes)
-        for g1, g2 in pairwise(genomes):
-            genome1_id, genome1 = g1
-            genome2_id, genome2 = g2
+        for genome_id, genome in genomes:
             if (DEBUGGING):
-                print "Running genome {} and genome {}".format(genome1_id, genome2_id)
+                print "Running genome {}".format(genome_id)
             agents = [MalmoPython.AgentHost() for i in range(2)]
             self._StartMission(agents)
-            agents_fighter = [Fighter(agents[0], neat.nn.FeedForwardNetwork.create(genome1, config)), Fighter(agents[1], neat.nn.FeedForwardNetwork.create(genome2,config))]
-            genome1.fitness, genome2.fitness = self._RunFighters(*agents_fighter)
+            if self.best_genome != None:
+                agents_fighter = [Fighter(agents[0], neat.nn.FeedForwardNetwork.create(genome, config)), Fighter(agents[1], neat.nn.FeedForwardNetwork.create(self.best_genome,config))]
+            else:
+                agents_fighter = [Fighter(agents[0], neat.nn.FeedForwardNetwork.create(genome, config)), Fighter(agents[1], None)]
+            genome.fitness = self._RunFighters(*agents_fighter)
+
             if DEBUGGING:
                 print("printing the genomes")
-                print genome1, genome2
+                print genome
             del agents
             del agents_fighter
 
@@ -163,18 +164,15 @@ class World:
             for error in fighter2.agent.peekWorldState().errors:
                 print "Fighter 2 Error:",error.text
 
-        fighter1_damage = fighter2.data.get(u'DamageTaken')
+        fighter1_damage_inflicted = fighter2.data.get(u'DamageTaken')
+        fighter1_damage_taken = fighter1.data.get(u'DamageTaken')
         fighter1_mission_time = fighter1.data.get(u'TotalTime')
-        fighter1.fighter_result.SetInflictedDamage(fighter1_damage)
+        fighter1.fighter_result.SetDamageInflicted(fighter1_damage_inflicted)
         fighter1.fighter_result.SetMissionTime(fighter1_mission_time)
-
-        fighter2_damage = fighter1.data.get(u'DamageTaken')
-        fighter2_mission_time = fighter2.data.get(u'TotalTime')
-        fighter2.fighter_result.SetInflictedDamage(fighter2_damage)
-        fighter2.fighter_result.SetMissionTime(fighter2_mission_time)
-
+        fighter1.fighter_result.SetDamageTaken(fighter1_damage_taken)
         fighter1_fitness = fighter1.fighter_result.GetFitness()
-        fighter2_fitness = fighter2.fighter_result.GetFitness()
+
+        return fighter1_fitness
 
         if DEBUGGING:
             print "fighter_1_Fitness: ", fighter1_fitness

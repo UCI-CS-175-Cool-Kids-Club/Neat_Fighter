@@ -9,7 +9,7 @@ sys.path.insert(0, '../neat-python')
 import neat
 import pickle
 import visualize
-#from IPy import IP
+from IPy import IP
 from collections import Counter
 
 
@@ -24,7 +24,7 @@ def SetupClientPools():
         clientCounter = Counter(sys.argv[1:])
         for client in clientCounter:
             try:
-                #IP(str(client))
+                IP(str(client))
                 for i in range(clientCounter[client]):
                     client_pool.add(MalmoPython.ClientInfo(str(client), 10000+i))
                     num_clients += 1
@@ -81,8 +81,6 @@ if __name__ == "__main__":
                        filename="winner-feedforward-enabled-pruned.gv", show_disabled=False, prune_unused=True)
 
 
-    '''
-        # Save the winner.
     with open('winner-feedforward', 'wb') as f:
         pickle.dump(winner, f)
 
@@ -100,7 +98,6 @@ if __name__ == "__main__":
                        filename="winner-feedforward-enabled.gv", show_disabled=False)
     visualize.draw_net(config, winner, view=True, node_names=node_names,
                        filename="winner-feedforward-enabled-pruned.gv", show_disabled=False, prune_unused=True)
-    '''
 
 
 

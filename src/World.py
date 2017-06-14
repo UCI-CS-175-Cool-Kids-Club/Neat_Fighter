@@ -122,9 +122,8 @@ def GetMission():
     return my_mission
 
 class World:
-    def __init__(self, client_pool, num_clients): 
+    def __init__(self, client_pool): 
         self.client_pool = client_pool
-        self.num_clients = num_clients
         self.best_genome = None
 
     def train(self, population):
@@ -132,27 +131,31 @@ class World:
         while True:
             i += 1
             self.best_genome = population.run(self._EvaluateGenome, 1)
-            with open('gen-{}-winner'.format(5 * i), 'wb') as f:
+            with open('gen-{}-winner'.format(i), 'wb') as f:
                 pickle.dump(self.best_genome, f)
         return self.best_genome
+
+    def StartFight(self,genome1, genome2, config):
+        agents, agents_fighter = self._SetupFighters(genome1, genome2, config)
+        self._RunFighters(*agents_fighter)
+
+    def _SetupFighters(self, genome1, genome2, config):
+        agents = [MalmoPython.AgentHost() for i in range(2)]
+        self._StartMission(agents)
+        agents_fighter = [Fighter(agents[0], neat.nn.FeedForwardNetwork.create(genome1, config)), Fighter(agents[1], neat.nn.FeedForwardNetwork.create(genome2,config))]
+        return agents, agents_fighter
 
     def _EvaluateGenome(self, genomes, config):
         for genome_id, genome in genomes:
             if (DEBUGGING):
                 print "Running genome {}".format(genome_id)
-            agents = [MalmoPython.AgentHost() for i in range(2)]
-            self._StartMission(agents)
-            if self.best_genome != None:
-                agents_fighter = [Fighter(agents[0], neat.nn.FeedForwardNetwork.create(genome, config)), Fighter(agents[1], neat.nn.FeedForwardNetwork.create(self.best_genome,config))]
-            else:
-                agents_fighter = [Fighter(agents[0], neat.nn.FeedForwardNetwork.create(genome, config)), Fighter(agents[1], None)]
-            genome.fitness = self._RunFighters(*agents_fighter)
-
-            if DEBUGGING:
-                print("printing the genomes")
-                print genome
-            del agents
-            del agents_fighter
+                agents, agents_fighter = self._SetupFighters(genome, self.best_genome)
+                genome.fitness = self._RunFighters(*agents_fighter)
+                if DEBUGGING:
+                    print("printing the genomes")
+                    print genome
+                del agents
+                del agents_fighter
 
     def _RunFighters(self, fighter1, fighter2):
         while fighter1.isRunning() or fighter2.isRunning():

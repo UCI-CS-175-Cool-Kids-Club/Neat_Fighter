@@ -194,10 +194,11 @@ class World:
         for i in range(len(agent_hosts)):
             while True:
                 try:
+                    print("trying to start agent {}".format(i))
                     agent_hosts[i].startMission(self.mission, self.client_pool, MalmoPython.MissionRecordSpec(), i, expId )
                     break
                 except RuntimeError as e:
-                    print "Failed to start mission: retrying again in 1 seconds"
+                    print "Failed to start mission for agent {}: retrying again in 1 seconds".format(i)
                     time.sleep(1)
 
         hasBegun = 0

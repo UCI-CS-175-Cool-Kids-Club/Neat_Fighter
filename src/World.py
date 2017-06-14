@@ -13,6 +13,7 @@ import json
 import pickle
 from Fighter import Fighter
 from runtime_configs import DEBUGGING
+from itertools import izip
 
 sys.path.insert(0, '../neat-python')
 import neat
@@ -36,7 +37,7 @@ def GetMissionXML():
             <AllowSpawning>false</AllowSpawning>
     </ServerInitialConditions>
     <ServerHandlers>
-      <FlatWorldGenerator generatorString="3;1*minecraft:grass;1" forceReset="0"/>
+      <FlatWorldGenerator generatorString="3;1*minecraft:grass;1" forceReset="1"/>
       <DrawingDecorator>
             <DrawLine type="diamond_block" y1="1" y2="1" x1="0" x2="11" z1="0" z2="0" />
             <DrawLine type="diamond_block" y1="1" y2="1" x1="0" x2="0" z1="0" z2="11" />
@@ -111,6 +112,9 @@ def GetMissionXML():
 </Mission> '''
     return mission_xml
 
+def pairwise(iterable):
+    a = iter(iterable)
+    return izip(a, a)
 
 def GetMission():
     mission_xml = GetMissionXML()
@@ -121,33 +125,37 @@ class World:
     def __init__(self, client_pool, num_clients): 
         self.client_pool = client_pool
         self.num_clients = num_clients
+        self.best_genome = None
 
     def train(self, population):
         i = 0
         while True:
             i += 1
-            rt = population.run(self._EvaluateGenome, 1)
+            self.best_genome = population.run(self._EvaluateGenome, 1)
             with open('gen-{}-winner'.format(5 * i), 'wb') as f:
-                pickle.dump(rt, f)
-        return
+                pickle.dump(self.best_genome, f)
+        return self.best_genome
 
     def _EvaluateGenome(self, genomes, config):
         for genome_id, genome in genomes:
-            print "genome_id: ", genome_id
+            if (DEBUGGING):
+                print "Running genome {}".format(genome_id)
             agents = [MalmoPython.AgentHost() for i in range(2)]
             self._StartMission(agents)
-            neural_net = neat.nn.FeedForwardNetwork.create(genome, config)
-            agents_fighter = [Fighter(agents[i], neural_net) for i in range(2)]
+            if self.best_genome != None:
+                agents_fighter = [Fighter(agents[0], neat.nn.FeedForwardNetwork.create(genome, config)), Fighter(agents[1], neat.nn.FeedForwardNetwork.create(self.best_genome,config))]
+            else:
+                agents_fighter = [Fighter(agents[0], neat.nn.FeedForwardNetwork.create(genome, config)), Fighter(agents[1], None)]
             genome.fitness = self._RunFighters(*agents_fighter)
+
             if DEBUGGING:
-                print("printing the genome:")
-                print(genome)
-            for i in agents:
-                del i
+                print("printing the genomes")
+                print genome
+            del agents
             del agents_fighter
 
     def _RunFighters(self, fighter1, fighter2):
-        while fighter1.isRunning() and fighter2.isRunning():
+        while fighter1.isRunning() or fighter2.isRunning():
             fighter1.run()
             fighter2.run()
             time.sleep(0.2)
@@ -156,24 +164,21 @@ class World:
             for error in fighter2.agent.peekWorldState().errors:
                 print "Fighter 2 Error:",error.text
 
-        fighter1_damage = fighter2.data.get(u'DamageTaken')
+        fighter1_damage_inflicted = fighter2.data.get(u'DamageTaken')
+        fighter1_damage_taken = fighter1.data.get(u'DamageTaken')
         fighter1_mission_time = fighter1.data.get(u'TotalTime')
-        fighter1.fighter_result.SetInflictedDamage(fighter1_damage)
+        fighter1.fighter_result.SetDamageInflicted(fighter1_damage_inflicted)
         fighter1.fighter_result.SetMissionTime(fighter1_mission_time)
-
-        fighter2_damage = fighter1.data.get(u'DamageTaken')
-        fighter2_mission_time = fighter2.data.get(u'TotalTime')
-        fighter2.fighter_result.SetInflictedDamage(fighter2_damage)
-        fighter2.fighter_result.SetMissionTime(fighter2_mission_time)
-
+        fighter1.fighter_result.SetDamageTaken(fighter1_damage_taken)
         fighter1_fitness = fighter1.fighter_result.GetFitness()
-        fighter2_fitness = fighter2.fighter_result.GetFitness()
+
+        return fighter1_fitness
 
         if DEBUGGING:
             print "fighter_1_Fitness: ", fighter1_fitness
             print "fighter_2_Fitness: ", fighter2_fitness
 
-        return max(fighter1_fitness, fighter2_fitness)
+        return fighter1_fitness, fighter2_fitness
 
     def _StartMission(self, agent_hosts):
         self.mission = GetMission()

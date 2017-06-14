@@ -81,8 +81,6 @@ if __name__ == "__main__":
                        filename="winner-feedforward-enabled-pruned.gv", show_disabled=False, prune_unused=True)
 
 
-    '''
-        # Save the winner.
     with open('winner-feedforward', 'wb') as f:
         pickle.dump(winner, f)
 
@@ -100,7 +98,6 @@ if __name__ == "__main__":
                        filename="winner-feedforward-enabled.gv", show_disabled=False)
     visualize.draw_net(config, winner, view=True, node_names=node_names,
                        filename="winner-feedforward-enabled-pruned.gv", show_disabled=False, prune_unused=True)
-    '''
 
 
 

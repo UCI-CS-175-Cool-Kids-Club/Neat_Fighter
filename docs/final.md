@@ -51,13 +51,11 @@ Our fighter class can make four continuous moves: move, strafe, turn, and attack
             if not self.isRunning():
                 return
             time.sleep(0.01)
+
         agent_state_input = self._get_agent_state_input()
         scaled_state_input = scale_state_inputs(agent_state_input)
         output = self.neural.activate(scaled_state_input)
-        if DEBUGGING:
-            print("angle {:.2f}; dist {:.2f};   move {:.3f}; strafe {:.3f}; turn {:.3f}; attack {:.3f}".format(*(agent_state_input + output)))
-        if self.mission_ended or not self.agent.peekWorldState().is_mission_running:
-            return
+
         self.agent.sendCommand("move {}".format(output[0]))
         self.agent.sendCommand("strafe {}".format(output[1]))
         self.agent.sendCommand("turn {}".format(output[2]))
@@ -66,36 +64,25 @@ Our fighter class can make four continuous moves: move, strafe, turn, and attack
 
 These calculated values are then passed to AgentResult which we use as our fitness function. This assigns a fitness to each genome by giving it a scaled reward for inflicting damage and punishes the agent for elapsed time and the distance between the agent and the enemy.
 
+__Fitness__<br>
+For each genome, we calculate its fitness or how well it does by taking into considering the following results: mission_time, inflicted damage, distance to the other player, and damage taken. As time goes on in the arena, we want to punish the genome because we favor a specie that kill the other opponent as fast as possible. We also want to reward inflicting damage on the other agent and punish taking damage. Lastly, as a means to encourage begining species to get closer to the other agent, we included the distance in our fitness where the distance area over a period of time will be subtracted from the overall fitness. In order words, a specie that consistently spend its time closer to the other agent will have a smaller distance area hence the punishment will be less.
+
+For each of the variable that we are taking in consideration for our fitness function, it is multiplied by a scaling factor in order to make sure that there is a logical ordering of importance. In our current settings, we rate the importance of the variables in the following way of highest to lowest: inflicted damage, damage taken, mission time, and distance area.
+
 ```python
 INFLICTED_DAMAGE_SCALE = 2#40
+DAMAGE_TAKEN_SCALE = INFLICTED_DAMAGE_SCALE * 0.90
 TIME_SCALE = 0.01#1
 DISTANCE_SCALE = 0.01#100
 
-class AgentResult:
-	def __init__(self):
-		self.last_time = time()
-		self.distance_area = 0.0
-		self.inflicted_damage = 0
-		self.mission_time = 0
-
-	def AppendDistance(self,distance):
-		cur_time = time()
-		time_dif = cur_time - self.last_time
-		self.distance_area += time_dif * distance
-		self.last_time = cur_time
-
-	def GetFitness(self):
-		# To track progress 
-		print "Distance: ", self.distance_area
-		print "Inflicted Damage: ", self.inflicted_damage
-		return self.inflicted_damage * INFLICTED_DAMAGE_SCALE - (self.mission_time * TIME_SCALE) - DISTANCE_SCALE * self.distance_area
-
-	def SetInflictedDamage(self, damage):
-		self.inflicted_damage = damage
-
-	def SetMissionTime(self, time):
-		self.mission_time = time
 ```
+The reasoning behind this ordering is that we want our agent to fight and deal as much damage as possible. An agent who can deal damage should always be favored over one that does not. Second, we favor agent who takes the least damage. The scale for mission time and distance is equal to each other. However, in the earlier generation, mission time will not play much of a role because no one will be able to kill each other.In those cases, distance will be more of a factor in the final fitness relative to the rest of the generation's popuation. We can also assume that if an agent is consistently dealing damage, its distance is also consistently closer to that of the other agent. Hence our final fitness is computed as follows:
+
+```python
+def GetFitness(self):
+    return self.inflicted_damage * INFLICTED_DAMAGE_SCALE - (self.mission_time * TIME_SCALE) - (DISTANCE_SCALE * self.distance_area) - (DAMAGE_TAKEN_SCALE * self.damage_taken)
+```
+
  
 ## NEAT Configuration
  

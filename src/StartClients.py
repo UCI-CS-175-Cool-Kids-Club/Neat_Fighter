@@ -35,7 +35,7 @@ if __name__ == "__main__":
             genome1 = pickle.load(g1)
         with open(sys.argv[2], 'rb') as g2:
             genome2 = pickle.load(g2)
-        world.StartFight(genome1, genome2, config)
+        world.StartFight(genome1, genome2, InitalizeNeatConfig())
     else:
         if len(sys.argv) == 2:
             population, config = neat.Checkpointer.restore_checkpoint(str(sys.argv[1])), InitalizeNeatConfig()

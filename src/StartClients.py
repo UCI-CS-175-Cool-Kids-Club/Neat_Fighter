@@ -17,16 +17,19 @@ def SetupClientPools():
         client_pool.add(MalmoPython.ClientInfo('127.0.0.1', 10000+i))
     return client_pool
 
-def InitalizeNEAT():
+def InitalizeNeatConfig():
     local_dir = os.path.dirname(__file__)
     config_path = os.path.join(local_dir, 'config-fighter')
     config = neat.Config(neat.DefaultGenome, neat.DefaultReproduction, neat.DefaultSpeciesSet, neat.DefaultStagnation, config_path) 
+    return config
+
+def InitalizeNEATPopulation():
+    config = InitalizeNeatConfig()
     pop = neat.Population(config)
     return pop, config
 
 if __name__ == "__main__":
     world = World(SetupClientPools())
-    population, config = InitalizeNEAT()
     if len(sys.argv) >= 3:
         with open(sys.argv[1], 'rb') as g1:
             genome1 = pickle.load(g1)
@@ -34,12 +37,14 @@ if __name__ == "__main__":
             genome2 = pickle.load(g2)
         world.StartFight(genome1, genome2, config)
     else:
+        if len(sys.argv) == 2:
+            population, config = neat.Checkpointer.restore_checkpoint(str(sys.argv[1])), InitalizeNeatConfig()
+        else:
+            population, config = InitalizeNEAT()
         population.add_reporter(neat.StdOutReporter(True))
         population.add_reporter(neat.Checkpointer(1,900))
         stats = neat.StatisticsReporter()
         population.add_reporter(stats)
-        if len(sys.argv) == 2:
-            population.Checkpointer.restore_checkpoint(str(sys.argv[1]))
         try:
           winner = world.train(population)
         except KeyboardInterrupt, neat.population.CompleteExtinctionException:

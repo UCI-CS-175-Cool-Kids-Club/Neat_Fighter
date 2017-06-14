@@ -136,20 +136,25 @@ class World:
         return self.best_genome
 
     def StartFight(self,genome1, genome2, config):
-        agents, agents_fighter = self._SetupFighters(genome1, genome2, config)
+        agents, agents_fighter = self._SetupFighters([genome1, genome2], config)
         self._RunFighters(*agents_fighter)
 
-    def _SetupFighters(self, genome1, genome2, config):
+    def _SetupFighters(self, genomes, config):
+        if len(genomes) != 2:
+            raise Exception("Size of argument genomes is not 2")
         agents = [MalmoPython.AgentHost() for i in range(2)]
         self._StartMission(agents)
-        agents_fighter = [Fighter(agents[0], neat.nn.FeedForwardNetwork.create(genome1, config)), Fighter(agents[1], neat.nn.FeedForwardNetwork.create(genome2,config))]
+        agents_fighter = []
+        for i in range(2):
+            agents_fighter.append(Fighter(agents[i], None if genomes[i] == None else
+                neat.nn.FeedForwardNetwork.create(genomes[i], config)))
         return agents, agents_fighter
 
     def _EvaluateGenome(self, genomes, config):
         for genome_id, genome in genomes:
             if (DEBUGGING):
                 print "Running genome {}".format(genome_id)
-                agents, agents_fighter = self._SetupFighters(genome, self.best_genome)
+                agents, agents_fighter = self._SetupFighters([genome, self.best_genome], config)
                 genome.fitness = self._RunFighters(*agents_fighter)
                 if DEBUGGING:
                     print("printing the genomes")

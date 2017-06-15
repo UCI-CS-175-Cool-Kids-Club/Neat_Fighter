@@ -14,6 +14,9 @@ Each bot is a Minecraft agent with certain "DNA" that specifies its "brain": a n
 
  At the writing of our previous report, we had been able to train 1 bot to fight and kill a stationary enemy.  Now we have fully expanded to train bots to fight each other.  We were pleasantly surprised by how well this final phase of the project turned out, as the basic methodology we used previously gave good results without much tweaking.  We also observed fascinating emergent behavior when watching the training of our project, like evolutionary arms races.  We were really pumped to have done this project, and super satisfied with the way it turned out.
 
+<p style="text-align:center"><img src="/Neat_Fighter/pics/OUTPUT.png" alt="Environment2" /><br>An example neural net of one of our later-generation bots</p>
+
+
 ## Context
 As stated before, the NEAT algorithm is a type of genetic algorithm created by Ken Stanley which changes its weight parameters based on the fitness and the diversity among the specimen of each generation by tracking the history.  Although this field of "neuroevolution" (evolving the parameters of a neural net through a genetic, evolutionary algorithm) is old and dates back further than this paper, NEAT introduced the idea of "species" in the population.  
  
@@ -91,11 +94,11 @@ In the NEAT algorithm, the methodology behind how each genome is assigned its fi
 These calculated values are then passed to AgentResult which we use as our fitness function. This assigns a fitness to each genome by giving it a scaled reward for inflicting damage and punishes the agent for elapsed time and the distance between the agent and the enemy.
 
 
-__1v1 Testing Procedure: Pairing The Genomes__<br>
+__1v1 Testing Procedure: Pairing The Bots__<br>
 
 For each arena battle, we have two agents running simutaneously fighting against each other. The problem of correctly pairing up different genomes is not a trivial one. In fact, our initial strategy was to have the same genome fight against itself. However, this does not really encourage the overall goal of this project, which is to produce a fighter who can fight against anyone. If we paired a genome against itself, we were implicity encouraging certain strategy that will only work against itself. In other words, we need to pit our agents against other agents. The next strategy that we attempted was to just simply randomly pair up any given two genome and have them fight against each other. This also posed another problem, in that this method would result in too much noise. Noise would force our training session to take longer because it would take longer for a genome to dominate as it would have alot of variance. Similar to that of the problem in fitness, we would not be correctly representing how  a genome did in respect to the rest of its generation, but only versus a random enemy. Hence there is this problem, where we do not want too much variance but we also want just enough to produce a fighter that would do well against all types of behavior.
 
-The solution we came up with is that we run each generation's genome against the previous's generation's best. In fact, this also introduces a behavior that closely model that of biological evolution in the real world. To further explain, after running each generation, we will save the best genome which we will call the baseline genome of that generation and we will use the baseline to fight against the next generation. This type of method preserves the relative ordering of fitnesses within each generation in that in a given generation everyone will be running against the same fighter. Our baseline genome for generation-1 is one that doesn't make any action and simply just stands still. The interesting behavior that we observe is that the generation's baseline often switches between a fighter that is very aggressive and one that is defensive. This make sense as if the baseline is very aggressive, that generation's best will be a fighter that can defend well and vice versa.  Following Stanley's tradition of biological analogues, this type of behavior is close to that of predator and prey in nature, as predators are often equipped with offensive trait while prey is good at defending its life. This type of method, we hope, will generate a species that is balanced between offensive and defensive. Again, the NEAT algorithm is at highly stochastic and thus may generate species that fluctuate in strategy and fitness, just like animals and plants floating through the winds of time in nature on Earth on our beautiful planet that we call home.
+The solution we came up with is that we run each generation's genome against the previous's generation's best. In fact, this also introduces a behavior that closely model that of biological evolution in the real world. To further explain, after running each generation, we will save the best genome which we will call the baseline genome of that generation and we will use the baseline to fight against the next generation. This type of method preserves the relative ordering of fitnesses within each generation in that in a given generation everyone will be running against the same fighter. Our baseline genome for generation-1 is one that doesn't make any action and simply just stands still. The interesting behavior that we observe is that the generation's baseline often switches between a fighter that is very aggressive and one that is defensive. This make sense as if the baseline is very aggressive, that generation's best will be a fighter that can defend well and vice versa.  Following Stanley's tradition of biological analogues, this type of behavior is close to that of predator and prey in nature, as predators are often equipped with offensive trait while prey is good at defending its life. This type of method, we hope, will generate a species that is balanced between offensive and defensive. Again, the NEAT algorithm is highly stochastic and thus may generate species that fluctuate in strategy and fitness, just like animals and plants floating through the winds of time in nature on Earth - the beautiful planet that we call home.
 
 ## NEAT Configuration
  
@@ -105,6 +108,20 @@ Our config-fighter file has all the configuration for the NEAT algorithms parame
 
 ## Evaluation
 
+While evaluating our project was fairly simple in the previous phase (we simply kept track of the fitness of the bots of each generation over time at slaying the static enemy), it was much, much harder to evaluate our project while doing gladiator fights.  The fitnesses of our training no longer can be compared across generations, since all the bots of generation 2 fight against a different enemy than the bots of generation 3.  
+
+Qualitatively, we can simply watch each generation of our project while training, and it's clear that the successive generations learn to kill others.  But quantitatively, we have no existing recourse for evaluating. 
+
+Thus, to evaluate our project now, we came up with an entirely new process which we perform after training completes.  During training, we save the genomes of the highest-fitness bot of each generation.  Then, after training, we pit the highest-fitness bot of each generation against the highest-fitness bot of the final generation (who we'll refer to as Spartacus).  We'll save the fitness score of each of these bots when they fight against Spartacus, and then graph them.  If the fitness score has an upward trend, we can conclude that each generation is evolving to become better at fighting.
+
+Evaluating 1v1 fighting is still fraught with caveats, however.  For instance, can we actually even objectively measure the fitness of a bot?  Sure, a bot might be good at fighting a certain other bot, or even against fighting all bots, but our presupposed goal of creating "the best bot at gladiator fights" is, in reality, treacherously ambiguous.  Do we want a bot that has the highest winrate versus all other bots we've created?  The best bot in the final generation?  Although, through our multiple testing runs, the Spartacuses were often a great and had high winrates, it's theoretically possible that there would exist some rock-paper-scissors cycle of bot strategies.  Furthermore, there is some stochasticity in the fights themselves, since each Malmo tick and Minecraft tick aren't precisely controlled.  Thus, the same bots fighting multiple times will not always give the same result.
+
+Even so, the graphs that we made through this methodology supported our qualitative observations that the bots evolved well.
+
+<p><img src="/Neat_Fighter/pics/FINALPIC.png" alt="Environment2" /></p>
+
+In our graph, we can see that most bots lost to this run's Spartacus, confirming that the bot by the end has learned to kill, since they have fitness values less than 0.  Generations 15, 16, and 17 defeated Spartacus (perhaps indicative that these 3 generations form a "scissors" class to Spartacus's "paper", and 18's "rock", but this is just speculation).
+
 <!--
 To evaluate our performance, we run our evolutionary program for 10 hours and see if the final generation has learned to kill the opponent.  So far, we have been unsuccessful at reaching this goal.  In the absence of complete success, we look at our bots' fitness throughout generations and see if there is a positive trend.  So far, we have been lackluster at reaching this goal when our population size was 20.
 
@@ -113,8 +130,6 @@ To evaluate our performance, we run our evolutionary program for 10 hours and se
 ![Running_max_fit_ovr_time](pics/pop_<100_max_fitness_ea_org.png)
 
 ![Running_max_fit_ovr_time](pics/pop_<100_max_fitness_over_time.png)-->
-
-To evaluate our performance, we actually don't.
 
 ## Conclusion
 

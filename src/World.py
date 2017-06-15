@@ -137,7 +137,7 @@ class World:
 
     def StartFight(self,genome1, genome2, config):
         agents, agents_fighter = self._SetupFighters([genome1, genome2], config)
-        self._RunFighters(*agents_fighter)
+        return self._RunFighters(*agents_fighter)
 
     def _SetupFighters(self, genomes, config):
         if len(genomes) != 2:
@@ -184,9 +184,8 @@ class World:
 
         if DEBUGGING:
             print "fighter_1_Fitness: ", fighter1_fitness
-            print "fighter_2_Fitness: ", fighter2_fitness
 
-        return fighter1_fitness, fighter2_fitness
+        return fighter1_fitness
 
     def _StartMission(self, agent_hosts):
         self.mission = GetMission()

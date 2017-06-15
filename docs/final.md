@@ -25,9 +25,11 @@ The idea of speciation is highly motivated by biological analogues.  Essentially
 __High Level__<br> 
 Before we go into the nitty gritty, we just want to give a quick overview of the different aspect of our approach
 
--Environment - the arena and our map that we will be training the agents in
--Training Procedure - how we train our agents and specifics of the NEAT algorithm
--Fitness - what our fitness takes into consideration and its importance in the bigger picture of the NEAT algorithm
+- Environment - the arena and our map that we will be training the agents in
+
+- Training Procedure - how we train our agents and specifics of the NEAT algorithm
+
+- Fitness - what our fitness takes into consideration and its importance in the bigger picture of the NEAT algorithm
 
 __Environment__<br> 
 Environment setup We created our world using Project Malmo we tired running our project on different sized worlds with different setups. 

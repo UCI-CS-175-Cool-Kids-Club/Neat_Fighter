@@ -23,9 +23,13 @@ The idea of speciation is highly motivated by biological analogues.  Essentially
 ## Approaches
 
 __High Level__<br> 
-Before we go into the nitty gritty just wanted to explain how this is broken down. In Part I we explain how we setup our environment and different approaches we used. Part II we go into how we trained both of our agents and walk through the code. Lets get started.
+Before we go into the nitty gritty, we just want to give a quick overview of the different aspect of our approach
 
-__Part I__<br> 
+*Environment - the arena and our map that we will be training the agents in
+*Training Procedure - how we train our agents and specifics of the NEAT algorithm
+*Fitness - what our fitness takes into consideration and its importance in the bigger picture of the NEAT algorithm
+
+__Environment__<br> 
 Environment setup We created our world using Project Malmo we tired running our project on different sized worlds with different setups. 
 
 - _10x10x4 Diamond Block Arena, No Armor_: This was our initial approach we thought if we give our agent a big enough arena. Over multiple generations we would clearly see if our agent is learning or not.
@@ -42,8 +46,10 @@ Our results after comparing across final generations did not prove our hypothesi
 
 ![Environment3](pics/6x4_Armor.png)
 
-__Part II Training__<br>
-Our fighter class can make four continuous moves: move, strafe, turn, and attack. It decides these commands based on the neural net’s output.  There are two inputs to the neural net: the agent's distance to the other agent, and the agent's angle to the other agent.
+__Training Procedure__<br>
+Our fighter class can make four continuous moves: move, strafe, turn, and attack. It decides these commands based on the neural net’s output.  There are two inputs to the neural net: the agent's distance to the other agent, and the agent's angle to the other agent. The outputs of the neural net will also be a continous variable bounded by the tanh function which will be a value [-1, 1] (discussed further in details in the NEAT configuration section). Each continous variable for move, strafe, turn will output the speed in which the agent will move. An example would be for move, 1 will make the agent move forward at food speed while -1 will make the agent move backwards at full speed. The agent can learn to stop by outputting 0 in any section. This decision to map the output to action is one that we came up with. We have tested other methods of mapping but have choosen this for its simplicity. If we had more time, this is what we would like to test and maybe change it up to see if it will help produce a better result. For the attack action, anything above 0 will be mapped to 1 and anything less will be mapped to 0. In other words, the agent will only attack if the neural net output is greater than 0. 
+
+Scaling our input features is also an important aspect in making sure our inputs even matter at all. For the tanh function, anything below -1 and above 1 will be mapped to -1 and 1 respectively. Hence if ourinput feature is anything that is not within this boundary, it will lose its meaning. For example, the distance 5 and 10 will practically equal to each other as that input in the eyes of the neural net will be mapped to 1. Therefore, it is important we use the full range of continous variable between -1 and 1.
 
 ```python
     def run(self):
@@ -62,10 +68,8 @@ Our fighter class can make four continuous moves: move, strafe, turn, and attack
         self.agent.sendCommand("attack {}".format(0 if output[3] <= 0 else 1))
 ```
 
-These calculated values are then passed to AgentResult which we use as our fitness function. This assigns a fitness to each genome by giving it a scaled reward for inflicting damage and punishes the agent for elapsed time and the distance between the agent and the enemy.
-
 __Fitness__<br>
-For each genome, we calculate its fitness or how well it does by taking into considering the following results: mission_time, inflicted damage, distance to the other player, and damage taken. As time goes on in the arena, we want to punish the genome because we favor a specie that kill the other opponent as fast as possible. We also want to reward inflicting damage on the other agent and punish taking damage. Lastly, as a means to encourage begining species to get closer to the other agent, we included the distance in our fitness where the distance area over a period of time will be subtracted from the overall fitness. In order words, a specie that consistently spend its time closer to the other agent will have a smaller distance area hence the punishment will be less.
+For each genome, we calculate its fitness or how well it does by taking into considering the following results: mission time, inflicted damage, distance to the other player, and damage taken. As time goes on in the arena, we want to punish the genome because we favor a specie that kill the other opponent as fast as possible. We also want to reward inflicting damage on the other agent and punish taking damage. Lastly, as a means to encourage begining species to get closer to the other agent, we included the distance in our fitness where the distance area over a period of time will be subtracted from the overall fitness. In order words, a specie that consistently spend its time closer to the other agent will have a smaller distance area hence the punishment will be less.
 
 For each of the variable that we are taking in consideration for our fitness function, it is multiplied by a scaling factor in order to make sure that there is a logical ordering of importance. In our current settings, we rate the importance of the variables in the following way of highest to lowest: inflicted damage, damage taken, mission time, and distance area.
 
@@ -83,7 +87,17 @@ def GetFitness(self):
     return self.inflicted_damage * INFLICTED_DAMAGE_SCALE - (self.mission_time * TIME_SCALE) - (DISTANCE_SCALE * self.distance_area) - (DAMAGE_TAKEN_SCALE * self.damage_taken)
 ```
 
- 
+In the NEAT algorithm, the methodology behind how each genome is assigned its fitness score is arguably the most important aspect. In any given generation, the fitness function tells the NEAT algorithm how well did that specific genome do relative to the rest of the generations. We want a fitness function that will implicitly model how well each genome did compare to others without running them together. This is a problem that we encounter later on when we attempt to pair two different genome against each other which is discussed in later sections. Going back to the point, our fitness function may not be the best but it gave us good results in a 12 hour training session but were we, hypothetically, to use a better and more comprehensive fitness function to evaluate the genomes, our result couldve been achieve is much shorter time or that an extreme good genome could have dominated.
+
+These calculated values are then passed to AgentResult which we use as our fitness function. This assigns a fitness to each genome by giving it a scaled reward for inflicting damage and punishes the agent for elapsed time and the distance between the agent and the enemy.
+
+
+__Pairing_The_Genomes__<br>
+
+For each arena battle, we have two agents running simutaneous fighting against each other. The problem of correctly pairing up different genome is not a trivial one. In fact, our initial strategy was to have the same genome fight against itself. However, this does not really encourage the overall goal of this project which is to produce a fighter who can fight against anyone. By paring a genome against itself, we were implicity encouraging certain strategy that will only work against itself. In other words, we need to introduce variance in our simulation. The next strategy that we attempted was to just simply randomly pair up any given two genome and have it fight against each other. This also pose another problem which was that this method would encourage too much variance. Variance that would force our training session to increase because it would take longer for a genome to dominate as it would have alot of variance. Similar to that of the problem in fitness, we would not be correctly representing how to a genome did in respect to the rest o its generation. Hence there is this problem, where we do not want any variance but we also want just enough to produce a fighter that would do well against all types of behavior.
+
+The solution we came up with is that we run each generation's genome against the previous's generation's best. In fact, this also introduces a behavior that closely model that of biological evolution in the real world. To further explain, after running each generation, we will save the best genome which we will call the baseline genome and we will use the baseline to fight against the next generation. This type of method preserve the relativity within each genome in that given generation as everyone will be running against a similar behavior fighter. Our baseline genome for generation-1 is one that doesn't make any action and simply just stands still. The interesting behavior that we observe is that the generation's baseline often switches between a fighter that is very aggressive and one that is defensive. This make sense as if the baseline is very aggressive, that generation's best will be a fighter that can defend well and vice versa. This type of behavior is close to that of predator and prey in nature as predator is often equip equip with offensive trait while prey is good at defending its life. This type of methodd, we hope, will generate a specie that is balanced between offensive and defensive. Again, the NEAT algorithm is at the mercy of randomness to generate such specie much like that in real life mutation.
+
 ## NEAT Configuration
  
 Our config-fighter file has all the configuration for the NEAT algorithms parameters. We used a population size of 100 with two inputs (relative angle to the enemy and distance) and one hidden input. As of current, we are using relu for our activation function but there are other options available to fine tune the learning process. The neat-python library allows us to specify mutation rate, probabilities of adding or removing an edge or node, aggregation in the neural nets, and much more. 

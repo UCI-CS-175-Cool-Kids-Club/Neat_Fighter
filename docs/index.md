@@ -3,7 +3,7 @@ layout: default
 title:  Home
 ---
 
-![asdf](pics/pic.png | width=560)
+![asdf](pics/pic.png)
 
 **A picture of our bot standing over the slain bodies of enemies and looking cool**
 
@@ -18,4 +18,4 @@ title:  Home
 [Evolution Strategies](https://blog.openai.com/evolution-strategies/)
 
 ## We made a bot that learns to fight
-![FightingGif](pics/Gen15_vs_Gen23.gif | width=560) 
+![FightingGif](pics/Gen15_vs_Gen23.gif) 

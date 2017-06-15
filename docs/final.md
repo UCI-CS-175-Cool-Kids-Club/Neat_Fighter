@@ -5,9 +5,7 @@ title:  Final Report
 
 ## Video
 
-$Place holder
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/ND62gIA778U" frameborder="0" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/9tGDM2aRwHo" frameborder="0" allowfullscreen></iframe>
 
 ## Project Summary
 The goal of our project is to train a Minecraft agent to fight in a 1v1 gladiatorial scenario. We would like our bots to learn to kill the opposing agent and avoid being killed, through evolution. We are using a Neuroevolution algorithm, which is a form of machine learning that uses genetic algorithms to evolve the structure and edge-weights of neural networks. More specifically, we are using the NeuroEvolution of Augmenting Topologies (NEAT) algorithm which was created by Ken Stanley in 2002 while he was at The University of Texas Austin. 
@@ -102,7 +100,6 @@ The solution we came up with is that we run each generation's genome against the
 ## NEAT Configuration
  
 Our config-fighter file has all the configuration for the NEAT algorithms parameters. We used a population size of 100 with two inputs (relative angle to the enemy and distance) and one hidden input. As of current, we are using relu for our activation function but there are other options available to fine tune the learning process. The neat-python library allows us to specify mutation rate, probabilities of adding or removing an edge or node, aggregation in the neural nets, and much more. 
-
 
 ![NEAT_Config](pics/NEAT_Config_Image.png)
 

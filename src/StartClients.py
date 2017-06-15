@@ -37,7 +37,7 @@ if __name__ == "__main__":
             genome2 = pickle.load(g2)
         print "Running {} against {}".format(sys.argv[1], sys.argv[2]);
         fitness = world.StartFight(genome1, genome2, InitalizeNeatConfig())
-        print "Fitness of {} against {} : {}".format(sys.argv[1], sys.arv[2], fitness)
+        print "TARGET: Fitness of {} against {} : {}".format(sys.argv[1], sys.argv[2], fitness)
     else:
         if len(sys.argv) == 2:
             population, config = neat.Checkpointer.restore_checkpoint(str(sys.argv[1])), InitalizeNeatConfig()

@@ -207,5 +207,4 @@ class World:
                     for error in world_state.errors:
                         print "Error:",error.text
         if hadErrors:
-            print "ABORTING ERROR DETECTED"
-            exit(1)
+            print "not ABORTING ERROR DETECTED"

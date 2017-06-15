@@ -86,8 +86,11 @@ if __name__ == "__main__":
 
     print(winner)
 
-    visualize.plot_stats(stats, ylog=True, view=True, filename="feedforward-fitness.svg")
-    visualize.plot_species(stats, view=True, filename="feedforward-speciation.svg")
+    try:
+      visualize.plot_stats(stats, ylog=True, view=True, filename="feedforward-fitness.svg")
+      visualize.plot_species(stats, view=True, filename="feedforward-speciation.svg")
+    except:
+      pass
 
     node_names = {-1: 'x', -2: 'dx', -3: 'theta', -4: 'dtheta', 0: 'control'}
     visualize.draw_net(config, winner, True, node_names=node_names)

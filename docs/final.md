@@ -41,17 +41,17 @@ Environment setup: We created our world using Project Malmo.  We tried running o
 
 - _10x10x4 Diamond Block Arena, No Armor_: This was our initial approach.  We hypothesized that if we give our agent a big enough arena, then over multiple generations, we could see clearly if our agent is learning or not.
 
-![Environment](pics/10x10_No_Armor.png)
+![Environment](pics/10x10_No_Armor.png | width=560)
 
 - _10x5x4 Diamond Block Enclosure, No Armor_: This was the second iteration of our environment. We wanted to test out different arenas to see how greatly it would affect our agent. Our hypothesis was: the smaller the arena, the faster the agent would first randomly hit the opponent. Which in turn would result in a better agent after the course of multiple generations. 
 
-![Environment2](pics/6x6x4 No Diamond.png)
+![Environment2](pics/6x6x4 No Diamond.png | width=560)
 
 - _10x5x4 Diamond Block Enclosure, with Armor_: Again we tried making our area smaller for the same reasons stated above. 
 
 Our results after comparing across final generations did not prove our hypothesis. There was no obvious direct correlation between the size of the area and how well our final generation performed. It should be stated that this was only true at our full-scale testing. 
 
-![Environment3](pics/6x4_Armor.png)
+![Environment3](pics/6x4_Armor.png | width=560)
 
 __Training Procedure__<br>
 Our fighter class can make four continuous moves: move (forward/backward), strafe (left/right), turn (left/right), and attack (true/false). It decides these commands based on the neural net’s output.  There are two inputs to the neural net: the agent's distance to the other agent, and the agent's angle to the other agent. The outputs of the neural net will also be a continous variable bounded by the tanh function which will be a value in the range [-1, 1] (discussed further in details in the NEAT configuration section). Each continous variable for move, strafe, turn will output the speed at which the agent will move. An example for move: a value of 1 will make the agent move forward at full speed while -1 will make the agent move backwards at full speed. The agent will stop if that variable is 0. This decision to map the output to action is one that we did not come up with lightly. We have tested other methods of mapping but have choosen this for its simplicity. If we had more time, this is what we would like to test and maybe change to see if it will help produce a better result. For the attack action, anything above 0 will be mapped to 1 and anything less will be mapped to 0. In other words, the agent will only attack if the neural net output is greater than 0. 

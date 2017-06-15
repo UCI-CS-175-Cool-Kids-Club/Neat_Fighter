@@ -92,7 +92,7 @@ In the NEAT algorithm, the methodology behind how each genome is assigned its fi
 These calculated values are then passed to AgentResult which we use as our fitness function. This assigns a fitness to each genome by giving it a scaled reward for inflicting damage and punishes the agent for elapsed time and the distance between the agent and the enemy.
 
 
-__Pairing_The_Genomes__<br>
+__Pairing The Genomes__<br>
 
 For each arena battle, we have two agents running simutaneous fighting against each other. The problem of correctly pairing up different genome is not a trivial one. In fact, our initial strategy was to have the same genome fight against itself. However, this does not really encourage the overall goal of this project which is to produce a fighter who can fight against anyone. By paring a genome against itself, we were implicity encouraging certain strategy that will only work against itself. In other words, we need to introduce variance in our simulation. The next strategy that we attempted was to just simply randomly pair up any given two genome and have it fight against each other. This also pose another problem which was that this method would encourage too much variance. Variance that would force our training session to increase because it would take longer for a genome to dominate as it would have alot of variance. Similar to that of the problem in fitness, we would not be correctly representing how to a genome did in respect to the rest o its generation. Hence there is this problem, where we do not want any variance but we also want just enough to produce a fighter that would do well against all types of behavior.
 

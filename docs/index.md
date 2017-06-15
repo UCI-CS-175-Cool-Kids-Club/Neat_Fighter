@@ -18,4 +18,4 @@ title:  Home
 [Evolution Strategies](https://blog.openai.com/evolution-strategies/)
 
 ## We made a bot that learns to fight
-![FightingGif](Neat_Fighter/docs/pics/Gen15_vs_Gen23.gif)
+![FightingGif](pics/Gen15_vs_Gen23.gif)

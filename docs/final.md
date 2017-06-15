@@ -104,7 +104,6 @@ The solution we came up with is that we run each generation's genome against the
  
 Our config-fighter file has all the configuration for the NEAT algorithms parameters. We used a population size of 100 with two inputs (relative angle to the enemy and distance) and one hidden input. As of current, we are using relu for our activation function but there are other options available to fine tune the learning process. The neat-python library allows us to specify mutation rate, probabilities of adding or removing an edge or node, aggregation in the neural nets, and much more. 
 
-
 ![NEAT_Config](pics/NEAT_Config_Image.png)
 
 ## Evaluation

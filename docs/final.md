@@ -14,7 +14,7 @@ Each bot is a Minecraft agent with certain "DNA" that specifies its "brain": a n
 
  At the writing of our previous report, we had been able to train 1 bot to fight and kill a stationary enemy.  Now we have fully expanded to train bots to fight each other.  We were pleasantly surprised by how well this final phase of the project turned out, as the basic methodology we used previously gave good results without much tweaking.  We also observed fascinating emergent behavior when watching the training of our project, like evolutionary arms races.  We were really pumped to have done this project, and super satisfied with the way it turned out.
 
-<p style="text-align:center"><img src="/Neat_Fighter/pics/OUTPUT.png" alt="Environment2" /><br>An example neural net of one of our later-generation bots</p>
+<p style="text-align:center"><img src="/Neat_Fighter/pics/gen15genome.png" alt="Environment2" /><br>An example neural net of one of our later-generation bots</p>
 
 
 ## Context
